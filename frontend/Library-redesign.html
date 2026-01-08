@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library - ST. LAWRENCE JUNIOR SCHOOL - KABOWA</title>
+    <meta name="description" content="Access digital library resources, assignments, and study materials at St. Lawrence Junior School Kabowa.">
+    
+    <!-- Favicon -->
+    <link href="../img/favicon.ico" rel="icon">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/redesign-style.css?v=3.2">
+</head>
+<body>
+    
+    <!-- Header / Navigation -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <!-- Logo Section -->
+                <div class="logo">
+                    <div class="logo-badge">
+                        <img src="../img/5.jpg" alt="St. Lawrence Logo" class="logo-img">
+                    </div>
+                    <div class="logo-text-container">
+                        <span class="logo-text">ST.LAWRENCE</span>
+                        <span class="logo-subtitle">Junior School - Kabowa</span>
+                    </div>
+                </div>
+                
+                <!-- Navigation Menu -->
+                <ul class="nav-menu" id="navMenu">
+                    <!-- Desktop Menu Items -->
+                    <li class="desktop-only"><a href="index-redesign.html" class="nav-link">Home</a></li>
+                    <li class="desktop-only nav-dropdown">
+                        <a href="About-redesign.html" class="nav-link">About <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="About-redesign.html">Our Story</a></li>
+                            <li><a href="School-Anthem.html">School Anthem</a></li>
+                            <li><a href="Academics.html">Academics</a></li>
+                        </ul>
+                    </li>
+                    <li class="desktop-only"><a href="Teachers-redesign.html" class="nav-link">Teachers</a></li>
+                    <li class="desktop-only"><a href="Gallery-redesign.html" class="nav-link">Gallery</a></li>
+                    <li class="desktop-only nav-dropdown">
+                        <a href="Admission-redesign.html" class="nav-link">Admission <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="Admission-redesign.html">Apply Now</a></li>
+                            <li><a href="Fees.html">Fees</a></li>
+                        </ul>
+                    </li>
+                    <li class="desktop-only"><a href="Contact-redesign.html" class="nav-link">Contact</a></li>
+                    <li class="desktop-only"><a href="Library-redesign.html" class="nav-link active">Library</a></li>
+                    
+                    <!-- Mobile Menu Items -->
+                    <li class="mobile-only"><a href="index-redesign.html" class="nav-link-mobile">Home</a></li>
+                    
+                    <li class="mobile-only mobile-expandable">
+                        <div class="nav-link-mobile">
+                            <span>About Us</span>
+                            <span class="mobile-expand-icon">+</span>
+                        </div>
+                        <ul class="mobile-submenu">
+                            <li><a href="About-redesign.html">Our Story</a></li>
+                            <li><a href="School-Anthem.html">School Anthem</a></li>
+                            <li><a href="Academics.html">Academics</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="mobile-only"><a href="Teachers-redesign.html" class="nav-link-mobile">Teachers</a></li>
+                    <li class="mobile-only"><a href="Gallery-redesign.html" class="nav-link-mobile">Gallery</a></li>
+                    
+                    <li class="mobile-only mobile-expandable">
+                        <div class="nav-link-mobile">
+                            <span>Admissions</span>
+                            <span class="mobile-expand-icon">+</span>
+                        </div>
+                        <ul class="mobile-submenu">
+                            <li><a href="Admission-redesign.html">Apply Now</a></li>
+                            <li><a href="Fees.html">Fees</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="mobile-only"><a href="Contact-redesign.html" class="nav-link-mobile">Contact</a></li>
+                    <li class="mobile-only"><a href="Library-redesign.html" class="nav-link-mobile">Library</a></li>
+                </ul>
+                
+                <!-- Admin Button -->
+                <div class="nav-actions">
+                    <a href="../backend/admin/index.html" class="btn-admin">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Admin</span>
+                    </a>
+                </div>
+                
+                <!-- Mobile Hamburger -->
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-bg">
+            <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1600&q=80" alt="Library">
+            <div class="page-hero-overlay"></div>
+        </div>
+        <div class="page-hero-content">
+            <div class="breadcrumb" data-aos="fade-down">
+                <a href="index-redesign.html">Home</a>
+                <span>/</span>
+                <span>Library</span>
+            </div>
+            <h1 data-aos="fade-up">Digital Library</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Your Gateway to Knowledge & Learning Resources</p>
+        </div>
+    </section>
+
+    <!-- Library Benefits Section -->
+    <section class="library-benefits-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Why Use Our Library</span>
+                <h2 class="section-title">Why Our Digital Library is The Right Choice for You</h2>
+            </div>
+            
+            <div class="benefits-grid-layout">
+                <!-- Top Left - Wide Rectangle -->
+                <div class="benefit-card card-wide" data-aos="fade-up" data-aos-delay="100">
+                    <div class="benefit-card-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>42+ Quality Resources</h3>
+                    <p>Access a comprehensive collection of textbooks, assignments, past papers, and revision materials covering all subjects from P.1 to P.7, carefully curated to support your academic journey.</p>
+                </div>
+
+                <!-- Bottom Left - Square -->
+                <div class="benefit-card card-square" data-aos="fade-up" data-aos-delay="200">
+                    <div class="benefit-card-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>24/7 Access</h3>
+                    <p>Study anytime, anywhere. Our digital library never closes, giving you the freedom to learn on your schedule.</p>
+                </div>
+
+                <!-- Bottom Middle - Square -->
+                <div class="benefit-card card-square" data-aos="fade-up" data-aos-delay="300">
+                    <div class="benefit-card-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Instant Downloads</h3>
+                    <p>Get your study materials with just one click. No waiting, no delays - immediate access to everything you need.</p>
+                </div>
+
+                <!-- Right Side - Tall Featured Card -->
+                <div class="benefit-card card-featured" data-aos="fade-left" data-aos-delay="100">
+                    <div class="benefit-featured-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Complete Exam Preparation</h3>
+                    <p>At St. Lawrence, we understand the importance of exam success. That's why our library is packed with comprehensive PLE preparation materials and revision guides.</p>
+                    <p>Whether you're in P.7 preparing for finals or building a strong foundation in lower classes, our resources boost your confidence and help you achieve excellent results.</p>
+                    <a href="#pdfGrid" class="btn-start-learning">
+                        <span>Browse Resources</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resource Types Section -->
+    <section class="resource-types-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">What We Offer</span>
+                <h2 class="section-title">Resource Types</h2>
+                <p class="section-description">Comprehensive learning materials for all subjects</p>
+            </div>
+            
+            <div class="resource-types-grid">
+                <div class="resource-type-item" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Assignments</span>
+                </div>
+                <div class="resource-type-item" data-aos="zoom-in" data-aos-delay="150">
+                    <i class="fas fa-book"></i>
+                    <span>Reading Materials</span>
+                </div>
+                <div class="resource-type-item" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Past Exams</span>
+                </div>
+                <div class="resource-type-item" data-aos="zoom-in" data-aos-delay="250">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <span>Revision Papers</span>
+                </div>
+                <div class="resource-type-item" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-video"></i>
+                    <span>Multimedia</span>
+                </div>
+                <div class="resource-type-item" data-aos="zoom-in" data-aos-delay="350">
+                    <i class="fas fa-book-open"></i>
+                    <span>Study Guides</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Library News Section -->
+    <section class="library-news-section">
+        <div class="container">
+            <div class="news-grid">
+                <div class="news-card primary" data-aos="fade-right">
+                    <div class="news-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="news-content">
+                        <strong>New:</strong> P.7 Maths and Science assignments for Term 2 are now available!
+                    </div>
+                </div>
+
+                <div class="news-card info" data-aos="fade-left">
+                    <div class="news-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="news-content">
+                        <strong>Tip:</strong> Use the search bar to quickly find assignments by subject or class.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <section class="search-filter-section">
+        <div class="container">
+            <!-- Search Bar -->
+            <div class="search-container" data-aos="fade-up">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search assignments by subject or class...">
+                </div>
+            </div>
+
+            <!-- Class Filter Buttons -->
+            <div class="filter-buttons-container" data-aos="fade-up" data-aos-delay="100">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th-large"></i>
+                    <span>All Classes</span>
+                </button>
+                <button class="filter-btn" data-filter="p1">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>P.1</span>
+                </button>
+                <button class="filter-btn" data-filter="p2">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>P.2</span>
+                </button>
+                <button class="filter-btn" data-filter="p3">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>P.3</span>
+                </button>
+                <button class="filter-btn" data-filter="p4">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>P.4</span>
+                </button>
+                <button class="filter-btn" data-filter="p5">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>P.5</span>
+                </button>
+                <button class="filter-btn" data-filter="p6">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>P.6</span>
+                </button>
+                <button class="filter-btn" data-filter="p7">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>P.7</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Grid Section -->
+    <section class="resources-grid-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Downloadable Library Resources</h2>
+            </div>
+            
+            <div class="resources-grid" id="libraryContainer">
+                <!-- Resources will be loaded dynamically via JavaScript -->
+            </div>
+
+            <!-- No Results Message -->
+            <div class="no-results" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No Resources Found</h3>
+                <p>Try adjusting your search or filter criteria</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Video Background -->
+        <video class="footer-video" autoplay muted loop playsinline>
+            <source src="../img/students walking.mp4" type="video/mp4">
+        </video>
+        <div class="footer-overlay"></div>
+        
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Column 1 - Brand -->
+                <div class="footer-col footer-brand-col">
+                    <div class="footer-logo">
+                        <img src="../img/5.jpg" alt="St. Lawrence Logo">
+                        <span>ST. LAWRENCE</span>
+                    </div>
+                    <p class="footer-description">Excellence in Education since 2010. Nurturing young minds for a brighter future.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Column 2 - Quick Links -->
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index-redesign.html">Home</a></li>
+                        <li><a href="About-redesign.html">About Us</a></li>
+                        <li><a href="Teachers-redesign.html">Teachers</a></li>
+                        <li><a href="Gallery-redesign.html">Gallery</a></li>
+                        <li><a href="Admission-redesign.html">Admission</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 - Programs -->
+                <div class="footer-col">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="#">Nursery School</a></li>
+                        <li><a href="#">Primary School</a></li>
+                        <li><a href="#">Boarding</a></li>
+                        <li><a href="#">Day School</a></li>
+                        <li><a href="Library-redesign.html">Library</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 - Contact Us -->
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>P.O.BOX 36198, KAMPALA</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+256 701 420 506 / +256 772 420 506</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>stlawrencejuniorschoolkabowa@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>st.lawrence.juniorschool@yahoo.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom - Copyright -->
+            <div class="footer-copyright">
+                <div class="container">
+                    <div class="copyright-content">
+                        <p>&copy; 2024 St. Lawrence Junior School - Kabowa. All rights reserved.</p>
+                        <p class="footer-credit">Designed with <i class="fas fa-heart"></i> for Excellence in Education</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Developer Info Section -->
+            <div class="footer-developer">
+                <div class="container">
+                    <div class="developer-info">
+                        <p class="developer-label">Developed by</p>
+                        <h4 class="developer-name">MUWANGA IBRAHIM SEKIMPI</h4>
+                        <div class="developer-contact">
+                            <a href="tel:0708486440" class="developer-link">
+                                <i class="fas fa-phone"></i>
+                                <span>0708 486 440</span>
+                            </a>
+                            <span class="separator">|</span>
+                            <a href="mailto:cultoonmovic4@gmail.com" class="developer-link">
+                                <i class="fas fa-envelope"></i>
+                                <span>cultoonmovic4@gmail.com</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="../js/redesign-script.js"></script>
+    
+    <!-- API Integration -->
+    <script src="../js/api-config.js"></script>
+    <script src="../js/api-library.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        
+        // Mobile Menu Functionality
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const mobileExpandables = document.querySelectorAll('.mobile-expandable');
+        
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const isActive = navMenu.classList.contains('active');
+                
+                if (isActive) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                } else {
+                    hamburger.classList.add('active');
+                    navMenu.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        }
+        
+        mobileExpandables.forEach(item => {
+            const link = item.querySelector('.nav-link-mobile');
+            
+            if (link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    mobileExpandables.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    item.classList.toggle('active');
+                });
+            }
+        });
+        
+        const submenuLinks = document.querySelectorAll('.mobile-submenu a');
+        submenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (hamburger && navMenu) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+        
+        const regularMobileLinks = document.querySelectorAll('.mobile-only:not(.mobile-expandable) .nav-link-mobile');
+        regularMobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (hamburger && navMenu) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // Library Functionality
+        let currentFilter = 'all';
+        const searchInput = document.getElementById('searchInput');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const pdfGrid = document.getElementById('pdfGrid');
+        const noResults = document.querySelector('.no-results');
+
+        // Hardcoded PDF library data
+        const pdfLibrary = [
+            { name: 'P.1 English BOT III', class: 'P1', subject: 'English', date: 'Jan 2024', size: '2.5 MB', path: '../library_pdfs/P. 1 ENG BOT III.pdf' },
+            { name: 'P.1 Literacy 1A BOT III', class: 'P1', subject: 'Literacy', date: 'Jan 2024', size: '1.8 MB', path: '../library_pdfs/P. 1 LIT 1A BOT III.pdf' },
+            { name: 'P.1 Mathematics BOT III', class: 'P1', subject: 'Mathematics', date: 'Jan 2024', size: '2.1 MB', path: '../library_pdfs/P. 1 MTC BOT III.pdf' },
+            { name: 'P.1 Holiday Package', class: 'P1', subject: 'General', date: 'Dec 2023', size: '3.2 MB', path: '../library_pdfs/P.1 HOLIDAY PACKAGE-1.pdf' },
+            { name: 'P.2 English BOT III', class: 'P2', subject: 'English', date: 'Jan 2024', size: '2.3 MB', path: '../library_pdfs/P.2 ENG BOT III.pdf' },
+            { name: 'P.2 Literacy 1A BOT III', class: 'P2', subject: 'Literacy', date: 'Jan 2024', size: '1.9 MB', path: '../library_pdfs/P. 2 LIT IA BOT III.pdf' },
+            { name: 'P.2 Mathematics BOT III', class: 'P2', subject: 'Mathematics', date: 'Jan 2024', size: '2.0 MB', path: '../library_pdfs/P. 2 MTC BOT III.pdf' },
+            { name: 'P.2 Holiday Package 2022 English', class: 'P2', subject: 'English', date: 'Dec 2022', size: '2.8 MB', path: '../library_pdfs/HOLIDAY PACKAGE 2022 ENGLISH P.2.pdf' },
+            { name: 'P.3 Literacy 1A BOT III', class: 'P3', subject: 'Literacy', date: 'Jan 2024', size: '2.0 MB', path: '../library_pdfs/P. 3 LIT 1A BOT III.pdf' },
+            { name: 'P.3 Mathematics BOT III', class: 'P3', subject: 'Mathematics', date: 'Jan 2024', size: '2.2 MB', path: '../library_pdfs/P. 3 MTC BOT III.pdf' },
+            { name: 'P.3 Holiday Package English', class: 'P3', subject: 'English', date: 'Dec 2023', size: '2.6 MB', path: '../library_pdfs/HOLIDAY PACKAGE ENGLISH P3.pdf' },
+            { name: 'P.4 English Homework 18th May', class: 'P4', subject: 'English', date: 'May 2024', size: '1.5 MB', path: '../library_pdfs/P.4 ENGLISH HOMEWORK 18TH MAY.pdf' },
+            { name: 'P.4 English Week 1', class: 'P4', subject: 'English', date: 'Jan 2024', size: '1.7 MB', path: '../library_pdfs/P.4 ENGLISH-Wk.1.pdf' },
+            { name: 'P.4 Social Studies', class: 'P4', subject: 'Social Studies', date: 'Jan 2024', size: '2.4 MB', path: '../library_pdfs/P.4SST.pdf' },
+            { name: 'P.4 Mathematics BOT 3 Sipro', class: 'P4', subject: 'Mathematics', date: 'Jan 2024', size: '2.1 MB', path: '../library_pdfs/SIPRO P4 BOT 3 MTC.pdf' },
+            { name: 'Primary Science 4 Textbook', class: 'P4', subject: 'Science', date: 'Jan 2024', size: '8.5 MB', path: '../library_pdfs/Primary Science 4 PB Textbook.pdf' },
+            { name: 'P.5 Mathematics Julius', class: 'P5', subject: 'Mathematics', date: 'Jan 2024', size: '2.3 MB', path: '../library_pdfs/JULIUS MTC P.5.pdf' },
+            { name: 'P.5 Science BOT Sipro', class: 'P5', subject: 'Science', date: 'Jan 2024', size: '2.7 MB', path: '../library_pdfs/BOT Science p.5 Sipro.pdf' },
+            { name: 'P.5 End of Year Science', class: 'P5', subject: 'Science', date: 'Nov 2023', size: '2.9 MB', path: '../library_pdfs/END OF YEAR P.5 SCIENCE.pdf' },
+            { name: 'Primary Five English', class: 'P5', subject: 'English', date: 'Jan 2024', size: '3.1 MB', path: '../library_pdfs/Primary Five English-2.pdf' },
+            { name: 'P.5 Social Studies Term 1 2019', class: 'P5', subject: 'Social Studies', date: 'Jan 2019', size: '2.5 MB', path: '../library_pdfs/SOCIAL STUDIES  P_5  TERM I, 2019 SST.pdf' },
+            { name: 'SST Primary 5 Textbook', class: 'P5', subject: 'Social Studies', date: 'Jan 2024', size: '7.8 MB', path: '../library_pdfs/SST Primary 5 PB Textbook.pdf' },
+            { name: 'P.6 English BOT III', class: 'P6', subject: 'English', date: 'Jan 2024', size: '2.6 MB', path: '../library_pdfs/P.6 ENGLISH BOT III.pdf' },
+            { name: 'P.6 Mathematics BOT III', class: 'P6', subject: 'Mathematics', date: 'Jan 2024', size: '2.4 MB', path: '../library_pdfs/P.6 MATHS BOT III.pdf' },
+            { name: 'P.6 Social Studies BOT III', class: 'P6', subject: 'Social Studies', date: 'Jan 2024', size: '2.7 MB', path: '../library_pdfs/P.6 S.ST BOT III.pdf' },
+            { name: 'P.6 Science BOT III', class: 'P6', subject: 'Science', date: 'Jan 2024', size: '2.8 MB', path: '../library_pdfs/P.6 SCIENCE BOT III.pdf' },
+            { name: 'Math P6 Student Book', class: 'P6', subject: 'Mathematics', date: 'Jan 2024', size: '9.2 MB', path: '../library_pdfs/MATH P6 Student Book.pdf' },
+            { name: 'English Primary 6 Pupil Textbook', class: 'P6', subject: 'English', date: 'Jan 2024', size: '8.7 MB', path: '../library_pdfs/English Primary 6 Pupil Textbook.pdf' },
+            { name: 'Primary Science 6 Textbook', class: 'P6', subject: 'Science', date: 'Jan 2024', size: '9.1 MB', path: '../library_pdfs/Primary Science 6 PB Textbook.pdf' },
+            { name: 'Social Studies Textbook P.6', class: 'P6', subject: 'Social Studies', date: 'Jan 2024', size: '8.3 MB', path: '../library_pdfs/SOCIAL STUDIES TEXT BOOK P.6.pdf' },
+            { name: 'P.7 Science PLE Set 1', class: 'P7', subject: 'Science', date: 'Jan 2024', size: '3.2 MB', path: '../library_pdfs/P.7 SCIENCE PLE SET 1.pdf' },
+            { name: 'P7 English Mid Term One', class: 'P7', subject: 'English', date: 'Feb 2024', size: '2.9 MB', path: '../library_pdfs/P7 ENGLISH MID TERM ONE.pdf' },
+            { name: 'Kibuli P7 Social Studies', class: 'P7', subject: 'Social Studies', date: 'Jan 2024', size: '2.6 MB', path: '../library_pdfs/KIBULI P7 SST.pdf' },
+            { name: 'Real PLE 2023 Mathematics', class: 'P7', subject: 'Mathematics', date: 'Nov 2023', size: '3.5 MB', path: '../library_pdfs/REAL PLE 2023 MATH  shared - E-Learn.pdf' },
+            { name: 'Baby LA 4 BOT III', class: 'Nursery', subject: 'Literacy', date: 'Jan 2024', size: '1.6 MB', path: '../library_pdfs/BABY LA 4 BOT III.pdf' },
+            { name: 'Baby LA 5 BOT III', class: 'Nursery', subject: 'Literacy', date: 'Jan 2024', size: '1.7 MB', path: '../library_pdfs/BABY LA 5 BOT III.pdf' },
+            { name: 'Top LA 3 BOT III', class: 'Nursery', subject: 'Literacy', date: 'Jan 2024', size: '1.5 MB', path: '../library_pdfs/TOP LA 3 BOT III.pdf' },
+            { name: 'Top LA 4 BOT III', class: 'Nursery', subject: 'Literacy', date: 'Jan 2024', size: '1.6 MB', path: '../library_pdfs/TOP LA 4 BOT III.pdf' },
+            { name: 'Gayaza Holiday Package', class: 'General', subject: 'General', date: 'Dec 2023', size: '4.2 MB', path: '../library_pdfs/GAYAZA HOL. PACK.pdf' },
+            { name: 'School Magazine 2024', class: 'General', subject: 'General', date: 'Jan 2024', size: '12.5 MB', path: '../library_pdfs/MAGAZINE-INDESIGN-2024-final.pdf' },
+            { name: 'Primary Application Form', class: 'General', subject: 'General', date: 'Jan 2024', size: '0.8 MB', path: '../library_pdfs/Primary-Application.pdf.pdf' }
+        ];
+
+        // Load PDFs from hardcoded data
+        function loadPDFs() {
+            const data = pdfLibrary;
+            
+            if (data.length === 0) {
+                pdfGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px;"><div class="alert alert-info">No PDF resources available at the moment.</div></div>';
+            } else {
+                pdfGrid.innerHTML = data.map(pdf => {
+                    // Detect class from file name for filtering
+                    let classMatch = pdf.class.match(/P([1-7])/i);
+                    let className = classMatch ? `p${classMatch[1]}` : (pdf.class === 'Nursery' ? 'nursery' : '');
+                    
+                    return `
+                        <div class="resource-card ${className}" data-aos="fade-up">
+                            <div class="resource-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="resource-info">
+                                <div class="resource-badges">
+                                    ${pdf.class ? `<span class="resource-badge class-badge">${pdf.class}</span>` : ''}
+                                    ${pdf.subject ? `<span class="resource-badge subject-badge">${pdf.subject}</span>` : ''}
+                                </div>
+                                <h3>${pdf.name}</h3>
+                                <p class="resource-meta">
+                                    <span><i class="fas fa-calendar"></i> ${pdf.date}</span>
+                                    <span><i class="fas fa-hdd"></i> ${pdf.size}</span>
+                                </p>
+                            </div>
+                            <a href="${pdf.path}" class="btn-download" download>
+                                <i class="fas fa-download"></i>
+                                <span>Download</span>
+                            </a>
+                        </div>
+                    `;
+                }).join('');
+                
+                filterAndSearch();
+                if (window.AOS) AOS.refresh();
+            }
+        }
+
+        // Filter and Search functionality
+        function filterAndSearch() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const resourceCards = document.querySelectorAll('.resource-card');
+            let hasResults = false;
+
+            resourceCards.forEach(card => {
+                const matchesFilter = currentFilter === 'all' || card.classList.contains(currentFilter);
+                const matchesSearch = card.textContent.toLowerCase().includes(searchTerm);
+                
+                if (matchesFilter && matchesSearch) {
+                    card.style.display = '';
+                    hasResults = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            if (noResults) {
+                noResults.style.display = hasResults ? 'none' : 'flex';
+            }
+
+            if (window.AOS) AOS.refresh();
+        }
+
+        // Filter button click handlers
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.getAttribute('data-filter');
+                filterAndSearch();
+            });
+        });
+
+        // Search input handler
+        if (searchInput) {
+            searchInput.addEventListener('input', filterAndSearch);
+        }
+
+        // Load PDFs on page load
+        loadPDFs();
+    </script>
+</body>
+</html>

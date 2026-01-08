@@ -6,5 +6,6 @@
         "dropleft",
         "dropright",
         "dropup"
-    ]
+    ],
+    "html.autoClosingTags": false
 }

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - St. Lawrence Junior School</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/login-style.css">
+</head>
+<body class="login-page">
+    <div class="split-container">
+        <!-- Left Side - Welcome Section with Video Background -->
+        <div class="left-section">
+            <!-- Background Video -->
+            <video autoplay muted loop playsinline>
+                <source src="../../img/students walking.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+        <!-- Right Side - Login Form -->
+        <div class="right-section">
+            <div class="login-container">
+                <!-- Welcome Section -->
+                <div class="welcome-section">
+                    <h1>Welcome to <span class="school-name">ST.LAWRENCE JUNIOR SCHOOL-KABOWA</span></h1>
+                    <p>Empowering students to learn, grow, and thrive in a vibrant school community.</p>
+                </div>
+                
+                <!-- Login Card -->
+                <div class="login-card">
+                    <!-- School Logo -->
+                    <div class="logo-circle">
+                        <img src="../../img/5.jpg" alt="St. Lawrence School Logo" class="school-logo">
+                    </div>
+                    
+                    <!-- Welcome Text -->
+                    <div class="login-header">
+                        <h2 class="welcome-back">Welcome back! Please sign in to your admin account.</h2>
+                        <h1 class="signin-title">Sign In</h1>
+                        <p class="portal-access">Admin Portal Access</p>
+                    </div>
+                    
+                    <!-- Login Form -->
+                    <form id="loginForm" class="login-form">
+                        <!-- Email Input -->
+                        <div class="input-group">
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    required 
+                                    placeholder="Email or Username"
+                                    autocomplete="email"
+                                >
+                            </div>
+                        </div>
+                        
+                        <!-- Password Input -->
+                        <div class="input-group">
+                            <div class="input-wrapper">
+                                <i class="fas fa-lock input-icon"></i>
+                                <input 
+                                    type="password" 
+                                    id="password" 
+                                    required 
+                                    placeholder="Password"
+                                    autocomplete="current-password"
+                                >
+                                <button type="button" class="toggle-password" onclick="togglePassword()">
+                                    <i class="fas fa-eye" id="toggleIcon"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Remember Me & Forgot Password -->
+                        <div class="form-options">
+                            <label class="remember-me">
+                                <input type="checkbox" id="rememberMe">
+                                <span>Remember Me</span>
+                            </label>
+                            <a href="#" class="forgot-password">Forget Password?</a>
+                        </div>
+                        
+                        <!-- Login Button -->
+                        <button type="submit" id="loginBtn" class="login-btn">
+                            <span id="btnText">Login</span>
+                            <span id="btnLoader" class="loader" style="display: none;"></span>
+                        </button>
+                        
+                        <!-- Error Message -->
+                        <div id="errorMsg" class="error-msg" style="display: none;"></div>
+                    </form>
+                    
+                    <!-- Back to Website -->
+                    <div class="back-link">
+                        <a href="../../frontend/index-redesign.html">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Website
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Toggle password visibility
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggleIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+    </script>
+</body>
+</html>
