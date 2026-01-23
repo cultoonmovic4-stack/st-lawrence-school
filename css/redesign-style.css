@@ -14113,9 +14113,15 @@ img {
         padding: 60px 0;
     }
     
+    .location-faq-grid {
+        grid-template-columns: 1fr !important;
+        gap: 30px;
+    }
+    
     .location-side,
     .faq-side {
         padding: 30px 20px;
+        width: 100%;
     }
     
     .section-header-left .section-title {
