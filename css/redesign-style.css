@@ -2411,8 +2411,6 @@ img {
     
     .hamburger {
         display: flex;
-        margin-left: auto;
-        justify-self: end;
     }
     
     .hamburger span {
@@ -5819,8 +5817,6 @@ img {
         padding: 8px;
         z-index: 100000;
         position: relative;
-        margin-left: auto;
-        justify-self: end;
     }
     
     .hamburger span {
@@ -14112,6 +14108,33 @@ img {
         padding: 30px 20px;
         border-radius: 20px;
     }
+    
+    .location-faq-section {
+        padding: 60px 0;
+    }
+    
+    .location-side,
+    .faq-side {
+        padding: 30px 20px;
+    }
+    
+    .section-header-left .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .location-item {
+        padding: 20px;
+    }
+    
+    .faq-question {
+        padding: 20px;
+        font-size: 1rem;
+    }
+    
+    .faq-answer {
+        padding: 20px;
+    }
+}
     
     .contact-info-title {
         font-size: 1.6rem;
