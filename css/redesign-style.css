@@ -2394,8 +2394,8 @@ img {
     .nav-menu {
         position: fixed;
         top: 85px;
-        right: -100%;
-        width: 280px;
+        left: -100%;
+        width: 100%;
         height: calc(100vh - 85px);
         background: rgba(26, 26, 26, 0.98);
         flex-direction: column;
@@ -2406,7 +2406,7 @@ img {
     }
     
     .nav-menu.active {
-        right: 0;
+        left: 0;
     }
     
     .hamburger {
@@ -5843,9 +5843,9 @@ img {
     .nav-menu {
         position: fixed !important;
         top: 70px !important;
-        left: auto !important;
+        left: 0 !important;
         right: 0 !important;
-        width: 280px !important;
+        width: 100% !important;
         height: auto !important;
         max-height: 0 !important;
         background: #ffffff !important;
