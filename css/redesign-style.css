@@ -14120,25 +14120,58 @@ img {
     
     .location-side,
     .faq-side {
-        padding: 30px 20px;
+        padding: 25px 15px;
         width: 100%;
+        max-width: 100%;
+        overflow: hidden;
     }
     
     .section-header-left .section-title {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
     
-    .location-item {
-        padding: 20px;
+    .section-header-left .section-description {
+        font-size: 0.9rem;
     }
     
-    .faq-question {
-        padding: 20px;
+    .location-detail-item {
+        gap: 12px;
+    }
+    
+    .location-detail-item i {
+        width: 35px;
+        height: 35px;
         font-size: 1rem;
     }
     
+    .location-detail-item strong {
+        font-size: 0.95rem;
+    }
+    
+    .location-detail-item p {
+        font-size: 0.85rem;
+        word-wrap: break-word;
+    }
+    
+    .btn-get-directions {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+    
+    .faq-question {
+        padding: 18px 15px;
+        font-size: 0.95rem;
+    }
+    
     .faq-answer {
-        padding: 20px;
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+    
+    .faq-answer p {
+        font-size: 0.85rem;
     }
 }
     
