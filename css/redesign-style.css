@@ -5269,8 +5269,10 @@ img {
     
     /* Header */
     .navbar {
+        grid-template-columns: auto 1fr auto;
         height: 65px;
         padding: 12px 0;
+        justify-content: space-between;
     }
     
     .logo-badge {
