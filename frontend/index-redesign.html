@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>ST. LAWRENCE JUNIOR SCHOOL - KABOWA</title>
     <meta name="description" content="St. Lawrence Junior School Kabowa - Premier mixed day and boarding primary school offering quality education with academic excellence in Uganda.">
     <meta name="keywords" content="St. Lawrence Junior School, Kabowa, primary school, nursery school, boarding school, Uganda schools">
@@ -22,7 +25,10 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/redesign-style.css">
+    <link rel="stylesheet" href="../css/redesign-style.css?v=2.0">
+    
+    <!-- Chatbot CSS -->
+    <link rel="stylesheet" href="../css/chatbot.css?v=16.0">
 </head>
 <body>
     
@@ -100,7 +106,7 @@
                 
                 <!-- Admin Button -->
                 <div class="nav-actions">
-                    <a href="../backend/admin/index.html" class="btn-admin">
+                    <a href="../backend/admin/login.html" class="btn-admin">
                         <i class="fas fa-shield-alt"></i>
                         <span>Admin</span>
                     </a>
@@ -206,38 +212,7 @@
     <section class="events-bar">
         <div class="container">
             <div class="events-grid" id="eventsContainer">
-                <div class="event-item">
-                    <div class="event-date">
-                        <span class="event-month">FEB</span>
-                        <span class="event-day">15</span>
-                    </div>
-                    <div class="event-info">
-                        <h4>Admission Interviews</h4>
-                        <a href="Contact.html" class="event-btn">Register</a>
-                    </div>
-                </div>
-                
-                <div class="event-item">
-                    <div class="event-date">
-                        <span class="event-month">MAR</span>
-                        <span class="event-day">1</span>
-                    </div>
-                    <div class="event-info">
-                        <h4>New Term Registration</h4>
-                        <a href="Admission.html" class="event-btn">Register</a>
-                    </div>
-                </div>
-                
-                <div class="event-item">
-                    <div class="event-date">
-                        <span class="event-month">MAR</span>
-                        <span class="event-day">20</span>
-                    </div>
-                    <div class="event-info">
-                        <h4>Parent-Teacher Conference</h4>
-                        <a href="Contact.html" class="event-btn">Register</a>
-                    </div>
-                </div>
+                <!-- Dynamic events will be loaded here -->
             </div>
         </div>
     </section>
@@ -780,91 +755,11 @@
 
             <div class="testimonials-carousel-wrapper">
                 <div class="testimonials-carousel" id="testimonialsContainer">
-                    <!-- Testimonial Card 1 - Parent -->
+                    <!-- Dynamic testimonials will be loaded here -->
                     <div class="testimonial-card active">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">"St. Lawrence has been a blessing to our family. The teachers are dedicated, the facilities are excellent, and most importantly, my daughter has grown both academically and personally. I highly recommend this school to any parent looking for quality education."</p>
-                        <div class="testimonial-author">
-                            <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Mrs. Nakato Sarah">
-                            <div class="author-info">
-                                <h4>Mrs. Nakato Sarah</h4>
-                                <p>Parent - P.5 Student</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial Card 2 - Student -->
-                    <div class="testimonial-card">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">"I love my school! The teachers are very kind and help us understand everything. I have made many friends here, and I enjoy the sports activities. The library is my favorite place, and I'm always excited to come to school every day."</p>
-                        <div class="testimonial-author">
-                            <img src="https://images.pexels.com/photos/8422403/pexels-photo-8422403.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Mukasa David">
-                            <div class="author-info">
-                                <h4>Mukasa David</h4>
-                                <p>Student - Primary 6</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial Card 3 - Parent -->
-                    <div class="testimonial-card">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">"The boarding facilities are exceptional. My son is well taken care of, and the structured study time has really improved his grades. The school maintains excellent communication with parents, and we feel confident about his education here."</p>
-                        <div class="testimonial-author">
-                            <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Mr. Okello James">
-                            <div class="author-info">
-                                <h4>Mr. Okello James</h4>
-                                <p>Parent - P.7 Boarder</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial Card 4 - Alumni -->
-                    <div class="testimonial-card">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">"St. Lawrence gave me a strong foundation. The values I learned here and the quality education prepared me well for secondary school. I'm grateful for the teachers who believed in me and pushed me to achieve my best."</p>
-                        <div class="testimonial-author">
-                            <img src="https://images.pexels.com/photos/8422149/pexels-photo-8422149.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Namukasa Grace">
-                            <div class="author-info">
-                                <h4>Namukasa Grace</h4>
-                                <p>Alumni - Class of 2023</p>
-                            </div>
+                        <div style="text-align: center; padding: 60px 20px; color: #666;">
+                            <i class="fas fa-spinner fa-spin" style="font-size: 3rem; margin-bottom: 20px;"></i>
+                            <p style="font-size: 1.1rem;">Loading testimonials...</p>
                         </div>
                     </div>
                 </div>
@@ -985,48 +880,10 @@
                             <h3>Important Days</h3>
                         </div>
                         <div class="card-content">
-                            <div class="important-item">
-                                <div class="date-badge">
-                                    <span class="date-month">FEB</span>
-                                    <span class="date-day">10</span>
-                                </div>
-                                <div class="event-details">
-                                    <h4>Term 1 Opening</h4>
-                                    <p>New academic year begins</p>
-                                </div>
-                            </div>
-
-                            <div class="important-item">
-                                <div class="date-badge">
-                                    <span class="date-month">MAR</span>
-                                    <span class="date-day">15</span>
-                                </div>
-                                <div class="event-details">
-                                    <h4>Mid-Term Exams</h4>
-                                    <p>Assessment period begins</p>
-                                </div>
-                            </div>
-
-                            <div class="important-item">
-                                <div class="date-badge">
-                                    <span class="date-month">APR</span>
-                                    <span class="date-day">25</span>
-                                </div>
-                                <div class="event-details">
-                                    <h4>Sports Day</h4>
-                                    <p>Annual athletics competition</p>
-                                </div>
-                            </div>
-
-                            <div class="important-item">
-                                <div class="date-badge">
-                                    <span class="date-month">MAY</span>
-                                    <span class="date-day">30</span>
-                                </div>
-                                <div class="event-details">
-                                    <h4>Term 1 Closing</h4>
-                                    <p>End of first term</p>
-                                </div>
+                            <!-- Dynamic content will be loaded here -->
+                            <div style="text-align: center; padding: 40px 20px; color: #666;">
+                                <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 15px;"></i>
+                                <p>Loading important days...</p>
                             </div>
                         </div>
                     </div>
@@ -1210,10 +1067,246 @@
     <!-- Custom JavaScript -->
     <script src="../js/redesign-script.js"></script>
     
-    <!-- API Integration -->
-    <script src="../js/api-config.js"></script>
-    <script src="../js/api-events.js"></script>
-    <script src="../js/api-testimonials.js"></script>
+    <!-- Database Connection Script -->
+    <script>
+        // API Base URL
+        const API_URL = '../backend/api/public/';
+
+        // Load Events Bar
+        async function loadEventsBar() {
+            try {
+                const response = await fetch(API_URL + 'get_upcoming_events.php');
+                const data = await response.json();
+                
+                if (data.success && data.data.length > 0) {
+                    const container = document.getElementById('eventsContainer');
+                    if (!container) return;
+                    
+                    container.innerHTML = data.data.map(event => {
+                        const eventDate = new Date(event.event_date);
+                        const day = eventDate.getDate();
+                        const month = eventDate.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+                        
+                        return `
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <span class="event-month">${month}</span>
+                                    <span class="event-day">${day}</span>
+                                </div>
+                                <div class="event-info">
+                                    <h4>${event.event_title}</h4>
+                                    <p><i class="fas fa-map-marker-alt"></i> ${event.location}</p>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                }
+            } catch (error) {
+                console.error('Error loading events:', error);
+            }
+        }
+
+        // Load Testimonials
+        async function loadTestimonials() {
+            try {
+                const response = await fetch(API_URL + 'get_testimonials.php');
+                const data = await response.json();
+                
+                const container = document.getElementById('testimonialsContainer');
+                if (!container) return;
+                
+                if (data.success && data.data.length > 0) {
+                    container.innerHTML = data.data.map((testimonial, index) => {
+                        const stars = '★'.repeat(testimonial.rating || 5);
+                        // Add ../ prefix if photo_url exists and doesn't already have it
+                        let photoUrl = 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop';
+                        if (testimonial.photo_url) {
+                            photoUrl = testimonial.photo_url.startsWith('http') ? testimonial.photo_url : '../' + testimonial.photo_url;
+                        }
+                        
+                        // Format role display
+                        let roleDisplay = '';
+                        if (testimonial.parent_role === 'parent') {
+                            roleDisplay = 'Parent';
+                        } else if (testimonial.parent_role === 'student') {
+                            roleDisplay = 'Current Student';
+                        } else if (testimonial.parent_role === 'old_student') {
+                            roleDisplay = 'Alumni';
+                        }
+                        
+                        return `
+                            <div class="testimonial-card ${index === 0 ? 'active' : ''}">
+                                <div class="quote-icon">
+                                    <i class="fas fa-quote-left"></i>
+                                </div>
+                                <div class="rating">
+                                    ${stars.split('').map(() => '<i class="fas fa-star"></i>').join('')}
+                                </div>
+                                <p class="testimonial-text">"${testimonial.testimonial_text}"</p>
+                                <div class="testimonial-author">
+                                    <img src="${photoUrl}" alt="${testimonial.parent_name}">
+                                    <div class="author-info">
+                                        <h4>${testimonial.parent_name}</h4>
+                                        <p>${roleDisplay}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                    
+                    // Reinitialize carousel after loading
+                    initTestimonialCarousel();
+                } else {
+                    // Show empty state
+                    container.innerHTML = `
+                        <div class="testimonial-card active">
+                            <div style="text-align: center; padding: 60px 20px; color: #666;">
+                                <i class="fas fa-quote-left" style="font-size: 4rem; margin-bottom: 20px; opacity: 0.2;"></i>
+                                <h3 style="font-size: 1.5rem; margin-bottom: 10px; color: #333;">No Testimonials Yet</h3>
+                                <p style="font-size: 1rem;">Be the first to share your experience with St. Lawrence Junior School!</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading testimonials:', error);
+                const container = document.getElementById('testimonialsContainer');
+                if (container) {
+                    container.innerHTML = `
+                        <div class="testimonial-card active">
+                            <div style="text-align: center; padding: 60px 20px; color: #dc3545;">
+                                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 20px;"></i>
+                                <p>Error loading testimonials. Please try again later.</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        // Load Calendar Events
+        async function loadCalendarEvents() {
+            try {
+                const response = await fetch(API_URL + 'get_calendar.php');
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Load Important Days
+                    const importantDaysContainer = document.querySelector('.important-days .card-content');
+                    if (importantDaysContainer) {
+                        if (data.data.important_days && data.data.important_days.length > 0) {
+                            importantDaysContainer.innerHTML = data.data.important_days.map(day => {
+                                const eventDate = new Date(day.event_date);
+                                const dayNum = eventDate.getDate();
+                                const month = eventDate.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+                                
+                                return `
+                                    <div class="important-item">
+                                        <div class="date-badge">
+                                            <span class="date-month">${month}</span>
+                                            <span class="date-day">${dayNum}</span>
+                                        </div>
+                                        <div class="event-details">
+                                            <h4>${day.event_title}</h4>
+                                            <p>${day.event_description || ''}</p>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('');
+                        } else {
+                            importantDaysContainer.innerHTML = `
+                                <div style="text-align: center; padding: 40px 20px; color: #666;">
+                                    <i class="fas fa-calendar-times" style="font-size: 3rem; margin-bottom: 15px; opacity: 0.3;"></i>
+                                    <p style="font-style: italic;">No important days scheduled yet.</p>
+                                    <p style="font-size: 0.9rem; margin-top: 10px;">Check back later for updates!</p>
+                                </div>
+                            `;
+                        }
+                    }
+                    
+                    // Store all calendar events for the calendar widget
+                    window.academicEvents = {};
+                    
+                    // Add all events (important days + academic calendar)
+                    if (data.data.all_events && data.data.all_events.length > 0) {
+                        data.data.all_events.forEach(event => {
+                            window.academicEvents[event.event_date] = {
+                                title: event.event_title,
+                                type: event.event_type || 'other'
+                            };
+                        });
+                    }
+                    
+                    // Reinitialize calendar after loading events
+                    if (window.calendarInstance) {
+                        window.calendarInstance.events = window.academicEvents;
+                        window.calendarInstance.renderCalendar();
+                        window.calendarInstance.updateUpcomingEvents();
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading calendar:', error);
+            }
+        }
+
+        // Initialize Testimonial Carousel
+        function initTestimonialCarousel() {
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+            const indicators = document.querySelectorAll('.indicator');
+            const prevBtn = document.getElementById('prevTestimonial');
+            const nextBtn = document.getElementById('nextTestimonial');
+            
+            if (testimonialCards.length === 0) return;
+            
+            let currentSlide = 0;
+            let autoScrollInterval;
+            
+            function showSlide(index) {
+                testimonialCards.forEach(card => card.classList.remove('active'));
+                if (indicators.length > 0) {
+                    indicators.forEach(indicator => indicator.classList.remove('active'));
+                    indicators[index]?.classList.add('active');
+                }
+                testimonialCards[index].classList.add('active');
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % testimonialCards.length;
+                showSlide(currentSlide);
+            }
+            
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + testimonialCards.length) % testimonialCards.length;
+                showSlide(currentSlide);
+            }
+            
+            function startAutoScroll() {
+                autoScrollInterval = setInterval(nextSlide, 5000);
+            }
+            
+            function stopAutoScroll() {
+                clearInterval(autoScrollInterval);
+            }
+            
+            if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); stopAutoScroll(); });
+            if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); stopAutoScroll(); });
+            
+            const carouselWrapper = document.querySelector('.testimonials-carousel-wrapper');
+            if (carouselWrapper) {
+                carouselWrapper.addEventListener('mouseenter', stopAutoScroll);
+                carouselWrapper.addEventListener('mouseleave', startAutoScroll);
+            }
+            
+            startAutoScroll();
+        }
+
+        // Load all data when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadEventsBar();
+            loadTestimonials();
+            loadCalendarEvents();
+        });
+    </script>
 
     <!-- Academic Calendar JavaScript -->
     <script>
@@ -1321,19 +1414,8 @@
                 this.currentYear = this.currentDate.getFullYear();
                 this.today = new Date();
                 
-                // School events data
-                this.events = {
-                    '2025-02-10': { title: 'Term 1 Opening', type: 'academic' },
-                    '2025-02-15': { title: 'Admission Interviews', type: 'academic' },
-                    '2025-03-01': { title: 'New Term Registration', type: 'academic' },
-                    '2025-03-15': { title: 'Mid-Term Exams', type: 'exam' },
-                    '2025-03-20': { title: 'Parent-Teacher Conference', type: 'academic' },
-                    '2025-04-25': { title: 'Sports Day', type: 'sports' },
-                    '2025-05-30': { title: 'Term 1 Closing', type: 'academic' },
-                    '2026-01-15': { title: 'Parent-Teacher Meeting', type: 'academic' },
-                    '2026-01-22': { title: 'Science Fair', type: 'sports' },
-                    '2026-01-28': { title: 'Monthly Assessment', type: 'exam' }
-                };
+                // Use events from API or fallback to empty object
+                this.events = window.academicEvents || {};
                 
                 this.monthNames = [
                     'JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE',
@@ -1524,7 +1606,7 @@
             });
             
             // Initialize Academic Calendar
-            new AcademicCalendar();
+            window.calendarInstance = new AcademicCalendar();
             
             // Mobile Menu Functionality
             const hamburger = document.getElementById('hamburger');
@@ -1611,6 +1693,8 @@
             });
         });
     </script>
+    
+    <!-- Chatbot JavaScript -->
+    <script src="../js/chatbot.js?v=4.0"></script>
 </body>
 </html>
-""

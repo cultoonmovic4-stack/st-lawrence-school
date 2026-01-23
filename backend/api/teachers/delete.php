@@ -1,61 +1,64 @@
 <?php
-include_once '../config/cors.php';
-include_once '../config/database.php';
-include_once '../utils/auth_middleware.php';
-include_once '../utils/response.php';
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, DELETE');
+header('Access-Control-Allow-Headers: Content-Type');
 
-// Verify token and require admin
-$user = verifyToken();
-requireAdmin($user);
+require_once '../config/Database.php';
+require_once '../middleware/auth_middleware.php';
 
-// Get teacher ID from URL
-$teacher_id = isset($_GET['id']) ? $_GET['id'] : '';
-
-if (empty($teacher_id)) {
-    sendError("Teacher ID is required", null, 400);
-    exit();
+// Check authentication
+if (!isAuthenticated()) {
+    http_response_code(401);
+    echo json_encode(['success' => false, 'message' => 'Unauthorized']);
+    exit;
 }
 
-$database = new Database();
-$db = $database->getConnection();
-
-// Check if teacher exists
-$check_query = "SELECT id, name, photo_url FROM teachers WHERE id = :id";
-$check_stmt = $db->prepare($check_query);
-$check_stmt->bindParam(":id", $teacher_id);
-$check_stmt->execute();
-
-if ($check_stmt->rowCount() == 0) {
-    sendError("Teacher not found", null, 404);
-    exit();
-}
-
-$teacher = $check_stmt->fetch(PDO::FETCH_ASSOC);
-
-// Delete teacher
-$query = "DELETE FROM teachers WHERE id = :id";
-$stmt = $db->prepare($query);
-$stmt->bindParam(":id", $teacher_id);
-
-if ($stmt->execute()) {
-    // Delete photo file if exists
-    if (!empty($teacher['photo_url']) && file_exists("../../" . $teacher['photo_url'])) {
-        unlink("../../" . $teacher['photo_url']);
+try {
+    $data = json_decode(file_get_contents('php://input'), true);
+    
+    if (empty($data['id'])) {
+        throw new Exception('Teacher ID is required');
     }
     
-    // Log activity
-    $log_query = "INSERT INTO admin_activity_logs (user_id, action_type, table_name, record_id, description, ip_address) 
-                  VALUES (:user_id, 'DELETE', 'teachers', :record_id, :description, :ip)";
-    $log_stmt = $db->prepare($log_query);
-    $log_stmt->bindParam(":user_id", $user->id);
-    $log_stmt->bindParam(":record_id", $teacher_id);
-    $description = "Deleted teacher: " . $teacher['name'];
-    $log_stmt->bindParam(":description", $description);
-    $log_stmt->bindParam(":ip", $_SERVER['REMOTE_ADDR']);
-    $log_stmt->execute();
+    $database = new Database();
+    $db = $database->getConnection();
     
-    sendSuccess("Teacher deleted successfully");
-} else {
-    sendError("Failed to delete teacher", null, 500);
+    // Get teacher info first
+    $stmt = $db->prepare("SELECT photo_url FROM teachers WHERE id = :id");
+    $stmt->bindParam(':id', $data['id']);
+    $stmt->execute();
+    $teacher = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    if (!$teacher) {
+        throw new Exception('Teacher not found');
+    }
+    
+    // Delete from database
+    $stmt = $db->prepare("DELETE FROM teachers WHERE id = :id");
+    $stmt->bindParam(':id', $data['id']);
+    
+    if ($stmt->execute()) {
+        // Try to delete physical file
+        if ($teacher['photo_url']) {
+            $filePath = __DIR__ . '/../../' . $teacher['photo_url'];
+            if (file_exists($filePath)) {
+                @unlink($filePath);
+            }
+        }
+        
+        echo json_encode([
+            'success' => true,
+            'message' => 'Teacher deleted successfully'
+        ]);
+    } else {
+        throw new Exception('Failed to delete teacher');
+    }
+    
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Error: ' . $e->getMessage()
+    ]);
 }
-?>

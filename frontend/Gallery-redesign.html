@@ -62,7 +62,7 @@
                         </ul>
                     </li>
                     <li class="desktop-only"><a href="Contact-redesign.html" class="nav-link">Contact</a></li>
-                    <li class="desktop-only"><a href="Library.html" class="nav-link">Library</a></li>
+                    <li class="desktop-only"><a href="Library-redesign.html" class="nav-link">Library</a></li>
                     
                     <!-- Mobile Menu Items -->
                     <li class="mobile-only"><a href="index-redesign.html" class="nav-link-mobile">Home</a></li>
@@ -95,7 +95,7 @@
                 
                 <!-- Admin Button -->
                 <div class="nav-actions">
-                    <a href="../backend/admin/index.html" class="btn-admin">
+                    <a href="../backend/admin/login.html" class="btn-admin">
                         <i class="fas fa-shield-alt"></i>
                         <span>Admin</span>
                     </a>
@@ -167,147 +167,11 @@
             
             <!-- Gallery Grid -->
             <div class="gallery-grid" id="galleryContainer" data-aos="fade-up" data-aos-delay="200">
-                
-                <!-- Events Category -->
-                <div class="gallery-item" data-category="events">
-                    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80" alt="School Event">
-                    <div class="gallery-overlay">
-                        <h3>Annual Sports Day</h3>
-                        <p>Students competing in various sports</p>
-                        <button class="gallery-view-btn"><i class="fas fa-search-plus"></i></button>
-                    </div>
+                <!-- Gallery images will be loaded dynamically from database -->
+                <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; color: #666;">
+                    <div class="spinner" style="margin: 0 auto 20px;"></div>
+                    <p style="font-size: 1.1rem;">Loading gallery images...</p>
                 </div>
-                
-                <div class="gallery-item" data-category="events">
-                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80" alt="Graduation">
-                    <div class="gallery-overlay">
-                        <h3>Graduation Ceremony</h3>
-                        <p>Celebrating our graduates</p>
-                        <button class="gallery-view-btn"><i class="fas fa-search-plus"></i></button>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="events">
-                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" alt="Cultural Day">
-                    <div class="gallery-overlay">
-                        <h3>Cultural Day</h3>
-                        <p>Celebrating diversity and culture</p>
-                        <button class="gallery-view-btn"><i class="fas fa-search-plus"></i></button>
-                    </div>
-                </div>
-                
-                <!-- Facilities Category -->
-                <div class="gallery-item" data-category="facilities">
-                    <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80" alt="Classroom">
-                    <div class="gallery-overlay">
-                        <h3>Modern Classrooms</h3>
-                        <p>Well-equipped learning spaces</p>
-                        <button class="gallery-view-btn"><i class="fas fa-search-plus"></i></button>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="facilities">
-                    <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80" alt="Library">
-                    <div class="gallery-overlay">
-                        <h3>School Library</h3>
-                        <p>Extensive collection of books</p>
-                        <button class="gallery-view-btn"><i class="fas fa-search-plus"></i></button>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="facilities">
-                    <img src="https://images.unsplash.com/photo-1576495199011-eb94736d05d6?w=800&q=80" alt="Playground">
-                    <div class="gallery-overlay">
-                        <h3>Playground</h3>
-                        <p>Safe and fun play area</p>
-                        <button class="gallery-view-btn"><i class="fas fa-search-plus"></i></button>
-                    </div>
-                </div>
-                
-                <!-- Students Category -->
-                <div class="gallery-item" data-category="students">
-                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80" alt="Students Learning">
-                    <div class="gallery-overlay">
-                        <h3>Students in Class</h3>
-                        <p>Engaged in learning</p>
-                        <button class="gallery-view-btn"><i class="fas fa-search-plus"></i></button>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="students">
-                    <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&q=80" alt="Group Study">
-                    <div class="gallery-overlay">
-                        <h3>Group Activities</h3>
-                        <p>Collaborative learning</p>
-                        <button class="gallery-view-btn"><i class="fas fa-search-plus"></i></button>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="students">
-                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80" alt="Happy Students">
-                    <div class="gallery-overlay">
-                        <h3>Happy Students</h3>
-                        <p>Enjoying school life</p>
-                        <button class="gallery-view-btn"><i class="fas fa-search-plus"></i></button>
-                    </div>
-                </div>
-                
-                <!-- Activities Category -->
-                <div class="gallery-item" data-category="activities">
-                    <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=800&q=80" alt="Science Lab">
-                    <div class="gallery-overlay">
-                        <h3>Science Experiments</h3>
-                        <p>Hands-on learning</p>
-                        <button class="gallery-view-btn"><i class="fas fa-search-plus"></i></button>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="activities">
-                    <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&q=80" alt="Art Class">
-                    <div class="gallery-overlay">
-                        <h3>Art & Creativity</h3>
-                        <p>Expressing through art</p>
-                        <button class="gallery-view-btn"><i class="fas fa-search-plus"></i></button>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="activities">
-                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80" alt="Computer Lab">
-                    <div class="gallery-overlay">
-                        <h3>ICT Classes</h3>
-                        <p>Technology integration</p>
-                        <button class="gallery-view-btn"><i class="fas fa-search-plus"></i></button>
-                    </div>
-                </div>
-                
-                <!-- Achievements Category -->
-                <div class="gallery-item" data-category="achievements">
-                    <img src="https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=800&q=80" alt="Awards">
-                    <div class="gallery-overlay">
-                        <h3>Award Winners</h3>
-                        <p>Celebrating excellence</p>
-                        <button class="gallery-view-btn"><i class="fas fa-search-plus"></i></button>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="achievements">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="Team Success">
-                    <div class="gallery-overlay">
-                        <h3>Team Achievements</h3>
-                        <p>Working together for success</p>
-                        <button class="gallery-view-btn"><i class="fas fa-search-plus"></i></button>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="achievements">
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80" alt="Competition">
-                    <div class="gallery-overlay">
-                        <h3>Competition Winners</h3>
-                        <p>Excellence in academics</p>
-                        <button class="gallery-view-btn"><i class="fas fa-search-plus"></i></button>
-                    </div>
-                </div>
-                
             </div>
         </div>
     </section>
@@ -548,8 +412,8 @@
     <script src="../js/redesign-script.js"></script>
     
     <!-- API Integration -->
-    <script src="../js/api-config.js"></script>
-    <script src="../js/api-gallery.js"></script>
+    <script src="../js/api-config.js?v=6"></script>
+    <script src="../js/api-gallery.js?v=6"></script>
     
     <script>
         // Initialize AOS

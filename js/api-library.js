@@ -27,40 +27,82 @@ function displayLibraryResources(resources) {
     const container = document.getElementById('libraryContainer');
     if (!container) return;
 
-    container.innerHTML = resources.map(resource => `
-        <div class="pdf-card" data-aos="fade-up">
-            <div class="pdf-icon">
-                <i class="fas fa-file-pdf"></i>
-            </div>
-            <div class="pdf-info">
-                <h3 class="pdf-title">${resource.title}</h3>
-                ${resource.description ? `<p class="pdf-description">${resource.description}</p>` : ''}
-                <div class="pdf-meta">
-                    <span class="pdf-class"><i class="fas fa-graduation-cap"></i> ${resource.class_level}</span>
-                    <span class="pdf-subject"><i class="fas fa-book"></i> ${resource.subject}</span>
-                    <span class="pdf-size"><i class="fas fa-file"></i> ${formatFileSize(resource.file_size)}</span>
+    container.innerHTML = resources.map(resource => {
+        // Detect class for filtering
+        let classMatch = resource.class_level ? resource.class_level.match(/([1-7])/) : null;
+        let className = classMatch ? `p${classMatch[1]}` : 'all';
+        
+        // Get file icon based on file type
+        const fileIcon = getFileIconClass(resource.file_type);
+        
+        // Format class level display
+        const classDisplay = resource.class_level === 'all' ? 'All Classes' : `P.${resource.class_level.replace('p', '')}`;
+        
+        // Get category badge color
+        const categoryColor = getCategoryBadgeColor(resource.category);
+        
+        return `
+        <div class="library-pdf-card ${className}" data-aos="fade-up">
+            <div class="pdf-card-header" style="background: ${categoryColor};">
+                <div class="pdf-card-icon">
+                    <i class="fas fa-${fileIcon}"></i>
                 </div>
-                <div class="pdf-stats">
-                    <span class="pdf-downloads"><i class="fas fa-download"></i> ${resource.download_count} downloads</span>
-                    <span class="pdf-date"><i class="fas fa-calendar"></i> ${formatDate(resource.created_at)}</span>
+                <span class="pdf-card-badge">${resource.category.replace('_', ' ')}</span>
+            </div>
+            <div class="pdf-card-body">
+                <h3 class="pdf-card-title">${resource.title}</h3>
+                ${resource.description ? `<p class="pdf-card-description">${resource.description}</p>` : ''}
+                <div class="pdf-card-meta">
+                    <span><i class="fas fa-graduation-cap"></i> ${classDisplay}</span>
+                    ${resource.subject ? `<span><i class="fas fa-book"></i> ${resource.subject}</span>` : ''}
+                </div>
+                <div class="pdf-card-stats">
+                    <span><i class="fas fa-hdd"></i> ${formatFileSize(resource.file_size)}</span>
+                    <span><i class="fas fa-download"></i> ${resource.download_count || 0}</span>
+                    <span><i class="fas fa-calendar"></i> ${formatDate(resource.upload_date)}</span>
                 </div>
             </div>
-            <div class="pdf-actions">
-                <a href="../${resource.file_path}" 
-                   target="_blank" 
-                   class="btn-view"
-                   onclick="trackDownload(${resource.id})">
-                    <i class="fas fa-eye"></i> View
-                </a>
-                <a href="../${resource.file_path}" 
-                   download 
-                   class="btn-download"
-                   onclick="trackDownload(${resource.id})">
-                    <i class="fas fa-download"></i> Download
-                </a>
-            </div>
+            <a href="../backend/api/library/download.php?id=${resource.id}" 
+               class="btn-download-pdf">
+                <i class="fas fa-download"></i> Download ${resource.file_type.toUpperCase()}
+            </a>
         </div>
-    `).join('');
+    `;
+    }).join('');
+    
+    // Refresh AOS animations
+    if (window.AOS) window.AOS.refresh();
+}
+
+// Get file icon class
+function getFileIconClass(fileType) {
+    const icons = {
+        'pdf': 'file-pdf',
+        'doc': 'file-word',
+        'docx': 'file-word',
+        'xls': 'file-excel',
+        'xlsx': 'file-excel',
+        'ppt': 'file-powerpoint',
+        'pptx': 'file-powerpoint',
+        'jpg': 'file-image',
+        'jpeg': 'file-image',
+        'png': 'file-image',
+        'mp4': 'file-video'
+    };
+    return icons[fileType.toLowerCase()] || 'file';
+}
+
+// Get category badge color
+function getCategoryBadgeColor(category) {
+    const colors = {
+        'assignment': '#0066cc',
+        'reading': '#10b981',
+        'past_exam': '#dc3545',
+        'revision': '#f59e0b',
+        'multimedia': '#8b5cf6',
+        'study_guide': '#06b6d4'
+    };
+    return colors[category] || '#6c757d';
 }
 
 // Track PDF download

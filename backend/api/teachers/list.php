@@ -1,83 +1,59 @@
 <?php
-include_once '../config/cors.php';
-include_once '../config/database.php';
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET');
 
-// Get query parameters
-$department = isset($_GET['department']) ? $_GET['department'] : '';
-$search = isset($_GET['search']) ? $_GET['search'] : '';
-$status = isset($_GET['status']) ? $_GET['status'] : 'active';
+require_once '../config/Database.php';
 
-$database = new Database();
-$db = $database->getConnection();
-
-// Build query
-$query = "SELECT * FROM teachers WHERE 1=1";
-
-if (!empty($department)) {
-    $query .= " AND department = :department";
-}
-
-if (!empty($search)) {
-    $query .= " AND (name LIKE :search OR email LIKE :search OR position LIKE :search)";
-}
-
-if (!empty($status)) {
-    $query .= " AND status = :status";
-}
-
-$query .= " ORDER BY display_order ASC, id DESC";
-
-$stmt = $db->prepare($query);
-
-// Bind parameters
-if (!empty($department)) {
-    $stmt->bindParam(":department", $department);
-}
-
-if (!empty($search)) {
-    $search_param = "%{$search}%";
-    $stmt->bindParam(":search", $search_param);
-}
-
-if (!empty($status)) {
-    $stmt->bindParam(":status", $status);
-}
-
-$stmt->execute();
-
-$teachers = array();
-
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    $teacher = array(
-        "id" => $row['id'],
-        "name" => $row['name'],
-        "email" => $row['email'],
-        "phone" => $row['phone'],
-        "department" => $row['department'],
-        "position" => $row['position'],
-        "qualification" => $row['qualification'],
-        "experience_years" => $row['experience_years'],
-        "bio" => $row['bio'],
-        "specialties" => $row['specialties'],
-        "photo_url" => $row['photo_url'],
-        "facebook" => $row['facebook'],
-        "twitter" => $row['twitter'],
-        "linkedin" => $row['linkedin'],
-        "students_count" => $row['students_count'],
-        "subjects_taught" => $row['subjects_taught'],
-        "status" => $row['status'],
-        "display_order" => $row['display_order'],
-        "created_at" => $row['created_at']
-    );
+try {
+    $database = new Database();
+    $db = $database->getConnection();
     
-    array_push($teachers, $teacher);
+    // Get department filter if provided
+    $department = isset($_GET['department']) ? $_GET['department'] : '';
+    
+    $sql = "
+        SELECT 
+            id,
+            full_name as name,
+            department,
+            position,
+            qualification,
+            experience_years,
+            email,
+            phone,
+            photo_url,
+            bio,
+            specialization as specialties,
+            display_order
+        FROM teachers 
+        WHERE status = 'active'
+    ";
+    
+    if ($department && $department !== 'all') {
+        $sql .= " AND department = :department";
+    }
+    
+    $sql .= " ORDER BY display_order DESC, full_name ASC";
+    
+    $stmt = $db->prepare($sql);
+    
+    if ($department && $department !== 'all') {
+        $stmt->bindParam(':department', $department);
+    }
+    
+    $stmt->execute();
+    $teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    echo json_encode([
+        'success' => true,
+        'data' => $teachers
+    ]);
+    
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Error: ' . $e->getMessage()
+    ]);
 }
-
-http_response_code(200);
-echo json_encode(array(
-    "success" => true,
-    "message" => "Teachers retrieved successfully",
-    "count" => count($teachers),
-    "data" => $teachers
-));
-?>

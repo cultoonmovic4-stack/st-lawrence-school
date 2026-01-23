@@ -21,7 +21,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/redesign-style.css?v=3.2">
+    <link rel="stylesheet" href="../css/redesign-style.css?v=3.5">
 </head>
 <body>
     
@@ -99,7 +99,7 @@
                 
                 <!-- Admin Button -->
                 <div class="nav-actions">
-                    <a href="../backend/admin/index.html" class="btn-admin">
+                    <a href="../backend/admin/login.html" class="btn-admin">
                         <i class="fas fa-shield-alt"></i>
                         <span>Admin</span>
                     </a>
@@ -435,8 +435,8 @@
     <script src="../js/redesign-script.js"></script>
     
     <!-- API Integration -->
-    <script src="../js/api-config.js"></script>
-    <script src="../js/api-library.js"></script>
+    <script src="../js/api-config.js?v=2.0"></script>
+    <script src="../js/api-library.js?v=3.1"></script>
     
     <script>
         // Initialize AOS
@@ -514,99 +514,28 @@
         let currentFilter = 'all';
         const searchInput = document.getElementById('searchInput');
         const filterButtons = document.querySelectorAll('.filter-btn');
-        const pdfGrid = document.getElementById('pdfGrid');
+        const libraryContainer = document.getElementById('libraryContainer');
         const noResults = document.querySelector('.no-results');
 
-        // Hardcoded PDF library data
-        const pdfLibrary = [
-            { name: 'P.1 English BOT III', class: 'P1', subject: 'English', date: 'Jan 2024', size: '2.5 MB', path: '../library_pdfs/P. 1 ENG BOT III.pdf' },
-            { name: 'P.1 Literacy 1A BOT III', class: 'P1', subject: 'Literacy', date: 'Jan 2024', size: '1.8 MB', path: '../library_pdfs/P. 1 LIT 1A BOT III.pdf' },
-            { name: 'P.1 Mathematics BOT III', class: 'P1', subject: 'Mathematics', date: 'Jan 2024', size: '2.1 MB', path: '../library_pdfs/P. 1 MTC BOT III.pdf' },
-            { name: 'P.1 Holiday Package', class: 'P1', subject: 'General', date: 'Dec 2023', size: '3.2 MB', path: '../library_pdfs/P.1 HOLIDAY PACKAGE-1.pdf' },
-            { name: 'P.2 English BOT III', class: 'P2', subject: 'English', date: 'Jan 2024', size: '2.3 MB', path: '../library_pdfs/P.2 ENG BOT III.pdf' },
-            { name: 'P.2 Literacy 1A BOT III', class: 'P2', subject: 'Literacy', date: 'Jan 2024', size: '1.9 MB', path: '../library_pdfs/P. 2 LIT IA BOT III.pdf' },
-            { name: 'P.2 Mathematics BOT III', class: 'P2', subject: 'Mathematics', date: 'Jan 2024', size: '2.0 MB', path: '../library_pdfs/P. 2 MTC BOT III.pdf' },
-            { name: 'P.2 Holiday Package 2022 English', class: 'P2', subject: 'English', date: 'Dec 2022', size: '2.8 MB', path: '../library_pdfs/HOLIDAY PACKAGE 2022 ENGLISH P.2.pdf' },
-            { name: 'P.3 Literacy 1A BOT III', class: 'P3', subject: 'Literacy', date: 'Jan 2024', size: '2.0 MB', path: '../library_pdfs/P. 3 LIT 1A BOT III.pdf' },
-            { name: 'P.3 Mathematics BOT III', class: 'P3', subject: 'Mathematics', date: 'Jan 2024', size: '2.2 MB', path: '../library_pdfs/P. 3 MTC BOT III.pdf' },
-            { name: 'P.3 Holiday Package English', class: 'P3', subject: 'English', date: 'Dec 2023', size: '2.6 MB', path: '../library_pdfs/HOLIDAY PACKAGE ENGLISH P3.pdf' },
-            { name: 'P.4 English Homework 18th May', class: 'P4', subject: 'English', date: 'May 2024', size: '1.5 MB', path: '../library_pdfs/P.4 ENGLISH HOMEWORK 18TH MAY.pdf' },
-            { name: 'P.4 English Week 1', class: 'P4', subject: 'English', date: 'Jan 2024', size: '1.7 MB', path: '../library_pdfs/P.4 ENGLISH-Wk.1.pdf' },
-            { name: 'P.4 Social Studies', class: 'P4', subject: 'Social Studies', date: 'Jan 2024', size: '2.4 MB', path: '../library_pdfs/P.4SST.pdf' },
-            { name: 'P.4 Mathematics BOT 3 Sipro', class: 'P4', subject: 'Mathematics', date: 'Jan 2024', size: '2.1 MB', path: '../library_pdfs/SIPRO P4 BOT 3 MTC.pdf' },
-            { name: 'Primary Science 4 Textbook', class: 'P4', subject: 'Science', date: 'Jan 2024', size: '8.5 MB', path: '../library_pdfs/Primary Science 4 PB Textbook.pdf' },
-            { name: 'P.5 Mathematics Julius', class: 'P5', subject: 'Mathematics', date: 'Jan 2024', size: '2.3 MB', path: '../library_pdfs/JULIUS MTC P.5.pdf' },
-            { name: 'P.5 Science BOT Sipro', class: 'P5', subject: 'Science', date: 'Jan 2024', size: '2.7 MB', path: '../library_pdfs/BOT Science p.5 Sipro.pdf' },
-            { name: 'P.5 End of Year Science', class: 'P5', subject: 'Science', date: 'Nov 2023', size: '2.9 MB', path: '../library_pdfs/END OF YEAR P.5 SCIENCE.pdf' },
-            { name: 'Primary Five English', class: 'P5', subject: 'English', date: 'Jan 2024', size: '3.1 MB', path: '../library_pdfs/Primary Five English-2.pdf' },
-            { name: 'P.5 Social Studies Term 1 2019', class: 'P5', subject: 'Social Studies', date: 'Jan 2019', size: '2.5 MB', path: '../library_pdfs/SOCIAL STUDIES  P_5  TERM I, 2019 SST.pdf' },
-            { name: 'SST Primary 5 Textbook', class: 'P5', subject: 'Social Studies', date: 'Jan 2024', size: '7.8 MB', path: '../library_pdfs/SST Primary 5 PB Textbook.pdf' },
-            { name: 'P.6 English BOT III', class: 'P6', subject: 'English', date: 'Jan 2024', size: '2.6 MB', path: '../library_pdfs/P.6 ENGLISH BOT III.pdf' },
-            { name: 'P.6 Mathematics BOT III', class: 'P6', subject: 'Mathematics', date: 'Jan 2024', size: '2.4 MB', path: '../library_pdfs/P.6 MATHS BOT III.pdf' },
-            { name: 'P.6 Social Studies BOT III', class: 'P6', subject: 'Social Studies', date: 'Jan 2024', size: '2.7 MB', path: '../library_pdfs/P.6 S.ST BOT III.pdf' },
-            { name: 'P.6 Science BOT III', class: 'P6', subject: 'Science', date: 'Jan 2024', size: '2.8 MB', path: '../library_pdfs/P.6 SCIENCE BOT III.pdf' },
-            { name: 'Math P6 Student Book', class: 'P6', subject: 'Mathematics', date: 'Jan 2024', size: '9.2 MB', path: '../library_pdfs/MATH P6 Student Book.pdf' },
-            { name: 'English Primary 6 Pupil Textbook', class: 'P6', subject: 'English', date: 'Jan 2024', size: '8.7 MB', path: '../library_pdfs/English Primary 6 Pupil Textbook.pdf' },
-            { name: 'Primary Science 6 Textbook', class: 'P6', subject: 'Science', date: 'Jan 2024', size: '9.1 MB', path: '../library_pdfs/Primary Science 6 PB Textbook.pdf' },
-            { name: 'Social Studies Textbook P.6', class: 'P6', subject: 'Social Studies', date: 'Jan 2024', size: '8.3 MB', path: '../library_pdfs/SOCIAL STUDIES TEXT BOOK P.6.pdf' },
-            { name: 'P.7 Science PLE Set 1', class: 'P7', subject: 'Science', date: 'Jan 2024', size: '3.2 MB', path: '../library_pdfs/P.7 SCIENCE PLE SET 1.pdf' },
-            { name: 'P7 English Mid Term One', class: 'P7', subject: 'English', date: 'Feb 2024', size: '2.9 MB', path: '../library_pdfs/P7 ENGLISH MID TERM ONE.pdf' },
-            { name: 'Kibuli P7 Social Studies', class: 'P7', subject: 'Social Studies', date: 'Jan 2024', size: '2.6 MB', path: '../library_pdfs/KIBULI P7 SST.pdf' },
-            { name: 'Real PLE 2023 Mathematics', class: 'P7', subject: 'Mathematics', date: 'Nov 2023', size: '3.5 MB', path: '../library_pdfs/REAL PLE 2023 MATH  shared - E-Learn.pdf' },
-            { name: 'Baby LA 4 BOT III', class: 'Nursery', subject: 'Literacy', date: 'Jan 2024', size: '1.6 MB', path: '../library_pdfs/BABY LA 4 BOT III.pdf' },
-            { name: 'Baby LA 5 BOT III', class: 'Nursery', subject: 'Literacy', date: 'Jan 2024', size: '1.7 MB', path: '../library_pdfs/BABY LA 5 BOT III.pdf' },
-            { name: 'Top LA 3 BOT III', class: 'Nursery', subject: 'Literacy', date: 'Jan 2024', size: '1.5 MB', path: '../library_pdfs/TOP LA 3 BOT III.pdf' },
-            { name: 'Top LA 4 BOT III', class: 'Nursery', subject: 'Literacy', date: 'Jan 2024', size: '1.6 MB', path: '../library_pdfs/TOP LA 4 BOT III.pdf' },
-            { name: 'Gayaza Holiday Package', class: 'General', subject: 'General', date: 'Dec 2023', size: '4.2 MB', path: '../library_pdfs/GAYAZA HOL. PACK.pdf' },
-            { name: 'School Magazine 2024', class: 'General', subject: 'General', date: 'Jan 2024', size: '12.5 MB', path: '../library_pdfs/MAGAZINE-INDESIGN-2024-final.pdf' },
-            { name: 'Primary Application Form', class: 'General', subject: 'General', date: 'Jan 2024', size: '0.8 MB', path: '../library_pdfs/Primary-Application.pdf.pdf' }
-        ];
-
-        // Load PDFs from hardcoded data
-        function loadPDFs() {
-            const data = pdfLibrary;
-            
-            if (data.length === 0) {
-                pdfGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px;"><div class="alert alert-info">No PDF resources available at the moment.</div></div>';
-            } else {
-                pdfGrid.innerHTML = data.map(pdf => {
-                    // Detect class from file name for filtering
-                    let classMatch = pdf.class.match(/P([1-7])/i);
-                    let className = classMatch ? `p${classMatch[1]}` : (pdf.class === 'Nursery' ? 'nursery' : '');
-                    
-                    return `
-                        <div class="resource-card ${className}" data-aos="fade-up">
-                            <div class="resource-icon">
-                                <i class="fas fa-file-pdf"></i>
-                            </div>
-                            <div class="resource-info">
-                                <div class="resource-badges">
-                                    ${pdf.class ? `<span class="resource-badge class-badge">${pdf.class}</span>` : ''}
-                                    ${pdf.subject ? `<span class="resource-badge subject-badge">${pdf.subject}</span>` : ''}
-                                </div>
-                                <h3>${pdf.name}</h3>
-                                <p class="resource-meta">
-                                    <span><i class="fas fa-calendar"></i> ${pdf.date}</span>
-                                    <span><i class="fas fa-hdd"></i> ${pdf.size}</span>
-                                </p>
-                            </div>
-                            <a href="${pdf.path}" class="btn-download" download>
-                                <i class="fas fa-download"></i>
-                                <span>Download</span>
-                            </a>
-                        </div>
-                    `;
-                }).join('');
-                
+        // Filter button click handlers
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.getAttribute('data-filter');
                 filterAndSearch();
-                if (window.AOS) AOS.refresh();
-            }
+            });
+        });
+
+        // Search input handler
+        if (searchInput) {
+            searchInput.addEventListener('input', filterAndSearch);
         }
 
         // Filter and Search functionality
         function filterAndSearch() {
             const searchTerm = searchInput.value.toLowerCase();
-            const resourceCards = document.querySelectorAll('.resource-card');
+            const resourceCards = document.querySelectorAll('.library-pdf-card');
             let hasResults = false;
 
             resourceCards.forEach(card => {
@@ -628,23 +557,8 @@
             if (window.AOS) AOS.refresh();
         }
 
-        // Filter button click handlers
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                currentFilter = this.getAttribute('data-filter');
-                filterAndSearch();
-            });
-        });
-
-        // Search input handler
-        if (searchInput) {
-            searchInput.addEventListener('input', filterAndSearch);
-        }
-
-        // Load PDFs on page load
-        loadPDFs();
+        // Load PDFs from API on page load
+        // The api-library.js file will handle this automatically
     </script>
 </body>
 </html>

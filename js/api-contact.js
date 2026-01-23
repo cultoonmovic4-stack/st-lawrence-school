@@ -29,7 +29,10 @@ if (document.getElementById('contactForm')) {
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         
         try {
-            const response = await API.post('/contact/submit.php', formData);
+            console.log('Submitting contact form to:', API_BASE_URL + '/public/submit_contact.php');
+            console.log('Form data:', formData);
+            const response = await API.post('/public/submit_contact.php', formData);
+            console.log('Response:', response);
             
             if (response.success) {
                 showFormSuccess('Thank you! Your message has been sent successfully. We will get back to you soon.');

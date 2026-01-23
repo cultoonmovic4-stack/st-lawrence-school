@@ -1,97 +1,162 @@
 <?php
-include_once '../config/cors.php';
-include_once '../config/database.php';
-include_once '../config/jwt.php';
+/**
+ * Login API Endpoint
+ * Handles user authentication
+ */
+
+// Enable error reporting for development
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Set headers
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
+header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+
+// Include database connection
+require_once '../config/Database.php';
+
+// Only allow POST requests
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    echo json_encode(['success' => false, 'message' => 'Method not allowed']);
+    exit();
+}
 
 // Get posted data
 $data = json_decode(file_get_contents("php://input"));
 
-if (!empty($data->email) && !empty($data->password)) {
-    
+// Validate input
+if (empty($data->email) || empty($data->password)) {
+    http_response_code(400);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Email and password are required'
+    ]);
+    exit();
+}
+
+// Sanitize input
+$email = filter_var($data->email, FILTER_SANITIZE_EMAIL);
+$password = $data->password;
+
+// Validate email format
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    http_response_code(400);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Invalid email format'
+    ]);
+    exit();
+}
+
+try {
+    // Create database connection
     $database = new Database();
-    $db = $database->getConnection();
+    $conn = $database->getConnection();
     
-    // Check if user exists
-    $query = "SELECT id, username, email, password, role, status FROM users WHERE email = :email LIMIT 1";
-    $stmt = $db->prepare($query);
-    $stmt->bindParam(":email", $data->email);
+    // Check which password column exists
+    $checkColumn = $conn->query("SHOW COLUMNS FROM users LIKE 'password%'");
+    $columns = $checkColumn->fetchAll(PDO::FETCH_COLUMN);
+    $passwordColumn = in_array('password', $columns) ? 'password' : 'password_hash';
+    
+    // Prepare SQL query
+    $query = "SELECT u.id, u.username, u.email, u.{$passwordColumn} as password_hash, u.full_name, u.phone, u.status, 
+                     r.id as role_id, r.role_name, r.role_level
+              FROM users u
+              LEFT JOIN roles r ON u.role_id = r.id
+              WHERE u.email = :email
+              LIMIT 1";
+    
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':email', $email);
     $stmt->execute();
     
+    // Check if user exists
     if ($stmt->rowCount() > 0) {
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        // Check if account is active
+        if ($user['status'] !== 'active') {
+            http_response_code(403);
+            echo json_encode([
+                'success' => false,
+                'message' => 'Your account has been deactivated. Please contact administrator.'
+            ]);
+            exit();
+        }
         
         // Verify password
-        if (password_verify($data->password, $row['password'])) {
+        if (password_verify($password, $user['password_hash'])) {
+            // Password is correct - start session
+            session_start();
             
-            // Check if user is active
-            if ($row['status'] == 'active') {
-                
-                // Generate JWT token
-                $token_data = array(
-                    "id" => $row['id'],
-                    "username" => $row['username'],
-                    "email" => $row['email'],
-                    "role" => $row['role']
-                );
-                
-                $jwt = JWT::encode($token_data);
-                
-                // Update last login
-                $update_query = "UPDATE users SET last_login = NOW() WHERE id = :id";
-                $update_stmt = $db->prepare($update_query);
-                $update_stmt->bindParam(":id", $row['id']);
-                $update_stmt->execute();
-                
-                // Log activity
-                $log_query = "INSERT INTO admin_activity_logs (user_id, action_type, description, ip_address) 
-                              VALUES (:user_id, 'LOGIN', 'User logged in', :ip)";
-                $log_stmt = $db->prepare($log_query);
-                $log_stmt->bindParam(":user_id", $row['id']);
-                $log_stmt->bindParam(":ip", $_SERVER['REMOTE_ADDR']);
-                $log_stmt->execute();
-                
-                http_response_code(200);
-                echo json_encode(array(
-                    "success" => true,
-                    "message" => "Login successful",
-                    "token" => $jwt,
-                    "user" => array(
-                        "id" => $row['id'],
-                        "username" => $row['username'],
-                        "email" => $row['email'],
-                        "role" => $row['role']
-                    )
-                ));
-                
-            } else {
-                http_response_code(401);
-                echo json_encode(array(
-                    "success" => false,
-                    "message" => "Account is inactive"
-                ));
-            }
+            // Store user data in session
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['full_name'] = $user['full_name'];
+            $_SESSION['role_id'] = $user['role_id'];
+            $_SESSION['role_name'] = $user['role_name'];
+            $_SESSION['role_level'] = $user['role_level'];
+            $_SESSION['logged_in'] = true;
+            
+            // Update last login
+            $updateQuery = "UPDATE users SET last_login = NOW() WHERE id = :id";
+            $updateStmt = $conn->prepare($updateQuery);
+            $updateStmt->bindParam(':id', $user['id']);
+            $updateStmt->execute();
+            
+            // Log activity
+            $logQuery = "INSERT INTO activity_logs (user_id, action, description, ip_address, user_agent) 
+                         VALUES (:user_id, 'login', 'User logged in', :ip, :user_agent)";
+            $logStmt = $conn->prepare($logQuery);
+            $logStmt->bindParam(':user_id', $user['id']);
+            $logStmt->bindParam(':ip', $_SERVER['REMOTE_ADDR']);
+            $logStmt->bindParam(':user_agent', $_SERVER['HTTP_USER_AGENT']);
+            $logStmt->execute();
+            
+            // Return success response
+            http_response_code(200);
+            echo json_encode([
+                'success' => true,
+                'message' => 'Login successful',
+                'data' => [
+                    'user_id' => $user['id'],
+                    'username' => $user['username'],
+                    'email' => $user['email'],
+                    'full_name' => $user['full_name'],
+                    'phone' => $user['phone'],
+                    'role_name' => $user['role_name'],
+                    'role_level' => $user['role_level']
+                ]
+            ]);
             
         } else {
+            // Invalid password
             http_response_code(401);
-            echo json_encode(array(
-                "success" => false,
-                "message" => "Invalid password"
-            ));
+            echo json_encode([
+                'success' => false,
+                'message' => 'Invalid email or password'
+            ]);
         }
         
     } else {
-        http_response_code(404);
-        echo json_encode(array(
-            "success" => false,
-            "message" => "User not found"
-        ));
+        // User not found
+        http_response_code(401);
+        echo json_encode([
+            'success' => false,
+            'message' => 'Invalid email or password'
+        ]);
     }
     
-} else {
-    http_response_code(400);
-    echo json_encode(array(
-        "success" => false,
-        "message" => "Email and password are required"
-    ));
+} catch (PDOException $e) {
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Server error. Please try again later.',
+        'error' => $e->getMessage()
+    ]);
 }
 ?>

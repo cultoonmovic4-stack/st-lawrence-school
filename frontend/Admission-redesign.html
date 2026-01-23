@@ -29,6 +29,9 @@
     <!-- jQuery Validation Plugin -->
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
     
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/redesign-style.css?v=3.0">
 </head>
@@ -104,7 +107,7 @@
                 
                 <!-- Admin Button -->
                 <div class="nav-actions">
-                    <a href="../backend/admin/index.html" class="btn-admin">
+                    <a href="../backend/admin/login.html" class="btn-admin">
                         <i class="fas fa-shield-alt"></i>
                         <span>Admin</span>
                     </a>
@@ -619,6 +622,9 @@
                                     <i class="fas fa-envelope input-icon"></i>
                                     <input type="email" id="parentEmail" name="parentEmail" placeholder="example@email.com" required>
                                 </div>
+                                <small style="display: block; margin-top: 5px; color: #0066cc; font-size: 12px;">
+                                    <i class="fas fa-info-circle"></i> You will receive admission updates at this email address
+                                </small>
                                 <span class="validation-error">Please enter valid email</span>
                             </div>
                         </div>
@@ -1364,7 +1370,7 @@
             });
             
             // Form Submission
-            wizardForm.addEventListener('submit', (e) => {
+            wizardForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
                 if (validateStep(currentStep)) {
@@ -1372,33 +1378,77 @@
                     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Submitting...</span>';
                     submitBtn.disabled = true;
                     
-                    // Simulate submission (replace with actual API call)
-                    setTimeout(() => {
-                        alert('Application submitted successfully! We will contact you within 5 working days.');
-                        
-                        // Clear draft
-                        localStorage.removeItem('admissionDraft');
-                        
-                        // Reset form
-                        wizardForm.reset();
-                        currentStep = 1;
-                        updateWizardUI();
-                        
-                        // Reset file previews
-                        document.querySelectorAll('.file-preview').forEach(preview => {
-                            preview.classList.remove('active');
-                        });
-                        document.querySelectorAll('.file-drop-area').forEach(area => {
-                            area.style.display = 'flex';
+                    // Collect form data
+                    const formData = new FormData(wizardForm);
+                    
+                    console.log('Form data being sent...');
+                    
+                    try {
+                        // Submit form with files to API
+                        const response = await fetch('../backend/api/admissions/create-public-with-files.php', {
+                            method: 'POST',
+                            body: formData // Send FormData directly to include files
                         });
                         
+                        const result = await response.json();
+                        
+                        if (result.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Application Submitted!',
+                                html: `
+                                    <p style="font-size: 16px; margin-bottom: 15px;">Your application has been submitted successfully!</p>
+                                    <div style="background: #f0f9ff; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                                        <p style="font-size: 14px; color: #0066cc; margin: 0;">
+                                            <strong>Application ID:</strong> ${result.application_id}
+                                        </p>
+                                    </div>
+                                    <p style="font-size: 14px; color: #666;">We will contact you within 5 working days.</p>
+                                `,
+                                confirmButtonColor: '#0066cc',
+                                confirmButtonText: 'OK',
+                                allowOutsideClick: false
+                            }).then(() => {
+                                // Clear draft
+                                localStorage.removeItem('admissionDraft');
+                                
+                                // Reset form
+                                wizardForm.reset();
+                                currentStep = 1;
+                                updateWizardUI();
+                                
+                                // Reset file previews
+                                document.querySelectorAll('.file-preview').forEach(preview => {
+                                    preview.classList.remove('active');
+                                });
+                                document.querySelectorAll('.file-drop-area').forEach(area => {
+                                    area.style.display = 'flex';
+                                });
+                                
+                                // Scroll to top
+                                scrollToTop();
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Submission Failed',
+                                text: result.message || 'Failed to submit application. Please try again.',
+                                confirmButtonColor: '#dc3545'
+                            });
+                        }
+                    } catch (error) {
+                        console.error('Submission error:', error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Connection Error',
+                            text: 'Error submitting application. Please check your internet connection and try again.',
+                            confirmButtonColor: '#dc3545'
+                        });
+                    } finally {
                         // Reset button
                         submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i><span>Submit Application</span>';
                         submitBtn.disabled = false;
-                        
-                        // Scroll to top
-                        scrollToTop();
-                    }, 2000);
+                    }
                 }
             });
             

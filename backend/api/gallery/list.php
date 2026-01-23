@@ -1,39 +1,41 @@
 <?php
-include_once '../config/cors.php';
-include_once '../config/database.php';
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET');
 
-$category = isset($_GET['category']) ? $_GET['category'] : '';
+require_once '../config/Database.php';
 
-$database = new Database();
-$db = $database->getConnection();
-
-$query = "SELECT * FROM gallery_images WHERE status = 'active'";
-
-if (!empty($category)) {
-    $query .= " AND category = :category";
+try {
+    $database = new Database();
+    $db = $database->getConnection();
+    
+    $stmt = $db->prepare("
+        SELECT 
+            id,
+            title,
+            description,
+            image_url,
+            category,
+            upload_date,
+            display_order,
+            status
+        FROM gallery_images 
+        WHERE status = 'active'
+        ORDER BY display_order DESC, upload_date DESC, id DESC
+    ");
+    
+    $stmt->execute();
+    $images = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    echo json_encode([
+        'success' => true,
+        'data' => $images
+    ]);
+    
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Error: ' . $e->getMessage()
+    ]);
 }
-
-$query .= " ORDER BY display_order ASC, created_at DESC";
-
-$stmt = $db->prepare($query);
-
-if (!empty($category)) {
-    $stmt->bindParam(":category", $category);
-}
-
-$stmt->execute();
-
-$images = array();
-
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    array_push($images, $row);
-}
-
-http_response_code(200);
-echo json_encode(array(
-    "success" => true,
-    "message" => "Gallery images retrieved successfully",
-    "count" => count($images),
-    "data" => $images
-));
-?>

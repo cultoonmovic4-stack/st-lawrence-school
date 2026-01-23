@@ -1,97 +1,115 @@
 <?php
-include_once '../config/cors.php';
-include_once '../config/database.php';
-include_once '../utils/auth_middleware.php';
-include_once '../utils/response.php';
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Allow-Headers: Content-Type');
 
-// Verify token and require admin
-$user = verifyToken();
-requireAdmin($user);
+require_once '../config/Database.php';
+require_once '../middleware/auth_middleware.php';
 
-// Get posted data
-$data = json_decode(file_get_contents("php://input"));
-
-// Validate required fields
-if (empty($data->name) || empty($data->email) || empty($data->department)) {
-    sendError("Name, email, and department are required", null, 400);
-    exit();
+// Check authentication
+if (!isAuthenticated()) {
+    http_response_code(401);
+    echo json_encode(['success' => false, 'message' => 'Unauthorized']);
+    exit;
 }
 
-$database = new Database();
-$db = $database->getConnection();
-
-// Check if email already exists
-$check_query = "SELECT id FROM teachers WHERE email = :email";
-$check_stmt = $db->prepare($check_query);
-$check_stmt->bindParam(":email", $data->email);
-$check_stmt->execute();
-
-if ($check_stmt->rowCount() > 0) {
-    sendError("Email already exists", null, 400);
-    exit();
-}
-
-// Insert teacher
-$query = "INSERT INTO teachers 
-          (name, email, phone, department, position, qualification, experience_years, 
-           bio, specialties, photo_url, facebook, twitter, linkedin, 
-           students_count, subjects_taught, status, display_order) 
-          VALUES 
-          (:name, :email, :phone, :department, :position, :qualification, :experience_years,
-           :bio, :specialties, :photo_url, :facebook, :twitter, :linkedin,
-           :students_count, :subjects_taught, :status, :display_order)";
-
-$stmt = $db->prepare($query);
-
-// Bind values
-$stmt->bindParam(":name", $data->name);
-$stmt->bindParam(":email", $data->email);
-$phone = isset($data->phone) ? $data->phone : null;
-$stmt->bindParam(":phone", $phone);
-$stmt->bindParam(":department", $data->department);
-$position = isset($data->position) ? $data->position : null;
-$stmt->bindParam(":position", $position);
-$qualification = isset($data->qualification) ? $data->qualification : null;
-$stmt->bindParam(":qualification", $qualification);
-$experience_years = isset($data->experience_years) ? $data->experience_years : 0;
-$stmt->bindParam(":experience_years", $experience_years);
-$bio = isset($data->bio) ? $data->bio : null;
-$stmt->bindParam(":bio", $bio);
-$specialties = isset($data->specialties) ? $data->specialties : null;
-$stmt->bindParam(":specialties", $specialties);
-$photo_url = isset($data->photo_url) ? $data->photo_url : null;
-$stmt->bindParam(":photo_url", $photo_url);
-$facebook = isset($data->facebook) ? $data->facebook : null;
-$stmt->bindParam(":facebook", $facebook);
-$twitter = isset($data->twitter) ? $data->twitter : null;
-$stmt->bindParam(":twitter", $twitter);
-$linkedin = isset($data->linkedin) ? $data->linkedin : null;
-$stmt->bindParam(":linkedin", $linkedin);
-$students_count = isset($data->students_count) ? $data->students_count : 0;
-$stmt->bindParam(":students_count", $students_count);
-$subjects_taught = isset($data->subjects_taught) ? $data->subjects_taught : 0;
-$stmt->bindParam(":subjects_taught", $subjects_taught);
-$status = isset($data->status) ? $data->status : 'active';
-$stmt->bindParam(":status", $status);
-$display_order = isset($data->display_order) ? $data->display_order : 0;
-$stmt->bindParam(":display_order", $display_order);
-
-if ($stmt->execute()) {
-    $teacher_id = $db->lastInsertId();
+try {
+    // Get form data
+    $full_name = $_POST['full_name'] ?? '';
+    $department = $_POST['department'] ?? '';
+    $position = $_POST['position'] ?? '';
+    $qualification = $_POST['qualification'] ?? '';
+    $experience_years = $_POST['experience_years'] ?? null;
+    $email = $_POST['email'] ?? '';
+    $phone = $_POST['phone'] ?? '';
+    $bio = $_POST['bio'] ?? '';
+    $specialization = $_POST['specialization'] ?? '';
     
-    // Log activity
-    $log_query = "INSERT INTO admin_activity_logs (user_id, action_type, table_name, record_id, description, ip_address) 
-                  VALUES (:user_id, 'CREATE', 'teachers', :record_id, :description, :ip)";
-    $log_stmt = $db->prepare($log_query);
-    $log_stmt->bindParam(":user_id", $user->id);
-    $log_stmt->bindParam(":record_id", $teacher_id);
-    $description = "Created teacher: " . $data->name;
-    $log_stmt->bindParam(":description", $description);
-    $log_stmt->bindParam(":ip", $_SERVER['REMOTE_ADDR']);
-    $log_stmt->execute();
+    // Validate required fields
+    if (empty($full_name) || empty($department)) {
+        throw new Exception('Name and department are required');
+    }
     
-    sendSuccess("Teacher created successfully", array("id" => $teacher_id), 201);
-} else {
-    sendError("Failed to create teacher", null, 500);
+    // Validate department
+    $validDepartments = ['administration', 'english', 'mathematics', 'science', 'social'];
+    if (!in_array($department, $validDepartments)) {
+        throw new Exception('Invalid department');
+    }
+    
+    // Handle photo upload
+    $photoUrl = null;
+    if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
+        $file = $_FILES['photo'];
+        $allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
+        
+        if (!in_array($file['type'], $allowedTypes)) {
+            throw new Exception('Invalid file type. Only JPG, PNG, GIF, and WEBP are allowed');
+        }
+        
+        // Check file size (100MB max)
+        $maxSize = 100 * 1024 * 1024;
+        if ($file['size'] > $maxSize) {
+            throw new Exception('File size exceeds 100MB limit');
+        }
+        
+        // Create upload directory
+        $uploadDir = __DIR__ . '/../../uploads/teachers/';
+        if (!file_exists($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
+        
+        // Generate unique filename
+        $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+        $filename = 'teacher_' . time() . '_' . uniqid() . '.' . $extension;
+        $uploadPath = $uploadDir . $filename;
+        
+        // Move uploaded file
+        if (!move_uploaded_file($file['tmp_name'], $uploadPath)) {
+            throw new Exception('Failed to save uploaded photo');
+        }
+        
+        $photoUrl = 'uploads/teachers/' . $filename;
+    }
+    
+    // Save to database
+    $database = new Database();
+    $db = $database->getConnection();
+    
+    $stmt = $db->prepare("
+        INSERT INTO teachers 
+        (full_name, department, position, qualification, experience_years, email, phone, photo_url, bio, specialization, status) 
+        VALUES 
+        (:full_name, :department, :position, :qualification, :experience_years, :email, :phone, :photo_url, :bio, :specialization, 'active')
+    ");
+    
+    $stmt->bindParam(':full_name', $full_name);
+    $stmt->bindParam(':department', $department);
+    $stmt->bindParam(':position', $position);
+    $stmt->bindParam(':qualification', $qualification);
+    $stmt->bindParam(':experience_years', $experience_years);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':phone', $phone);
+    $stmt->bindParam(':photo_url', $photoUrl);
+    $stmt->bindParam(':bio', $bio);
+    $stmt->bindParam(':specialization', $specialization);
+    
+    if ($stmt->execute()) {
+        echo json_encode([
+            'success' => true,
+            'message' => 'Teacher added successfully!',
+            'data' => [
+                'id' => $db->lastInsertId()
+            ]
+        ]);
+    } else {
+        throw new Exception('Failed to save to database');
+    }
+    
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Error: ' . $e->getMessage()
+    ]);
 }
-?>

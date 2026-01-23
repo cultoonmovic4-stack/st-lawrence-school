@@ -1,62 +1,103 @@
 <?php
-include_once '../config/cors.php';
-include_once '../config/database.php';
-include_once '../utils/auth_middleware.php';
-include_once '../utils/response.php';
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Allow-Headers: Content-Type');
 
-$user = verifyToken();
-requireAdmin($user);
+require_once '../config/Database.php';
+require_once '../middleware/auth_middleware.php';
 
-$data = json_decode(file_get_contents("php://input"));
-
-if (empty($data->title) || empty($data->event_date)) {
-    sendError("Title and event date are required", null, 400);
-    exit();
+// Check authentication
+if (!isAuthenticated()) {
+    http_response_code(401);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Unauthorized. Please login.'
+    ]);
+    exit;
 }
 
-$database = new Database();
-$db = $database->getConnection();
+$currentUser = getCurrentUser();
+$userId = $currentUser['user_id'];
 
-$query = "INSERT INTO events 
-          (title, description, event_date, event_time, end_date, location, category, image_url, status, created_by) 
-          VALUES 
-          (:title, :description, :event_date, :event_time, :end_date, :location, :category, :image_url, :status, :created_by)";
-
-$stmt = $db->prepare($query);
-
-$stmt->bindParam(":title", $data->title);
-$description = isset($data->description) ? $data->description : null;
-$stmt->bindParam(":description", $description);
-$stmt->bindParam(":event_date", $data->event_date);
-$event_time = isset($data->event_time) ? $data->event_time : null;
-$stmt->bindParam(":event_time", $event_time);
-$end_date = isset($data->end_date) ? $data->end_date : null;
-$stmt->bindParam(":end_date", $end_date);
-$location = isset($data->location) ? $data->location : null;
-$stmt->bindParam(":location", $location);
-$category = isset($data->category) ? $data->category : 'Academic';
-$stmt->bindParam(":category", $category);
-$image_url = isset($data->image_url) ? $data->image_url : null;
-$stmt->bindParam(":image_url", $image_url);
-$status = isset($data->status) ? $data->status : 'Upcoming';
-$stmt->bindParam(":status", $status);
-$stmt->bindParam(":created_by", $user->id);
-
-if ($stmt->execute()) {
-    $event_id = $db->lastInsertId();
-    
-    $log_query = "INSERT INTO admin_activity_logs (user_id, action_type, table_name, record_id, description, ip_address) 
-                  VALUES (:user_id, 'CREATE', 'events', :record_id, :description, :ip)";
-    $log_stmt = $db->prepare($log_query);
-    $log_stmt->bindParam(":user_id", $user->id);
-    $log_stmt->bindParam(":record_id", $event_id);
-    $description = "Created event: " . $data->title;
-    $log_stmt->bindParam(":description", $description);
-    $log_stmt->bindParam(":ip", $_SERVER['REMOTE_ADDR']);
-    $log_stmt->execute();
-    
-    sendSuccess("Event created successfully", array("id" => $event_id), 201);
-} else {
-    sendError("Failed to create event", null, 500);
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Method not allowed'
+    ]);
+    exit;
 }
-?>
+
+try {
+    $data = json_decode(file_get_contents('php://input'), true);
+    
+    // Validate required fields
+    $required = ['event_title', 'event_date', 'start_time', 'end_time', 'location', 'category'];
+    foreach ($required as $field) {
+        if (empty($data[$field])) {
+            http_response_code(400);
+            echo json_encode([
+                'success' => false,
+                'message' => ucfirst(str_replace('_', ' ', $field)) . ' is required'
+            ]);
+            exit;
+        }
+    }
+    
+    $database = new Database();
+    $db = $database->getConnection();
+    
+    // Combine start_time and end_time into description or use start_time as event_time
+    $eventTime = $data['start_time'];
+    $description = $data['event_description'] ?? '';
+    if (!empty($data['end_time'])) {
+        $description .= "\nTime: " . $data['start_time'] . " - " . $data['end_time'];
+    }
+    
+    // Insert event
+    $stmt = $db->prepare("
+        INSERT INTO events 
+        (title, description, event_date, event_time, location, category, status, created_by, created_at) 
+        VALUES 
+        (:title, :description, :event_date, :event_time, :location, :category, 'upcoming', :created_by, NOW())
+    ");
+    
+    $stmt->bindParam(':title', $data['event_title']);
+    $stmt->bindParam(':description', $description);
+    $stmt->bindParam(':event_date', $data['event_date']);
+    $stmt->bindParam(':event_time', $eventTime);
+    $stmt->bindParam(':location', $data['location']);
+    $stmt->bindParam(':category', $data['category']);
+    $stmt->bindParam(':created_by', $userId);
+    
+    if ($stmt->execute()) {
+        $event_id = $db->lastInsertId();
+        
+        // Log activity
+        $log_stmt = $db->prepare("
+            INSERT INTO activity_logs (user_id, action, table_name, record_id, description, created_at)
+            VALUES (:user_id, 'create', 'events', :record_id, :description, NOW())
+        ");
+        $log_stmt->bindParam(':user_id', $userId);
+        $log_stmt->bindParam(':record_id', $event_id);
+        $log_desc = "Created event: " . $data['event_title'];
+        $log_stmt->bindParam(':description', $log_desc);
+        $log_stmt->execute();
+        
+        echo json_encode([
+            'success' => true,
+            'message' => 'Event created successfully',
+            'event_id' => $event_id
+        ]);
+    } else {
+        throw new Exception('Failed to create event');
+    }
+    
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Error: ' . $e->getMessage()
+    ]);
+}

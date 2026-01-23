@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>School Fees - ST. LAWRENCE JUNIOR SCHOOL - KABOWA</title>
     <meta name="description" content="School fees structure for St. Lawrence Junior School Kabowa - Transparent pricing for quality education.">
     
@@ -21,7 +24,89 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/redesign-style.css?v=3.0">
+    <link rel="stylesheet" href="../css/redesign-style.css?v=20260112">
+    <link rel="stylesheet" href="../css/fees-styles.css?v=20260112">
+    
+    <!-- Inline Fees Styles - Direct Embed -->
+    <style>
+        /* Fees Hero */
+        .fees-hero-simple { margin-top: 85px; }
+        
+        /* Fee Toggle Section */
+        .fee-toggle-section { padding: 40px 0; background: linear-gradient(135deg, rgba(0, 102, 204, 0.03) 0%, rgba(220, 53, 69, 0.03) 100%); }
+        .fee-toggle-wrapper { display: flex; justify-content: center; gap: 20px; max-width: 500px; margin: 0 auto; }
+        .fee-toggle-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 12px; padding: 18px 32px; background: #fff; border: 2px solid #e9ecef; border-radius: 12px; font-size: 16px; font-weight: 600; color: #666; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); }
+        .fee-toggle-btn i { font-size: 20px; }
+        .fee-toggle-btn:hover { border-color: #0066cc; color: #0066cc; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15); }
+        .fee-toggle-btn.active { background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%); border-color: #0066cc; color: #fff; box-shadow: 0 6px 20px rgba(0, 102, 204, 0.3); }
+        .fee-toggle-btn.active i { color: #fff; }
+        
+        /* Fees Table */
+        .fees-table-container { margin-top: 40px; overflow-x: auto; }
+        .fees-table-wrapper { background: #fff; border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); overflow: hidden; border: 1px solid rgba(0, 102, 204, 0.1); }
+        .fees-table { width: 100%; border-collapse: collapse; }
+        .fees-table thead { background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%); }
+        .fees-table-header { padding: 25px 20px; text-align: left; color: #fff; font-weight: 600; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .fees-table-header:first-child { width: 60px; text-align: center; }
+        .fees-table-header .header-content { display: flex; align-items: center; gap: 10px; justify-content: center; }
+        .fees-table-header .header-content i { font-size: 18px; }
+        .fees-table-row { border-bottom: 1px solid #e9ecef; transition: all 0.3s ease; }
+        .fees-table-row:hover { background: rgba(0, 102, 204, 0.02); }
+        .fees-table-row.featured-row { background: rgba(0, 102, 204, 0.05); border-left: 4px solid #0066cc; }
+        .fees-table-row.featured-row:hover { background: rgba(0, 102, 204, 0.08); }
+        .fees-table-cell { padding: 25px 20px; font-size: 15px; color: #1a1a1a; }
+        .fees-table-cell.row-number { text-align: center; font-weight: 700; color: #0066cc; font-size: 18px; }
+        .fees-table-cell.class-name { position: relative; }
+        .class-info { display: flex; align-items: center; gap: 15px; }
+        .class-info i { width: 45px; height: 45px; background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; flex-shrink: 0; }
+        .class-info strong { display: block; font-size: 18px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; }
+        .class-subtitle { display: block; font-size: 13px; color: #666; font-weight: 500; }
+        .popular-badge { position: absolute; top: -10px; right: 20px; background: linear-gradient(135deg, #dc3545 0%, #c82333 100%); color: #fff; padding: 6px 16px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3); }
+        .price-tag { display: flex; align-items: baseline; gap: 8px; justify-content: center; }
+        .price-tag .currency { font-size: 14px; font-weight: 600; color: #666; }
+        .price-tag .amount { font-size: 24px; font-weight: 800; color: #0066cc; font-family: 'Poppins', sans-serif; }
+        .badge-payment { display: inline-block; background: rgba(0, 102, 204, 0.1); color: #0066cc; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        /* Uniform Pricing Grid */
+        .uniform-pricing-grid-2x2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 60px; }
+        .uniform-category-card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid transparent; }
+        .uniform-category-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12); border-color: rgba(0, 102, 204, 0.2); }
+        .uniform-card-header { padding: 30px; background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%); color: #fff; text-align: center; position: relative; }
+        .uniform-card-header.boys-header { background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%); }
+        .uniform-card-header.girls-header { background: linear-gradient(135deg, #dc3545 0%, #c82333 100%); }
+        .uniform-icon { width: 70px; height: 70px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; backdrop-filter: blur(10px); }
+        .uniform-icon i { font-size: 32px; color: #fff; }
+        .uniform-card-header h3 { font-size: 22px; font-weight: 700; margin-bottom: 8px; font-family: 'Poppins', sans-serif; }
+        .uniform-subtitle { font-size: 14px; opacity: 0.9; font-weight: 500; }
+        .boarding-tag { position: absolute; top: 15px; right: 15px; background: rgba(255, 255, 255, 0.25); color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; backdrop-filter: blur(10px); }
+        .uniform-card-body { padding: 30px; }
+        .uniform-price-table { display: flex; flex-direction: column; gap: 15px; }
+        .uniform-price-row { display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; background: rgba(0, 102, 204, 0.03); border-radius: 12px; border-left: 4px solid #0066cc; transition: all 0.3s ease; }
+        .uniform-price-row:hover { background: rgba(0, 102, 204, 0.08); transform: translateX(5px); }
+        .class-label { font-size: 15px; font-weight: 600; color: #1a1a1a; }
+        .price-value { display: flex; align-items: baseline; gap: 6px; }
+        .price-value .currency { font-size: 12px; font-weight: 600; color: #666; }
+        .price-value .amount { font-size: 20px; font-weight: 800; color: #0066cc; font-family: 'Poppins', sans-serif; }
+        .uniform-card-footer { padding: 25px 30px; background: rgba(0, 102, 204, 0.02); border-top: 1px solid rgba(0, 102, 204, 0.1); }
+        .uniform-includes { margin: 0; }
+        .includes-title { font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .uniform-includes ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .uniform-includes ul li { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; }
+        .uniform-includes ul li i { color: #28a745; font-size: 12px; }
+        .hero-tagline { font-size: 18px; color: rgba(255, 255, 255, 0.95); font-weight: 500; margin-top: 10px; }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .uniform-pricing-grid-2x2 { grid-template-columns: 1fr; gap: 25px; }
+        }
+        @media (max-width: 768px) {
+            .fee-toggle-wrapper { flex-direction: column; max-width: 300px; }
+            .fee-toggle-btn { width: 100%; }
+            .fees-table-container { overflow-x: scroll; }
+            .fees-table { min-width: 700px; }
+            .uniform-includes ul { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
     
@@ -62,7 +147,7 @@
                         </ul>
                     </li>
                     <li class="desktop-only"><a href="Contact-redesign.html" class="nav-link">Contact</a></li>
-                    <li class="desktop-only"><a href="Library.html" class="nav-link">Library</a></li>
+                    <li class="desktop-only"><a href="Library-redesign.html" class="nav-link">Library</a></li>
                     
                     <!-- Mobile Menu Items -->
                     <li class="mobile-only"><a href="index-redesign.html" class="nav-link-mobile">Home</a></li>
@@ -90,12 +175,12 @@
                         </ul>
                     </li>
                     <li class="mobile-only"><a href="Contact-redesign.html" class="nav-link-mobile">Contact</a></li>
-                    <li class="mobile-only"><a href="Library.html" class="nav-link-mobile">Library</a></li>
+                    <li class="mobile-only"><a href="Library-redesign.html" class="nav-link-mobile">Library</a></li>
                 </ul>
                 
                 <!-- Admin Button -->
                 <div class="nav-actions">
-                    <a href="../backend/admin/index.html" class="btn-admin">
+                    <a href="../backend/admin/login.html" class="btn-admin">
                         <i class="fas fa-shield-alt"></i>
                         <span>Admin</span>
                     </a>
@@ -481,7 +566,25 @@
 
     <!-- CTA Section -->
     <section class="admission-cta-section">
-
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <div class="cta-text">
+                    <h2>Ready to Enroll Your Child?</h2>
+                    <p>Join our community of excellence and give your child the best education</p>
+                </div>
+                <div class="cta-actions">
+                    <a href="Admission-redesign.html" class="btn-cta">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Apply Now</span>
+                    </a>
+                    <a href="Contact-redesign.html" class="btn-cta-outline">
+                        <i class="fas fa-phone"></i>
+                        <span>Contact Us</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">

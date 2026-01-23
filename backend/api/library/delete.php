@@ -1,45 +1,64 @@
 <?php
-include_once '../config/cors.php';
-include_once '../config/database.php';
-include_once '../utils/auth_middleware.php';
-include_once '../utils/response.php';
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, DELETE');
+header('Access-Control-Allow-Headers: Content-Type');
 
-$user = verifyToken();
-requireAdmin($user);
+require_once '../config/Database.php';
+require_once '../middleware/auth_middleware.php';
 
-$resource_id = isset($_GET['id']) ? $_GET['id'] : '';
-
-if (empty($resource_id)) {
-    sendError("Resource ID is required", null, 400);
-    exit();
+// Check authentication
+if (!isAuthenticated()) {
+    http_response_code(401);
+    echo json_encode(['success' => false, 'message' => 'Unauthorized']);
+    exit;
 }
 
-$database = new Database();
-$db = $database->getConnection();
-
-$check_query = "SELECT file_path FROM library_resources WHERE id = :id";
-$check_stmt = $db->prepare($check_query);
-$check_stmt->bindParam(":id", $resource_id);
-$check_stmt->execute();
-
-if ($check_stmt->rowCount() == 0) {
-    sendError("Resource not found", null, 404);
-    exit();
-}
-
-$resource = $check_stmt->fetch(PDO::FETCH_ASSOC);
-
-$query = "DELETE FROM library_resources WHERE id = :id";
-$stmt = $db->prepare($query);
-$stmt->bindParam(":id", $resource_id);
-
-if ($stmt->execute()) {
-    if (!empty($resource['file_path']) && file_exists("../../" . $resource['file_path'])) {
-        unlink("../../" . $resource['file_path']);
+try {
+    $data = json_decode(file_get_contents('php://input'), true);
+    
+    if (empty($data['id'])) {
+        throw new Exception('Resource ID is required');
     }
     
-    sendSuccess("Resource deleted successfully");
-} else {
-    sendError("Failed to delete resource", null, 500);
+    $database = new Database();
+    $db = $database->getConnection();
+    
+    // Get resource info first
+    $stmt = $db->prepare("SELECT file_url FROM library_resources WHERE id = :id");
+    $stmt->bindParam(':id', $data['id']);
+    $stmt->execute();
+    $resource = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    if (!$resource) {
+        throw new Exception('Resource not found');
+    }
+    
+    // Delete from database
+    $stmt = $db->prepare("DELETE FROM library_resources WHERE id = :id");
+    $stmt->bindParam(':id', $data['id']);
+    
+    if ($stmt->execute()) {
+        // Try to delete physical file
+        if ($resource['file_url']) {
+            $filePath = __DIR__ . '/../../' . $resource['file_url'];
+            if (file_exists($filePath)) {
+                @unlink($filePath);
+            }
+        }
+        
+        echo json_encode([
+            'success' => true,
+            'message' => 'Resource deleted successfully'
+        ]);
+    } else {
+        throw new Exception('Failed to delete resource');
+    }
+    
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Error: ' . $e->getMessage()
+    ]);
 }
-?>

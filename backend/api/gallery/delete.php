@@ -1,45 +1,62 @@
 <?php
-include_once '../config/cors.php';
-include_once '../config/database.php';
-include_once '../utils/auth_middleware.php';
-include_once '../utils/response.php';
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, DELETE');
+header('Access-Control-Allow-Headers: Content-Type');
 
-$user = verifyToken();
-requireAdmin($user);
+require_once '../config/Database.php';
+require_once '../middleware/auth_middleware.php';
 
-$image_id = isset($_GET['id']) ? $_GET['id'] : '';
-
-if (empty($image_id)) {
-    sendError("Image ID is required", null, 400);
-    exit();
+// Check authentication
+if (!isAuthenticated()) {
+    http_response_code(401);
+    echo json_encode(['success' => false, 'message' => 'Unauthorized']);
+    exit;
 }
 
-$database = new Database();
-$db = $database->getConnection();
-
-$check_query = "SELECT image_url FROM gallery_images WHERE id = :id";
-$check_stmt = $db->prepare($check_query);
-$check_stmt->bindParam(":id", $image_id);
-$check_stmt->execute();
-
-if ($check_stmt->rowCount() == 0) {
-    sendError("Image not found", null, 404);
-    exit();
-}
-
-$image = $check_stmt->fetch(PDO::FETCH_ASSOC);
-
-$query = "DELETE FROM gallery_images WHERE id = :id";
-$stmt = $db->prepare($query);
-$stmt->bindParam(":id", $image_id);
-
-if ($stmt->execute()) {
-    if (!empty($image['image_url']) && file_exists("../../" . $image['image_url'])) {
-        unlink("../../" . $image['image_url']);
+try {
+    $data = json_decode(file_get_contents('php://input'), true);
+    
+    if (empty($data['id'])) {
+        throw new Exception('Image ID is required');
     }
     
-    sendSuccess("Image deleted successfully");
-} else {
-    sendError("Failed to delete image", null, 500);
+    $database = new Database();
+    $db = $database->getConnection();
+    
+    // Get image info first
+    $stmt = $db->prepare("SELECT image_url FROM gallery_images WHERE id = :id");
+    $stmt->bindParam(':id', $data['id']);
+    $stmt->execute();
+    $image = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    if (!$image) {
+        throw new Exception('Image not found');
+    }
+    
+    // Delete from database
+    $stmt = $db->prepare("DELETE FROM gallery_images WHERE id = :id");
+    $stmt->bindParam(':id', $data['id']);
+    
+    if ($stmt->execute()) {
+        // Try to delete physical file
+        $filePath = __DIR__ . '/../../' . $image['image_url'];
+        if (file_exists($filePath)) {
+            @unlink($filePath);
+        }
+        
+        echo json_encode([
+            'success' => true,
+            'message' => 'Image deleted successfully'
+        ]);
+    } else {
+        throw new Exception('Failed to delete image');
+    }
+    
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Error: ' . $e->getMessage()
+    ]);
 }
-?>

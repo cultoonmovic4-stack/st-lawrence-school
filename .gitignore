@@ -1,0 +1,29 @@
+# Environment variables (NEVER commit this file)
+.env
+
+# Uploaded files
+backend/uploads/
+library_pdfs/*.pdf
+
+# Vendor dependencies
+backend/vendor/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+error_log
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
