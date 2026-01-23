@@ -2411,6 +2411,8 @@ img {
     
     .hamburger {
         display: flex;
+        margin-left: auto;
+        justify-self: end;
     }
     
     .hamburger span {
@@ -5817,6 +5819,8 @@ img {
         padding: 8px;
         z-index: 100000;
         position: relative;
+        margin-left: auto;
+        justify-self: end;
     }
     
     .hamburger span {
