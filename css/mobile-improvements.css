@@ -1394,3 +1394,294 @@
         font-size: 16px; /* Prevents zoom on iOS */
     }
 }
+
+
+/* ========================================
+   TEACHERS PAGE MOBILE OPTIMIZATIONS
+   ======================================== */
+
+/* ========== EXTRA SMALL DEVICES (320px - 480px) ========== */
+@media (max-width: 480px) {
+    /* Department Filter Buttons */
+    .department-filters {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 0 15px;
+    }
+    
+    .dept-filter-btn {
+        padding: 12px 10px;
+        font-size: 12px;
+        min-height: 48px;
+    }
+    
+    .dept-filter-btn i {
+        font-size: 16px;
+        margin-bottom: 4px;
+    }
+    
+    .dept-filter-btn span {
+        font-size: 11px;
+    }
+    
+    /* Teachers Grid */
+    .teachers-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+    }
+    
+    /* Teacher Cards */
+    .teacher-card {
+        max-width: 100%;
+    }
+    
+    .teacher-image {
+        height: 280px;
+    }
+    
+    .teacher-info {
+        padding: 20px 15px;
+    }
+    
+    .teacher-name {
+        font-size: 18px;
+    }
+    
+    .teacher-title {
+        font-size: 13px;
+    }
+    
+    .teacher-department {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    
+    .teacher-bio {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+    
+    /* Teacher Contact Buttons */
+    .teacher-contact {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .contact-btn {
+        width: 100%;
+        justify-content: center;
+        min-height: 44px;
+    }
+    
+    /* Teacher Stats */
+    .teacher-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .stat-item {
+        padding: 12px;
+    }
+    
+    .stat-number {
+        font-size: 20px;
+    }
+    
+    .stat-label {
+        font-size: 11px;
+    }
+}
+
+/* ========== SMALL MOBILE (481px - 768px) ========== */
+@media (min-width: 481px) and (max-width: 768px) {
+    .department-filters {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+    
+    .dept-filter-btn {
+        padding: 14px 12px;
+        font-size: 13px;
+    }
+    
+    .teachers-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    .teacher-image {
+        height: 300px;
+    }
+}
+
+/* ========== TABLETS (769px - 1024px) ========== */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .department-filters {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .dept-filter-btn {
+        flex: 0 0 auto;
+        min-width: 140px;
+    }
+    
+    .teachers-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    
+    .teacher-image {
+        height: 320px;
+    }
+}
+
+/* ========== LANDSCAPE ORIENTATION ========== */
+@media (max-width: 768px) and (orientation: landscape) {
+    .department-filters {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    .dept-filter-btn {
+        padding: 10px 8px;
+        font-size: 12px;
+    }
+    
+    .dept-filter-btn i {
+        font-size: 14px;
+    }
+    
+    .teacher-image {
+        height: 250px;
+    }
+}
+
+/* ========== TECNO PHONES OPTIMIZATION ========== */
+@media (min-width: 360px) and (max-width: 450px) {
+    .department-filters {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .dept-filter-btn {
+        padding: 14px 12px;
+        min-height: 50px;
+    }
+    
+    .dept-filter-btn span {
+        font-size: 12px;
+    }
+    
+    .teacher-card {
+        border-radius: 16px;
+    }
+    
+    .teacher-image {
+        height: 300px;
+        border-radius: 16px 16px 0 0;
+    }
+    
+    .teacher-name {
+        font-size: 19px;
+    }
+}
+
+/* ========== GALAXY TAB OPTIMIZATION ========== */
+@media (min-width: 800px) and (max-width: 1024px) {
+    .department-filters {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .dept-filter-btn {
+        flex: 0 0 auto;
+        min-width: 150px;
+        padding: 16px 20px;
+    }
+    
+    .teachers-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+    
+    .teacher-image {
+        height: 280px;
+    }
+}
+
+/* ========== GALAXY TAB PORTRAIT MODE ========== */
+@media (min-width: 700px) and (max-width: 800px) and (orientation: portrait) {
+    .teachers-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    .teacher-image {
+        height: 320px;
+    }
+}
+
+/* ========== TOUCH-FRIENDLY IMPROVEMENTS ========== */
+@media (max-width: 768px) {
+    /* Ensure all interactive elements are touch-friendly */
+    .dept-filter-btn {
+        min-height: 48px;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .contact-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .teacher-card {
+        -webkit-tap-highlight-color: transparent;
+        transition: transform 0.2s ease;
+    }
+    
+    .teacher-card:active {
+        transform: scale(0.98);
+    }
+    
+    /* Improve text readability */
+    .teacher-bio {
+        line-height: 1.7;
+    }
+    
+    /* Better spacing for mobile */
+    .teachers-departments-section {
+        padding: 60px 0;
+    }
+    
+    .section-header {
+        padding: 0 15px;
+        margin-bottom: 30px;
+    }
+    
+    .section-title {
+        font-size: 26px;
+        line-height: 1.3;
+    }
+    
+    .section-subtitle {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+}
+
+/* ========== PREVENT TEXT SELECTION ON BUTTONS ========== */
+@media (max-width: 768px) {
+    .dept-filter-btn,
+    .contact-btn {
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+    }
+}
