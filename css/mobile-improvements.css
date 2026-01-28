@@ -1061,3 +1061,336 @@
         max-width: 280px;
     }
 }
+
+
+/* ========================================
+   ABOUT PAGE MOBILE OPTIMIZATIONS
+   ======================================== */
+
+/* ========== EXTRA SMALL DEVICES (320px - 480px) ========== */
+@media (max-width: 480px) {
+    /* Page Hero */
+    .page-hero {
+        min-height: 300px;
+        padding: 80px 0 40px;
+    }
+    
+    .page-hero-title {
+        font-size: 28px;
+    }
+    
+    .breadcrumb {
+        font-size: 13px;
+    }
+    
+    /* Story Section */
+    .story-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .story-stats {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .stat-number-story {
+        font-size: 32px;
+    }
+    
+    /* Mission Vision Section */
+    .mvv-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .mvv-card {
+        padding: 25px 20px;
+    }
+    
+    .mvv-title-section h3 {
+        font-size: 18px;
+    }
+    
+    .mvv-features {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .motto-text-large {
+        font-size: 24px;
+    }
+    
+    /* Values Section */
+    .values-grid-advanced {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .value-card-advanced {
+        padding: 25px 20px;
+    }
+    
+    .value-card-advanced h3 {
+        font-size: 18px;
+    }
+    
+    /* History Timeline */
+    .history-timeline {
+        padding-left: 20px;
+    }
+    
+    .history-item {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .history-item.left,
+    .history-item.right {
+        grid-template-columns: 1fr;
+    }
+    
+    .history-card {
+        padding: 20px;
+    }
+    
+    .history-year {
+        font-size: 32px;
+    }
+    
+    /* Apply Process Section */
+    .apply-process-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .process-steps-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .process-step-card {
+        padding: 25px 20px;
+    }
+    
+    /* CTA Banner */
+    .apply-cta-banner {
+        padding: 30px 20px;
+    }
+    
+    .cta-buttons-group {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+    
+    .btn-cta-download,
+    .btn-cta-contact {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Virtual Tour Section */
+    .tour-content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .tour-features {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .tour-cta-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .btn-schedule-visit,
+    .btn-view-gallery-tour {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Contact Form */
+    .contact-form-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .form-grid-advanced {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========== SMALL MOBILE (481px - 768px) ========== */
+@media (min-width: 481px) and (max-width: 768px) {
+    .page-hero-title {
+        font-size: 36px;
+    }
+    
+    .story-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .mvv-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .values-grid-advanced {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .process-steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .tour-features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ========== TABLETS (769px - 1024px) ========== */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .page-hero {
+        min-height: 400px;
+    }
+    
+    .story-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .mvv-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .values-grid-advanced {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    .history-item {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .apply-process-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .process-steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .tour-content-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========== LANDSCAPE ORIENTATION ========== */
+@media (max-width: 768px) and (orientation: landscape) {
+    .page-hero {
+        min-height: 250px;
+        padding: 60px 0 30px;
+    }
+    
+    .page-hero-title {
+        font-size: 24px;
+    }
+    
+    .mvv-card {
+        padding: 20px;
+    }
+    
+    .value-card-advanced {
+        padding: 20px;
+    }
+}
+
+/* ========== TECNO PHONES OPTIMIZATION ========== */
+@media (min-width: 360px) and (max-width: 450px) {
+    /* Tecno Spark, Camon series */
+    .page-hero-title {
+        font-size: 30px;
+        line-height: 1.3;
+    }
+    
+    .mvv-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .value-card-advanced {
+        min-height: auto;
+    }
+    
+    .history-card h3 {
+        font-size: 18px;
+    }
+    
+    .process-step-card h3 {
+        font-size: 18px;
+    }
+}
+
+/* ========== GALAXY TAB OPTIMIZATION ========== */
+@media (min-width: 800px) and (max-width: 1024px) {
+    .story-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+    
+    .mvv-layout {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .values-grid-advanced {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .process-steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    .tour-content-wrapper {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ========== TOUCH-FRIENDLY IMPROVEMENTS ========== */
+@media (max-width: 768px) {
+    /* Ensure all buttons are touch-friendly */
+    .btn-step-action,
+    .btn-cta-download,
+    .btn-cta-contact,
+    .btn-schedule-visit,
+    .btn-view-gallery-tour,
+    .btn-submit-form-advanced {
+        min-height: 48px;
+        padding: 14px 24px;
+        font-size: 15px;
+    }
+    
+    /* Play button for video */
+    .play-button {
+        width: 70px;
+        height: 70px;
+    }
+    
+    /* Social links */
+    .social-links a {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+    
+    /* Form inputs */
+    .form-group-advanced input,
+    .form-group-advanced textarea {
+        min-height: 48px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
