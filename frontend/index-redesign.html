@@ -27,10 +27,31 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/redesign-style.css?v=2.0">
     
+    <!-- Mobile Improvements CSS -->
+    <link rel="stylesheet" href="../css/mobile-improvements.css?v=1.0">
+    
     <!-- Chatbot CSS -->
     <link rel="stylesheet" href="../css/chatbot.css?v=16.0">
+    
+    <!-- Page Loader CSS -->
+    <link rel="stylesheet" href="../css/page-loader.css">
 </head>
 <body>
+    
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-logo">
+            <img src="../img/5.jpg" alt="St. Lawrence Logo">
+        </div>
+        <div class="loader-text">ST. LAWRENCE</div>
+        <div class="loader-subtitle">Junior School - Kabowa</div>
+        <div class="loader-spinner"></div>
+        <div class="loader-dots">
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+        </div>
+    </div>
     
     <!-- Header / Navigation -->
     <header class="header" id="header">
@@ -140,13 +161,15 @@
                         <h1 class="hero-title">Excellence in Education<br>Since 2010</h1>
                         <p class="hero-description">St. Lawrence Junior School Kabowa is a premier mixed day and boarding primary school offering quality education with academic excellence. We provide both nursery and primary education in a nurturing environment where every child can thrive and reach their full potential.</p>
                         <div class="hero-buttons">
-                            <a href="Admission-redesign.html" class="btn btn-primary">
+                            <a href="Admission-redesign.html" class="btn btn-primary hero-cta-btn" data-action="apply-admission">
                                 <i class="fas fa-user-plus"></i>
                                 <span>Apply for Admission</span>
+                                <span class="btn-ripple"></span>
                             </a>
-                            <a href="About-redesign.html" class="btn btn-secondary">
+                            <a href="About-redesign.html" class="btn btn-secondary hero-cta-btn" data-action="learn-more">
                                 <i class="fas fa-info-circle"></i>
                                 <span>Learn More About Us</span>
+                                <span class="btn-ripple"></span>
                             </a>
                         </div>
                     </div>
@@ -226,9 +249,10 @@
                     <h2 class="about-title">About St. Lawrence Junior School</h2>
                     <p class="about-paragraph">St. Lawrence Junior School Kabowa is a premier mixed day and boarding primary school that combines academic excellence with holistic development. Established in 2010, we offer both nursery and primary education in a nurturing environment.</p>
                     <p class="about-paragraph">We maintain our commitment to fostering an inclusive learning environment where every child can thrive and reach their full potential. Our dedicated faculty and modern facilities ensure that students receive the best possible education while developing strong character and life skills.</p>
-                    <a href="About.html" class="about-cta-btn">
+                    <a href="About-redesign.html" class="about-cta-btn enhanced-btn" data-action="about-learn-more">
                         <span>Learn More</span>
                         <i class="fas fa-arrow-right"></i>
+                        <span class="btn-ripple"></span>
                     </a>
                 </div>
                 
@@ -278,7 +302,10 @@
                         </ul>
                     </div>
                     <div class="program-footer">
-                        <a href="Admission.html" class="program-btn">Learn More</a>
+                        <a href="Academics.html" class="program-btn enhanced-btn" data-action="nursery-program">
+                            <span>Learn More</span>
+                            <span class="btn-ripple"></span>
+                        </a>
                     </div>
                 </div>
 
@@ -302,7 +329,10 @@
                         </ul>
                     </div>
                     <div class="program-footer">
-                        <a href="Admission.html" class="program-btn">Learn More</a>
+                        <a href="Academics.html" class="program-btn enhanced-btn" data-action="primary-program">
+                            <span>Learn More</span>
+                            <span class="btn-ripple"></span>
+                        </a>
                     </div>
                 </div>
 
@@ -325,7 +355,10 @@
                         </ul>
                     </div>
                     <div class="program-footer">
-                        <a href="Admission.html" class="program-btn">Learn More</a>
+                        <a href="Academics.html" class="program-btn enhanced-btn" data-action="boarding-program">
+                            <span>Learn More</span>
+                            <span class="btn-ripple"></span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -522,21 +555,105 @@
                         <div class="signature-name">Kimera Emmanuel</div>
                         <div class="signature-title">School Director & Founder</div>
                     </div>
-
                     <div class="message-actions">
-                        <a href="About.html" class="message-btn primary">
+                        <a href="About-redesign.html" class="message-btn primary enhanced-btn" data-action="director-our-story">
                             <span>Our Story</span>
                             <i class="fas fa-arrow-right"></i>
+                            <span class="btn-ripple"></span>
                         </a>
-                        <a href="Contact-redesign.html" class="message-btn outline">
+                        <button type="button" 
+                                class="message-btn outline enhanced-btn" 
+                                data-action="director-contact" 
+                                id="contactDirectorBtn"
+                                onclick="document.getElementById('contactDirectorModal').classList.add('active'); document.body.style.overflow='hidden'; console.log('Modal opened via onclick');">
                             <span>Contact Director</span>
                             <i class="fas fa-envelope"></i>
-                        </a>
+                            <span class="btn-ripple"></span>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Contact Director Modal -->
+    <div class="contact-modal" id="contactDirectorModal">
+        <div class="contact-modal-overlay" onclick="document.getElementById('contactDirectorModal').classList.remove('active'); document.body.style.overflow='';"></div>
+        <div class="contact-modal-content">
+            <button class="contact-modal-close" id="closeContactModal" onclick="document.getElementById('contactDirectorModal').classList.remove('active'); document.body.style.overflow='';">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="contact-modal-header">
+                <div class="contact-modal-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>Contact Director</h3>
+                <p>Choose your preferred method to reach Mr. Kimera Emmanuel</p>
+            </div>
+            <div class="contact-modal-options">
+                <!-- WhatsApp Option -->
+                <a href="https://wa.me/256701420506?text=Hello%20Mr.%20Kimera,%20I%20would%20like%20to%20inquire%20about%20St.%20Lawrence%20Junior%20School" 
+                   class="contact-option whatsapp" 
+                   target="_blank"
+                   data-contact="whatsapp"
+                   onclick="setTimeout(function(){ document.getElementById('contactDirectorModal').classList.remove('active'); document.body.style.overflow=''; }, 300);">
+                    <div class="contact-option-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="contact-option-info">
+                        <h4>WhatsApp</h4>
+                        <p>+256 701 420 506</p>
+                    </div>
+                    <i class="fas fa-arrow-right contact-option-arrow"></i>
+                </a>
+                
+                <!-- Phone Call Option -->
+                <a href="tel:+256701420506" 
+                   class="contact-option phone" 
+                   data-contact="phone"
+                   onclick="setTimeout(function(){ document.getElementById('contactDirectorModal').classList.remove('active'); document.body.style.overflow=''; }, 300);">
+                    <div class="contact-option-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-option-info">
+                        <h4>Phone Call</h4>
+                        <p>+256 701 420 506</p>
+                    </div>
+                    <i class="fas fa-arrow-right contact-option-arrow"></i>
+                </a>
+                
+                <!-- Alternative Phone -->
+                <a href="tel:+256772420506" 
+                   class="contact-option phone" 
+                   data-contact="phone-alt"
+                   onclick="setTimeout(function(){ document.getElementById('contactDirectorModal').classList.remove('active'); document.body.style.overflow=''; }, 300);">
+                    <div class="contact-option-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-option-info">
+                        <h4>Alternative Phone</h4>
+                        <p>+256 772 420 506</p>
+                    </div>
+                    <i class="fas fa-arrow-right contact-option-arrow"></i>
+                </a>
+                
+                <!-- Email Option -->
+                <a href="mailto:stlawrencejuniorschoolkabowa@gmail.com?subject=Inquiry%20for%20Director&body=Dear%20Mr.%20Kimera,%0A%0A" 
+                   class="contact-option email" 
+                   data-contact="email"
+                   onclick="setTimeout(function(){ document.getElementById('contactDirectorModal').classList.remove('active'); document.body.style.overflow=''; }, 300);">
+                    <div class="contact-option-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-option-info">
+                        <h4>Email</h4>
+                        <p>stlawrencejuniorschoolkabowa@gmail.com</p>
+                    </div>
+                    <i class="fas fa-arrow-right contact-option-arrow"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Gallery Preview Section -->
     <section class="gallery-preview-section">
@@ -736,9 +853,10 @@
 
             <!-- View Gallery Button -->
             <div class="gallery-cta" data-aos="fade-up" data-aos-delay="550">
-                <a href="Gallery.html" class="view-gallery-btn">
+                <a href="Gallery-redesign.html" class="view-gallery-btn enhanced-btn" data-action="view-gallery">
                     <span>View Full Gallery</span>
                     <i class="fas fa-arrow-right"></i>
+                    <span class="btn-ripple"></span>
                 </a>
             </div>
         </div>
@@ -931,19 +1049,30 @@
             </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- CTA Section - Clean & Advanced -->
     <section class="cta-section">
+        <div class="cta-pattern-dots"></div>
+        
         <div class="container">
-            <div class="cta-content" data-aos="fade-up">
-                <div class="cta-icon">
-                    <i class="fas fa-file-alt"></i>
-                </div>
-                <h2 class="cta-title">Download Our Admission Form</h2>
-                <p class="cta-description">Get the admission form and take the first step towards enrolling your child at St. Lawrence Junior School</p>
-                <a href="../documents/admission-form.pdf" download class="cta-btn">
-                    <i class="fas fa-download"></i>
-                    <span>Download Admission Form</span>
+            <div class="cta-content-box" data-aos="fade-up">
+                <h2 class="cta-title">
+                    Shape Your Child's Future with
+                    <span class="cta-highlight">St. Lawrence</span>
+                </h2>
+                <p class="cta-subtitle">Join 650+ families who trust us for quality education and holistic development</p>
+                
+                <a href="Admission-redesign.html" class="cta-button enhanced-btn" data-action="cta-apply">
+                    <span class="btn-text">Start Application</span>
+                    <span class="btn-icon-circle">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                    <span class="btn-ripple"></span>
                 </a>
+                
+                <div class="cta-trust-line">
+                    <i class="fas fa-shield-check"></i>
+                    <span>Trusted by 650+ families • 14 years of excellence</span>
+                </div>
             </div>
         </div>
     </section>
@@ -979,11 +1108,11 @@
                 <div class="footer-col">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="About.html">About Us</a></li>
-                        <li><a href="Teachers.html">Teachers</a></li>
-                        <li><a href="Gallery.html">Gallery</a></li>
-                        <li><a href="Admission.html">Admission</a></li>
+                        <li><a href="index-redesign.html">Home</a></li>
+                        <li><a href="About-redesign.html">About Us</a></li>
+                        <li><a href="Teachers-redesign.html">Teachers</a></li>
+                        <li><a href="Gallery-redesign.html">Gallery</a></li>
+                        <li><a href="Admission-redesign.html">Admission</a></li>
                     </ul>
                 </div>
                 
@@ -991,11 +1120,11 @@
                 <div class="footer-col">
                     <h3>Programs</h3>
                     <ul>
-                        <li><a href="#">Nursery School</a></li>
-                        <li><a href="#">Primary School</a></li>
-                        <li><a href="#">Boarding</a></li>
-                        <li><a href="#">Day School</a></li>
-                        <li><a href="Library.html">Library</a></li>
+                        <li><a href="Academics.html">Nursery School</a></li>
+                        <li><a href="Academics.html">Primary School</a></li>
+                        <li><a href="Academics.html">Boarding</a></li>
+                        <li><a href="Academics.html">Day School</a></li>
+                        <li><a href="Library-redesign.html">Library</a></li>
                     </ul>
                 </div>
                 
@@ -1009,15 +1138,16 @@
                         </li>
                         <li>
                             <i class="fas fa-phone"></i>
-                            <span>+256 701 420 506 / +256 772 420 506</span>
+                            <a href="tel:+256701420506" class="contact-link">+256 701 420 506</a> / 
+                            <a href="tel:+256772420506" class="contact-link">+256 772 420 506</a>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <span>stlawrencejuniorschoolkabowa@gmail.com</span>
+                            <a href="mailto:stlawrencejuniorschoolkabowa@gmail.com" class="contact-link">stlawrencejuniorschoolkabowa@gmail.com</a>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <span>st.lawrence.juniorschool@yahoo.com</span>
+                            <a href="mailto:st.lawrence.juniorschool@yahoo.com" class="contact-link">st.lawrence.juniorschool@yahoo.com</a>
                         </li>
                     </ul>
                 </div>
@@ -1305,7 +1435,170 @@
             loadEventsBar();
             loadTestimonials();
             loadCalendarEvents();
+            
+            // Initialize Hero Button Enhancements
+            initHeroButtons();
+            
+            // Initialize About Section Button
+            initAboutButton();
+            
+            // Initialize Program Section Buttons
+            initProgramButtons();
+            
+            // Initialize Director's Message Buttons
+            initDirectorButtons();
+            
+            // Initialize Gallery Buttons
+            initGalleryButtons();
+            
+            // Initialize CTA Button
+            initCTAButton();
+            
+            // Initialize Footer Links
+            initFooterLinks();
         });
+        
+        // Hero Button Enhanced Functionality
+        function initHeroButtons() {
+            const heroButtons = document.querySelectorAll('.hero-cta-btn');
+            
+            heroButtons.forEach(button => {
+                // Ripple Effect on Click
+                button.addEventListener('click', function(e) {
+                    const ripple = this.querySelector('.btn-ripple');
+                    if (!ripple) return;
+                    
+                    // Get click position relative to button
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    // Set ripple position and size
+                    const size = Math.max(rect.width, rect.height);
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x - size / 2 + 'px';
+                    ripple.style.top = y - size / 2 + 'px';
+                    
+                    // Trigger ripple animation
+                    this.classList.add('ripple-active');
+                    
+                    // Remove ripple class after animation
+                    setTimeout(() => {
+                        this.classList.remove('ripple-active');
+                    }, 600);
+                    
+                    // Track button click
+                    const action = this.getAttribute('data-action');
+                    console.log(`Hero CTA clicked: ${action}`);
+                    
+                    // Optional: Send analytics
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'cta_click', {
+                            'event_category': 'Hero Section',
+                            'event_label': action,
+                            'value': 1
+                        });
+                    }
+                    
+                    // Don't add loading state - let browser navigate naturally
+                    // The page loader on the target page will handle the loading state
+                });
+                
+                // Add hover effect
+                button.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                });
+            });
+        }
+        
+        // About Section Button Enhanced Functionality
+        function initAboutButton() {
+            const aboutBtn = document.querySelector('.about-cta-btn.enhanced-btn');
+            if (!aboutBtn) return;
+            
+            // Ripple Effect on Click
+            aboutBtn.addEventListener('click', function(e) {
+                const ripple = this.querySelector('.btn-ripple');
+                if (!ripple) return;
+                
+                // Get click position relative to button
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // Set ripple position and size
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x - size / 2 + 'px';
+                ripple.style.top = y - size / 2 + 'px';
+                
+                // Trigger ripple animation
+                this.classList.add('ripple-active');
+                
+                // Remove ripple class after animation
+                setTimeout(() => {
+                    this.classList.remove('ripple-active');
+                }, 600);
+                
+                // Track button click
+                const action = this.getAttribute('data-action');
+                console.log(`About section CTA clicked: ${action}`);
+                
+                // Optional: Send analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'cta_click', {
+                        'event_category': 'About Section',
+                        'event_label': action,
+                        'value': 1
+                    });
+                }
+            });
+        }
+        
+        // Program Section Buttons Enhanced Functionality
+        function initProgramButtons() {
+            const programBtns = document.querySelectorAll('.program-btn.enhanced-btn');
+            
+            programBtns.forEach(button => {
+                // Ripple Effect on Click
+                button.addEventListener('click', function(e) {
+                    const ripple = this.querySelector('.btn-ripple');
+                    if (!ripple) return;
+                    
+                    // Get click position relative to button
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    // Set ripple position and size
+                    const size = Math.max(rect.width, rect.height);
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x - size / 2 + 'px';
+                    ripple.style.top = y - size / 2 + 'px';
+                    
+                    // Trigger ripple animation
+                    this.classList.add('ripple-active');
+                    
+                    // Remove ripple class after animation
+                    setTimeout(() => {
+                        this.classList.remove('ripple-active');
+                    }, 600);
+                    
+                    // Track button click
+                    const action = this.getAttribute('data-action');
+                    console.log(`Program CTA clicked: ${action}`);
+                    
+                    // Optional: Send analytics
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'cta_click', {
+                            'event_category': 'Programs Section',
+                            'event_label': action,
+                            'value': 1
+                        });
+                    }
+                });
+            });
+        }
     </script>
 
     <!-- Academic Calendar JavaScript -->
@@ -1336,7 +1629,357 @@
                 });
             });
         });
+        
+        // Director's Message Buttons Enhanced Functionality
+        function initDirectorButtons() {
+            console.log('=== INIT DIRECTOR BUTTONS START ===');
+            
+            const contactDirectorBtn = document.getElementById('contactDirectorBtn');
+            const contactModal = document.getElementById('contactDirectorModal');
+            const closeModalBtn = document.getElementById('closeContactModal');
+            const modalOverlay = document.querySelector('.contact-modal-overlay');
+            
+            console.log('Contact Button:', contactDirectorBtn);
+            console.log('Modal:', contactModal);
+            console.log('Close Button:', closeModalBtn);
+            console.log('Overlay:', modalOverlay);
+            
+            // Test if button exists
+            if (!contactDirectorBtn) {
+                console.error('ERROR: Contact Director button not found!');
+                return;
+            }
+            
+            if (!contactModal) {
+                console.error('ERROR: Contact modal not found!');
+                return;
+            }
+            
+            // Simple click handler
+            contactDirectorBtn.onclick = function(e) {
+                console.log('BUTTON CLICKED!');
+                e.preventDefault();
+                e.stopPropagation();
+                
+                console.log('Adding active class to modal...');
+                contactModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                console.log('Modal is now active!');
+            };
+            
+            // Close modal function
+            function closeModal() {
+                console.log('Closing modal...');
+                if (contactModal) {
+                    contactModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+            
+            // Close on X button
+            if (closeModalBtn) {
+                closeModalBtn.onclick = closeModal;
+            }
+            
+            // Close on overlay click
+            if (modalOverlay) {
+                modalOverlay.onclick = closeModal;
+            }
+            
+            // Close on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && contactModal && contactModal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+            
+            // Handle other director buttons (Our Story)
+            const directorBtns = document.querySelectorAll('.message-btn.enhanced-btn');
+            directorBtns.forEach(button => {
+                // Skip the contact director button
+                if (button.id === 'contactDirectorBtn') {
+                    return;
+                }
+                
+                // Ripple Effect on Click for other buttons
+                button.addEventListener('click', function(e) {
+                    const ripple = this.querySelector('.btn-ripple');
+                    if (!ripple) return;
+                    
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const size = Math.max(rect.width, rect.height);
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x - size / 2 + 'px';
+                    ripple.style.top = y - size / 2 + 'px';
+                    
+                    this.classList.add('ripple-active');
+                    
+                    setTimeout(() => {
+                        this.classList.remove('ripple-active');
+                    }, 600);
+                });
+            });
+            
+            // Track contact option clicks
+            const contactOptions = document.querySelectorAll('.contact-option');
+            console.log('Contact options found:', contactOptions.length);
+            
+            contactOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const contactType = this.getAttribute('data-contact');
+                    console.log(`Contact option clicked: ${contactType}`);
+                    setTimeout(closeModal, 300);
+                });
+            });
+            
+            console.log('=== INIT DIRECTOR BUTTONS END ===');
+        }
+        
+        // Gallery Section Buttons Enhanced Functionality
+        function initGalleryButtons() {
+            console.log('=== INIT GALLERY BUTTONS START ===');
+            
+            const viewGalleryBtn = document.querySelector('.view-gallery-btn.enhanced-btn');
+            const zoomButtons = document.querySelectorAll('.zoom-btn');
+            
+            // View Gallery Button - Ripple Effect
+            if (viewGalleryBtn) {
+                viewGalleryBtn.addEventListener('click', function(e) {
+                    const ripple = this.querySelector('.btn-ripple');
+                    if (!ripple) return;
+                    
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const size = Math.max(rect.width, rect.height);
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x - size / 2 + 'px';
+                    ripple.style.top = y - size / 2 + 'px';
+                    
+                    this.classList.add('ripple-active');
+                    
+                    setTimeout(() => {
+                        this.classList.remove('ripple-active');
+                    }, 600);
+                    
+                    console.log('View Gallery button clicked');
+                });
+            }
+            
+            // Zoom Buttons - Simple Lightbox
+            zoomButtons.forEach((btn, index) => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Get the image from the parent gallery card
+                    const galleryCard = this.closest('.gallery-card');
+                    const img = galleryCard.querySelector('img');
+                    const title = galleryCard.querySelector('h4').textContent;
+                    const description = galleryCard.querySelector('p').textContent;
+                    
+                    if (img) {
+                        openLightbox(img.src, title, description);
+                    }
+                    
+                    console.log(`Zoom button ${index + 1} clicked`);
+                });
+            });
+            
+            console.log(`Gallery buttons initialized: ${zoomButtons.length} zoom buttons`);
+        }
+        
+        // Simple Lightbox Function
+        function openLightbox(imageSrc, title, description) {
+            // Create lightbox if it doesn't exist
+            let lightbox = document.getElementById('galleryLightbox');
+            
+            if (!lightbox) {
+                lightbox = document.createElement('div');
+                lightbox.id = 'galleryLightbox';
+                lightbox.className = 'gallery-lightbox';
+                lightbox.innerHTML = `
+                    <div class="lightbox-overlay" onclick="closeLightbox()"></div>
+                    <div class="lightbox-content">
+                        <button class="lightbox-close" onclick="closeLightbox()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <img class="lightbox-image" src="" alt="">
+                        <div class="lightbox-info">
+                            <h3 class="lightbox-title"></h3>
+                            <p class="lightbox-description"></p>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(lightbox);
+                
+                // Close on Escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                        closeLightbox();
+                    }
+                });
+            }
+            
+            // Update lightbox content
+            lightbox.querySelector('.lightbox-image').src = imageSrc;
+            lightbox.querySelector('.lightbox-title').textContent = title;
+            lightbox.querySelector('.lightbox-description').textContent = description;
+            
+            // Show lightbox
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            const lightbox = document.getElementById('galleryLightbox');
+            if (lightbox) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+        
+        // CTA Section Button Enhanced Functionality
+        function initCTAButton() {
+            const ctaBtn = document.querySelector('.cta-button.enhanced-btn');
+            if (!ctaBtn) return;
+            
+            // Ripple Effect on Click
+            ctaBtn.addEventListener('click', function(e) {
+                const ripple = this.querySelector('.btn-ripple');
+                if (!ripple) return;
+                
+                // Get click position relative to button
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // Set ripple position and size
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x - size / 2 + 'px';
+                ripple.style.top = y - size / 2 + 'px';
+                
+                // Trigger ripple animation
+                this.classList.add('ripple-active');
+                
+                // Remove ripple class after animation
+                setTimeout(() => {
+                    this.classList.remove('ripple-active');
+                }, 600);
+                
+                // Track button click
+                const action = this.getAttribute('data-action');
+                console.log(`CTA button clicked: ${action}`);
+                
+                // Optional: Send analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'cta_click', {
+                        'event_category': 'CTA Section',
+                        'event_label': action,
+                        'value': 1
+                    });
+                }
+            });
+        }
+        
+        // Footer Links Enhanced Functionality
+        function initFooterLinks() {
+            console.log('=== INIT FOOTER LINKS START ===');
+            
+            // Get all footer navigation links
+            const footerLinks = document.querySelectorAll('.footer-col ul li a');
+            const contactLinks = document.querySelectorAll('.contact-link');
+            const socialLinks = document.querySelectorAll('.social-links a');
+            const developerLinks = document.querySelectorAll('.developer-link');
+            
+            console.log(`Footer links found: ${footerLinks.length}`);
+            console.log(`Contact links found: ${contactLinks.length}`);
+            console.log(`Social links found: ${socialLinks.length}`);
+            console.log(`Developer links found: ${developerLinks.length}`);
+            
+            // Add click tracking for footer navigation links
+            footerLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const linkText = this.textContent.trim();
+                    const linkHref = this.getAttribute('href');
+                    console.log(`Footer link clicked: ${linkText} -> ${linkHref}`);
+                    
+                    // Optional: Send analytics
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'footer_link_click', {
+                            'event_category': 'Footer Navigation',
+                            'event_label': linkText,
+                            'value': 1
+                        });
+                    }
+                });
+            });
+            
+            // Add click tracking for contact links (phone/email)
+            contactLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const linkType = this.getAttribute('href').startsWith('tel:') ? 'Phone' : 'Email';
+                    const linkValue = this.textContent.trim();
+                    console.log(`Contact link clicked: ${linkType} - ${linkValue}`);
+                    
+                    // Optional: Send analytics
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'contact_click', {
+                            'event_category': 'Footer Contact',
+                            'event_label': `${linkType}: ${linkValue}`,
+                            'value': 1
+                        });
+                    }
+                });
+            });
+            
+            // Add click tracking for social media links
+            socialLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const platform = this.getAttribute('aria-label');
+                    console.log(`Social link clicked: ${platform}`);
+                    
+                    // Optional: Send analytics
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'social_click', {
+                            'event_category': 'Footer Social',
+                            'event_label': platform,
+                            'value': 1
+                        });
+                    }
+                });
+            });
+            
+            // Add click tracking for developer links
+            developerLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const linkType = this.getAttribute('href').startsWith('tel:') ? 'Phone' : 'Email';
+                    const linkValue = this.textContent.trim();
+                    console.log(`Developer link clicked: ${linkType} - ${linkValue}`);
+                    
+                    // Optional: Send analytics
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'developer_contact_click', {
+                            'event_category': 'Footer Developer',
+                            'event_label': `${linkType}: ${linkValue}`,
+                            'value': 1
+                        });
+                    }
+                });
+            });
+            
+            console.log('=== INIT FOOTER LINKS END ===');
+        }
+    </script>
 
+    <!-- Testimonials & Calendar Scripts -->
+    <script>
         // Testimonials Carousel Functionality
         document.addEventListener('DOMContentLoaded', function() {
             const testimonialCards = document.querySelectorAll('.testimonial-card');
@@ -1696,5 +2339,8 @@
     
     <!-- Chatbot JavaScript -->
     <script src="../js/chatbot.js?v=4.0"></script>
+    
+    <!-- Page Loader Script -->
+    <script src="../js/page-loader.js"></script>
 </body>
 </html>

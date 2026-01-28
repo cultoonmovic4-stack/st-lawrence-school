@@ -3319,6 +3319,7 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 20%; /* Show face, not top of head */
     transition: transform 0.3s ease;
 }
 
@@ -4441,6 +4442,19 @@ img {
     margin-top: 3px;
     font-size: 18px;
     min-width: 18px;
+}
+
+/* Contact Links in Footer */
+.contact-link {
+    color: #b3b3b3;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline;
+}
+
+.contact-link:hover {
+    color: var(--primary-blue);
+    text-decoration: underline;
 }
 
 /* Footer Copyright Section */
@@ -11207,6 +11221,7 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 20%; /* Show face, not top of head */
     transition: transform 0.6s ease;
 }
 
@@ -13195,8 +13210,6 @@ img {
     font-size: 14px;
 }
 
-}
-
 .timeline-card {
     background: #fff;
     border-radius: 20px;
@@ -14173,7 +14186,6 @@ img {
     .faq-answer p {
         font-size: 0.85rem;
     }
-}
     
     .contact-info-title {
         font-size: 1.6rem;
@@ -16056,6 +16068,7 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 20%; /* Show face, not top of head */
     transition: transform 0.5s ease;
 }
 
@@ -16497,6 +16510,7 @@ img {
 
 /* ========== ADMISSION PAGE STYLES ========== */
 
+.requirement-modern-card {
     overflow: hidden;
 }
 
@@ -17971,3 +17985,1162 @@ img {
         opacity: 1;
     }
 }
+
+
+/* ========================================
+   ENHANCED HERO BUTTON ANIMATIONS
+   ======================================== */
+
+.hero-cta-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+}
+
+.hero-cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(0, 102, 204, 0.3);
+}
+
+.hero-cta-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(0, 102, 204, 0.2);
+}
+
+/* Ripple Effect */
+.btn-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    pointer-events: none;
+}
+
+.hero-cta-btn.ripple-active .btn-ripple {
+    animation: ripple-animation 0.6s ease-out;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Loading State */
+.hero-cta-btn.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.hero-cta-btn.loading i {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Icon Animation on Hover */
+.hero-cta-btn i {
+    transition: transform 0.3s ease;
+}
+
+.hero-cta-btn:hover i {
+    transform: translateX(3px);
+}
+
+.btn-secondary:hover i {
+    transform: scale(1.1);
+}
+
+/* Pulse Animation for Primary Button */
+.btn-primary.hero-cta-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.btn-primary.hero-cta-btn:hover::before {
+    opacity: 1;
+}
+
+/* Shine Effect */
+.hero-cta-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.hero-cta-btn:hover::after {
+    left: 100%;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .hero-cta-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .hero-cta-btn:hover {
+        transform: translateY(-2px);
+    }
+}
+
+
+/* ========================================
+   ENHANCED ABOUT SECTION BUTTON
+   ======================================== */
+
+.about-cta-btn.enhanced-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.about-cta-btn.enhanced-btn:hover {
+    transform: translateX(5px);
+    box-shadow: 0 8px 16px rgba(0, 102, 204, 0.2);
+}
+
+.about-cta-btn.enhanced-btn:active {
+    transform: translateX(3px);
+}
+
+/* Arrow Animation */
+.about-cta-btn.enhanced-btn i {
+    transition: transform 0.3s ease;
+}
+
+.about-cta-btn.enhanced-btn:hover i {
+    transform: translateX(5px);
+    animation: arrow-bounce 0.6s ease infinite;
+}
+
+@keyframes arrow-bounce {
+    0%, 100% {
+        transform: translateX(5px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+}
+
+/* Ripple Effect */
+.about-cta-btn.enhanced-btn .btn-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 102, 204, 0.4);
+    transform: scale(0);
+    pointer-events: none;
+}
+
+.about-cta-btn.enhanced-btn.ripple-active .btn-ripple {
+    animation: ripple-animation 0.6s ease-out;
+}
+
+/* Underline Effect */
+.about-cta-btn.enhanced-btn::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-blue);
+    transition: width 0.4s ease;
+}
+
+.about-cta-btn.enhanced-btn:hover::before {
+    width: 100%;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .about-cta-btn.enhanced-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 15px 30px;
+    }
+}
+
+
+/* ========================================
+   ENHANCED PROGRAM SECTION BUTTONS
+   ======================================== */
+
+.program-btn.enhanced-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.program-btn.enhanced-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 102, 204, 0.25);
+}
+
+.program-btn.enhanced-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Ripple Effect */
+.program-btn.enhanced-btn .btn-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(0);
+    pointer-events: none;
+}
+
+.program-btn.enhanced-btn.ripple-active .btn-ripple {
+    animation: ripple-animation 0.6s ease-out;
+}
+
+/* Gradient Shift on Hover */
+.program-btn.enhanced-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.program-btn.enhanced-btn:hover::before {
+    left: 100%;
+}
+
+/* Scale Animation for Featured Card Button */
+.program-card.featured .program-btn.enhanced-btn {
+    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    color: white;
+    font-weight: 600;
+}
+
+.program-card.featured .program-btn.enhanced-btn:hover {
+    background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+    box-shadow: 0 12px 24px rgba(0, 102, 204, 0.35);
+}
+
+/* Pulse Animation for Featured Button */
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(0, 102, 204, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(0, 102, 204, 0);
+    }
+}
+
+.program-card.featured .program-btn.enhanced-btn {
+    animation: pulse-glow 2s infinite;
+}
+
+.program-card.featured .program-btn.enhanced-btn:hover {
+    animation: none;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .program-btn.enhanced-btn {
+        padding: 14px 28px;
+        font-size: 15px;
+    }
+}
+
+
+/* ========================================
+   ENHANCED DIRECTOR'S MESSAGE BUTTONS
+   ======================================== */
+
+.message-btn.enhanced-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Primary Button (Our Story) */
+.message-btn.primary.enhanced-btn {
+    background: var(--gradient-primary);
+    color: white;
+}
+
+.message-btn.primary.enhanced-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 102, 204, 0.3);
+}
+
+.message-btn.primary.enhanced-btn:active {
+    transform: translateY(-1px) scale(1.01);
+}
+
+/* Outline Button (Contact Director) */
+.message-btn.outline.enhanced-btn {
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+    background: transparent;
+}
+
+.message-btn.outline.enhanced-btn:hover {
+    background: var(--primary-blue);
+    color: white;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 102, 204, 0.25);
+}
+
+.message-btn.outline.enhanced-btn:active {
+    transform: translateY(-1px) scale(1.01);
+}
+
+/* Icon Animations */
+.message-btn.enhanced-btn i {
+    transition: transform 0.3s ease;
+}
+
+.message-btn.primary.enhanced-btn:hover i {
+    transform: translateX(5px);
+    animation: arrow-slide 0.6s ease infinite;
+}
+
+@keyframes arrow-slide {
+    0%, 100% {
+        transform: translateX(5px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+}
+
+.message-btn.outline.enhanced-btn:hover i {
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* Ripple Effect */
+.message-btn.enhanced-btn .btn-ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    pointer-events: none;
+}
+
+.message-btn.primary.enhanced-btn .btn-ripple {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.message-btn.outline.enhanced-btn .btn-ripple {
+    background: rgba(0, 102, 204, 0.3);
+}
+
+.message-btn.enhanced-btn.ripple-active .btn-ripple {
+    animation: ripple-animation 0.6s ease-out;
+}
+
+/* Shine Effect for Primary Button */
+.message-btn.primary.enhanced-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.message-btn.primary.enhanced-btn:hover::before {
+    left: 100%;
+}
+
+/* Border Animation for Outline Button */
+.message-btn.outline.enhanced-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--primary-blue);
+    z-index: -1;
+    transition: width 0.4s ease;
+}
+
+.message-btn.outline.enhanced-btn:hover::after {
+    width: 100%;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .message-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .message-btn.enhanced-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 15px 30px;
+    }
+}
+
+
+/* ========================================
+   CONTACT DIRECTOR MODAL
+   ======================================== */
+
+.contact-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.contact-modal.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.contact-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.contact-modal-content {
+    position: relative;
+    background: white;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 100%;
+    padding: 40px 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.contact-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: #f8f9fa;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: #666;
+    font-size: 18px;
+}
+
+.contact-modal-close:hover {
+    background: #dc3545;
+    color: white;
+    transform: rotate(90deg);
+}
+
+.contact-modal-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.contact-modal-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 36px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 102, 204, 0.3);
+}
+
+.contact-modal-header h3 {
+    font-size: 28px;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.contact-modal-header p {
+    color: var(--text-gray);
+    font-size: 15px;
+}
+
+.contact-modal-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-option {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    border: 2px solid transparent;
+}
+
+.contact-option:hover {
+    transform: translateX(5px);
+    border-color: var(--primary-blue);
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 102, 204, 0.1);
+}
+
+.contact-option-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.contact-option.whatsapp .contact-option-icon {
+    background: #25D366;
+    color: white;
+}
+
+.contact-option.phone .contact-option-icon {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.contact-option.email .contact-option-icon {
+    background: #dc3545;
+    color: white;
+}
+
+.contact-option-info {
+    flex: 1;
+}
+
+.contact-option-info h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.contact-option-info p {
+    font-size: 14px;
+    color: var(--text-gray);
+    margin: 0;
+}
+
+.contact-option-arrow {
+    color: var(--text-gray);
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.contact-option:hover .contact-option-arrow {
+    transform: translateX(5px);
+    color: var(--primary-blue);
+}
+
+/* Pulse Animation for WhatsApp */
+.contact-option.whatsapp .contact-option-icon {
+    animation: pulse-whatsapp 2s infinite;
+}
+
+@keyframes pulse-whatsapp {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+    }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .contact-modal-content {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+    
+    .contact-modal-header h3 {
+        font-size: 24px;
+    }
+    
+    .contact-option {
+        padding: 15px;
+    }
+    
+    .contact-option-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+}
+
+
+/* Fix for button element styling */
+button.message-btn {
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+button.message-btn.outline {
+    background: transparent;
+}
+
+
+/* ========================================
+   ENHANCED GALLERY SECTION BUTTONS
+   ======================================== */
+
+/* View Gallery Button */
+.view-gallery-btn.enhanced-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.view-gallery-btn.enhanced-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 102, 204, 0.3);
+}
+
+.view-gallery-btn.enhanced-btn:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+/* Arrow Animation */
+.view-gallery-btn.enhanced-btn i {
+    transition: transform 0.3s ease;
+}
+
+.view-gallery-btn.enhanced-btn:hover i {
+    transform: translateX(8px);
+    animation: arrow-pulse 0.6s ease infinite;
+}
+
+@keyframes arrow-pulse {
+    0%, 100% {
+        transform: translateX(8px);
+    }
+    50% {
+        transform: translateX(12px);
+    }
+}
+
+/* Ripple Effect */
+.view-gallery-btn.enhanced-btn .btn-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(0);
+    pointer-events: none;
+}
+
+.view-gallery-btn.enhanced-btn.ripple-active .btn-ripple {
+    animation: ripple-animation 0.6s ease-out;
+}
+
+/* Zoom Button Enhancement */
+.zoom-btn {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.zoom-btn:hover {
+    transform: scale(1.2) rotate(15deg);
+    background: var(--primary-blue);
+    box-shadow: 0 5px 15px rgba(0, 102, 204, 0.4);
+}
+
+.zoom-btn:active {
+    transform: scale(1.1) rotate(10deg);
+}
+
+.zoom-btn i {
+    transition: transform 0.3s ease;
+}
+
+.zoom-btn:hover i {
+    transform: scale(1.2);
+}
+
+/* Gallery Item Hover Effect */
+.gallery-card:hover .zoom-btn {
+    animation: zoom-bounce 0.6s ease;
+}
+
+@keyframes zoom-bounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .view-gallery-btn.enhanced-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 16px 32px;
+    }
+}
+
+
+/* ========================================
+   GALLERY LIGHTBOX
+   ======================================== */
+
+.gallery-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.gallery-lightbox.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+.lightbox-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 1200px;
+    width: 100%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: zoomIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    border: 2px solid white;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-close:hover {
+    background: var(--accent-red);
+    border-color: var(--accent-red);
+    transform: rotate(90deg);
+}
+
+.lightbox-image {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-info {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px 30px;
+    border-radius: 12px;
+    margin-top: 20px;
+    text-align: center;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox-title {
+    font-size: 24px;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.lightbox-description {
+    font-size: 16px;
+    color: var(--text-gray);
+    margin: 0;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .lightbox-close {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .lightbox-image {
+        max-height: 60vh;
+    }
+    
+    .lightbox-info {
+        padding: 20px;
+        margin-top: 15px;
+    }
+    
+    .lightbox-title {
+        font-size: 20px;
+    }
+    
+    .lightbox-description {
+        font-size: 14px;
+    }
+}
+
+
+/* ========================================
+   ADVANCED CTA SECTION REDESIGN
+   ======================================== */
+
+/* ========== CTA SECTION - CLEAN & ADVANCED ========== */
+.cta-section {
+    position: relative;
+    padding: 120px 0;
+    background: #0a1628;
+    overflow: hidden;
+}
+
+/* Animated Dot Pattern Background */
+.cta-pattern-dots {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle, rgba(0, 102, 204, 0.4) 2px, transparent 2px),
+        radial-gradient(circle, rgba(220, 53, 69, 0.3) 2px, transparent 2px);
+    background-size: 50px 50px, 80px 80px;
+    background-position: 0 0, 40px 40px;
+    opacity: 0.3;
+    animation: dotMove 20s linear infinite;
+}
+
+@keyframes dotMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+/* Content Box */
+.cta-content-box {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Title */
+.cta-title {
+    font-size: 52px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.cta-highlight {
+    color: #0066cc;
+    font-weight: 800;
+}
+
+/* Subtitle */
+.cta-subtitle {
+    font-size: 19px;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 45px;
+    line-height: 1.6;
+}
+
+/* CTA Button */
+.cta-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 45px;
+    background: linear-gradient(135deg, #0066cc, #0052a3);
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 40px rgba(0, 102, 204, 0.4);
+    margin-bottom: 30px;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 50px rgba(0, 102, 204, 0.5);
+    background: linear-gradient(135deg, #dc3545, #c82333);
+}
+
+.btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+.btn-icon-circle {
+    position: relative;
+    z-index: 2;
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+}
+
+.cta-button:hover .btn-icon-circle {
+    background: white;
+    transform: rotate(45deg);
+}
+
+.btn-icon-circle i {
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.cta-button:hover .btn-icon-circle i {
+    color: #dc3545;
+}
+
+/* Ripple Effect */
+.btn-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(0);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.cta-button.ripple-active .btn-ripple {
+    animation: ripple-animation 0.6s ease-out;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Trust Line */
+.cta-trust-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.cta-trust-line i {
+    color: #10b981;
+    font-size: 18px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 992px) {
+    .cta-section {
+        padding: 90px 0;
+    }
+    
+    .cta-title {
+        font-size: 42px;
+    }
+    
+    .cta-subtitle {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cta-section {
+        padding: 70px 0;
+    }
+    
+    .cta-title {
+        font-size: 36px;
+    }
+    
+    .cta-subtitle {
+        font-size: 16px;
+        margin-bottom: 35px;
+    }
+    
+    .cta-button {
+        padding: 18px 40px;
+        font-size: 16px;
+        width: 100%;
+        max-width: 350px;
+        justify-content: center;
+    }
+    
+    .cta-trust-line {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-section {
+        padding: 60px 0;
+    }
+    
+    .cta-title {
+        font-size: 30px;
+    }
+    
+    .cta-subtitle {
+        font-size: 15px;
+    }
+    
+    .cta-button {
+        padding: 16px 35px;
+        font-size: 15px;
+    }
+    
+    .cta-trust-line {
+        flex-direction: column;
+        gap: 5px;
+        font-size: 12px;
+    }
+}
+
+
+

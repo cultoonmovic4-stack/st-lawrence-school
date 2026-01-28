@@ -1,109 +1,221 @@
-# St. Lawrence Junior School - Kabowa
-## Complete School Management System with AI Assistant
+<div align="center">
+
+# 🏫 St. Lawrence Junior School - Kabowa
+### Complete School Management System with AI Assistant
+
+[![Status](https://img.shields.io/badge/Status-Production%20Ready-success)](https://cultoonmovic4-stack.github.io/st-lawrence-school/)
+[![Version](https://img.shields.io/badge/Version-1.1.0-blue)](https://github.com/cultoonmovic4-stack/st-lawrence-school)
+[![License](https://img.shields.io/badge/License-Proprietary-red)](LICENSE)
+
+**[🌐 Live Website](https://cultoonmovic4-stack.github.io/st-lawrence-school/frontend/index-redesign.html)** | **[📧 Contact Us](mailto:stlawrencejuniorschoolkabowa@gmail.com)** | **[📞 Call Us](tel:+256701420506)**
 
 ---
 
-## 📋 Table of Contents
-1. [Project Overview](#project-overview)
-2. [Features](#features)
-3. [Technology Stack](#technology-stack)
-4. [Project Structure](#project-structure)
-5. [Database Schema](#database-schema)
-6. [Installation Guide](#installation-guide)
-7. [Backend Architecture](#backend-architecture)
-8. [Frontend Architecture](#frontend-architecture)
-9. [AI Chatbot System](#ai-chatbot-system)
-10. [Admin Panel](#admin-panel)
-11. [Authentication & Security](#authentication--security)
-12. [API Documentation](#api-documentation)
-13. [Deployment](#deployment)
-14. [Troubleshooting](#troubleshooting)
+</div>
+
+## 📖 About The Project
+
+St. Lawrence Junior School - Kabowa is a **premier mixed day and boarding primary school** located in Kampala, Uganda. This comprehensive school management system includes:
+
+- 🌐 **Modern Public Website** - Responsive, animated, and mobile-optimized
+- 🤖 **AI Chatbot Assistant** - Text and voice chat with 35+ knowledge categories
+- 👨‍💼 **Admin Dashboard** - Complete content management system
+- 🔐 **Secure Authentication** - Traditional login + Google OAuth 2.0
+
+<div align="center">
+
+### 🎯 Quick Links
+
+| Feature | Description | Link |
+|---------|-------------|------|
+| 🏠 Homepage | Modern landing page with video background | [View](frontend/index-redesign.html) |
+| 📚 Academics | Programs, curriculum, and classes | [View](frontend/Academics.html) |
+| 👨‍🏫 Teachers | Meet our qualified staff | [View](frontend/Teachers-redesign.html) |
+| 📸 Gallery | School photos and events | [View](frontend/Gallery-redesign.html) |
+| 📝 Admission | Online application form | [View](frontend/Admission-redesign.html) |
+| 💰 Fees | Transparent fee structure | [View](frontend/Fees.html) |
+| 📞 Contact | Get in touch with us | [View](frontend/Contact-redesign.html) |
+| 🔐 Admin Login | Management dashboard | [View](backend/admin/login.html) |
+
+</div>
 
 ---
 
-## 🎯 Project Overview
+## ✨ Key Features
 
-St. Lawrence Junior School - Kabowa is a comprehensive school management system built for a premier mixed day and boarding primary school in Kampala, Uganda. The system includes a modern website, admin panel, and an AI-powered chatbot assistant with voice capabilities.
+### 🌐 Public Website
 
-**School Details:**
-- **Name:** St. Lawrence Junior School - Kabowa
-- **Location:** Kabowa, Church Zone, Rubaga Division - Kampala District, Uganda
-- **Established:** 2010
-- **Type:** Mixed Day & Boarding Primary School
-- **Programs:** Nursery (Baby - Top Class) & Primary (P1 - P7)
-- **Contact:** +256 701 420 506 / +256 772 420 506
-- **Email:** stlawrencejuniorschoolkabowa@gmail.com
+<table>
+<tr>
+<td width="50%">
+
+#### 🎨 Design & UX
+- ✅ Modern, responsive design
+- ✅ Smooth scroll animations (AOS)
+- ✅ **10 unique page loaders** (3-4.5s each)
+- ✅ Mobile-optimized navigation
+- ✅ Video backgrounds with overlays
+- ✅ Glassmorphism effects
+
+</td>
+<td width="50%">
+
+#### 📱 Mobile Features
+- ✅ Hamburger menu (right-aligned)
+- ✅ Touch-friendly buttons
+- ✅ Responsive images
+- ✅ Optimized layouts
+- ✅ Fast loading times
+- ✅ Separated UI elements
+
+</td>
+</tr>
+</table>
+
+#### 📄 Pages Overview
+
+| Page | Loader Animation | Key Features |
+|------|-----------------|--------------|
+| 🏠 **Homepage** | Spinner + Dots | Hero video, programs showcase, events bar |
+| ℹ️ **About** | Dual Ring | School history, mission, vision, values |
+| 📚 **Academics** | Pulse Circles | Curriculum, classes, subjects |
+| 📝 **Admission** | Bars | Online application form with PDF generation |
+| 📞 **Contact** | Square Spin | Contact form, location map, FAQ |
+| 📸 **Gallery** | Orbit | Photo categories, lightbox view |
+| 👨‍🏫 **Teachers** | Wave | Staff profiles, search & filter |
+| 📖 **Library** | Flip | PDF resources, downloadable materials |
+| 💰 **Fees** | Hexagon | Day scholar & boarding fee structure |
+| 🎵 **Anthem** | Gradient Ring | School anthem lyrics and audio |
 
 ---
 
-## ✨ Features
+### 🤖 AI Chatbot Assistant
 
-### Public Website
-- Modern, responsive design with smooth animations
-- Hero section with background video
-- Programs showcase (Nursery, Primary, Boarding)
-- Dynamic events bar
-- Teacher profiles with search and filter
-- Photo gallery with categories
-- Online admission application
-- Fee structure display
-- Library with PDF resources
-- Contact information and forms
+<table>
+<tr>
+<td width="50%">
 
-### AI Chatbot Assistant
-- **Text Chat:** Real-time messaging with intelligent responses
-- **Voice Chat:** Full voice-to-voice conversation using Web Speech API
-- **Knowledge Base:** 35+ categories covering:
-  - School information and history
-  - Fees (Day Scholar & Boarding)
-  - Admission process
-  - Contact information and location
-  - School hours and schedule
-  - Programs and curriculum
-  - Extracurricular activities
-  - Facilities and infrastructure
-  - Teachers and staff
-  - Library resources
-- **Features:**
-  - Quick action buttons
-  - Real-time transcript
-  - Call timer
-  - Mute functionality
-  - Audio wave visualization
-  - Mobile responsive design
+#### 💬 Text Chat
+- Real-time messaging
+- Intelligent keyword matching
+- 35+ knowledge categories
+- Quick action buttons
+- Chat history
+- Mobile responsive
 
-### Admin Panel
-- Secure authentication with session management
-- Dashboard with statistics
-- Content management (Events, Gallery, Teachers, Library)
+</td>
+<td width="50%">
+
+#### 🎤 Voice Chat
+- Voice-to-voice conversation
+- Web Speech API integration
+- Continuous listening
+- Real-time transcript
+- Call timer (up to 3 hours)
+- Mute/unmute functionality
+
+</td>
+</tr>
+</table>
+
+#### 📚 Knowledge Base Categories
+
+<details>
+<summary><b>Click to view all 35+ categories</b></summary>
+
+- School Information & History
+- Fees (Day Scholar & Boarding)
+- Admission Process & Requirements
+- Contact Information & Location
+- School Hours & Schedule
+- Programs (Nursery & Primary)
+- Curriculum & Subjects
+- Extracurricular Activities
+- Sports & Games
+- Facilities & Infrastructure
+- Teachers & Staff
+- Library Resources
+- Boarding Facilities
+- School Uniform
+- Transportation
+- Parent-Teacher Communication
+- And 20+ more categories...
+
+</details>
+
+---
+
+### 👨‍💼 Admin Dashboard
+
+<table>
+<tr>
+<td width="33%">
+
+#### 🔐 Authentication
+- Traditional login
+- Google OAuth 2.0
+- Session management
+- Role-based access
+- Secure password hashing
+
+</td>
+<td width="33%">
+
+#### 📊 Dashboard
+- Statistics overview
+- Recent admissions
+- Quick actions
+- Content management
 - User management
-- Admission applications review
-- File upload and management
-- Activity logging
+
+</td>
+<td width="33%">
+
+#### 🛠️ Management
+- Events CRUD
+- Gallery CRUD
+- Teachers CRUD
+- Library CRUD
+- Admissions review
+
+</td>
+</tr>
+</table>
+
+#### 🎨 Modern Design Features
+- ✅ Glassmorphism login page
+- ✅ Video background with gradient overlay
+- ✅ Smooth animations and transitions
+- ✅ Responsive sidebar navigation
+- ✅ Collapsible menu sections
+- ✅ Modern card layouts
 
 ---
 
-## 🛠 Technology Stack
+## 🛠️ Technology Stack
 
-### Frontend
-- **HTML5** - Semantic markup
-- **CSS3** - Modern styling with animations
-- **JavaScript (ES6+)** - Interactive functionality
-- **Bootstrap 5** - Responsive grid system
-- **Font Awesome 6** - Icons
-- **AOS Library** - Scroll animations
-- **Web Speech API** - Voice recognition and synthesis
+<div align="center">
 
-### Backend
-- **PHP 7.4+** - Server-side logic
-- **MySQL 5.7+** - Database management
-- **PHPMailer** - Email functionality
-- **Composer** - Dependency management
+### Frontend Technologies
 
-### Development Tools
-- **XAMPP** - Local development environment
-- **Git** - Version control
-- **VS Code** - Code editor
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+
+### Backend Technologies
+
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Apache](https://img.shields.io/badge/Apache-D22128?style=for-the-badge&logo=apache&logoColor=white)
+
+### Tools & Libraries
+
+![Font Awesome](https://img.shields.io/badge/Font_Awesome-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white)
+![Google OAuth](https://img.shields.io/badge/Google_OAuth-4285F4?style=for-the-badge&logo=google&logoColor=white)
+![Web Speech API](https://img.shields.io/badge/Web_Speech_API-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)
+
+</div>
 
 ---
 
@@ -112,117 +224,204 @@ St. Lawrence Junior School - Kabowa is a comprehensive school management system 
 ```
 st-lawrence-school/
 │
-├── frontend/                      # Public website pages
-│   ├── index-redesign.html       # Homepage
-│   ├── About-redesign.html       # About page
-│   ├── Teachers-redesign.html    # Teachers page
-│   ├── Gallery-redesign.html     # Gallery page
-│   ├── Admission-redesign.html   # Admission page
-│   ├── Contact-redesign.html     # Contact page
-│   ├── Library-redesign.html     # Library page
-│   ├── Fees.html                 # Fee structure
-│   └── School-Anthem.html        # School anthem
+├── 🌐 frontend/                   # Public Website Pages
+│   ├── index-redesign.html        # Homepage (Spinner + Dots loader)
+│   ├── About-redesign.html        # About Page (Dual Ring loader)
+│   ├── Academics.html             # Academics (Pulse Circles loader)
+│   ├── Admission-redesign.html    # Admission (Bars loader)
+│   ├── Contact-redesign.html      # Contact (Square Spin loader)
+│   ├── Gallery-redesign.html      # Gallery (Orbit loader)
+│   ├── Teachers-redesign.html     # Teachers (Wave loader)
+│   ├── Library-redesign.html      # Library (Flip loader)
+│   ├── Fees.html                  # Fees (Hexagon loader)
+│   └── School-Anthem.html         # Anthem (Gradient Ring loader)
 │
-├── backend/                       # Backend system
-│   ├── admin/                    # Admin panel
-│   │   ├── login.html           # Admin login
-│   │   ├── dashboard.html       # Admin dashboard
-│   │   ├── events.html          # Events management
-│   │   ├── gallery.html         # Gallery management
-│   │   ├── teachers.html        # Teachers management
-│   │   ├── library.html         # Library management
-│   │   └── admissions.html      # Admissions management
+├── 🔧 backend/                    # Backend System
+│   ├── admin/                     # Admin Panel Pages
+│   │   ├── login.html            # Modern glassmorphism login
+│   │   ├── dashboard.html        # Admin dashboard
+│   │   ├── events.html           # Events management
+│   │   ├── gallery.html          # Gallery management
+│   │   ├── teachers.html         # Teachers management
+│   │   ├── library.html          # Library management
+│   │   └── admissions.html       # Admissions management
 │   │
-│   ├── api/                      # API endpoints
-│   │   ├── auth/                # Authentication
+│   ├── api/                       # API Endpoints
+│   │   ├── auth/                 # Authentication APIs
 │   │   │   ├── login.php
+│   │   │   ├── google-login.php  # Google OAuth handler
 │   │   │   ├── logout.php
 │   │   │   └── session.php
 │   │   │
-│   │   ├── chatbot/             # AI Chatbot
-│   │   │   ├── chat.php         # Chat API endpoint
-│   │   │   └── knowledge_base.php # Knowledge base
+│   │   ├── chatbot/              # AI Chatbot APIs
+│   │   │   ├── chat.php          # Chat endpoint
+│   │   │   └── knowledge_base.php # 35+ categories
 │   │   │
-│   │   ├── events/              # Events CRUD
-│   │   ├── gallery/             # Gallery CRUD
-│   │   ├── teachers/            # Teachers CRUD
-│   │   ├── library/             # Library CRUD
-│   │   ├── admissions/          # Admissions CRUD
-│   │   └── setup/               # Database setup
+│   │   ├── events/               # Events CRUD
+│   │   ├── gallery/              # Gallery CRUD
+│   │   ├── teachers/             # Teachers CRUD
+│   │   ├── library/              # Library CRUD
+│   │   └── admissions/           # Admissions CRUD
 │   │
-│   ├── uploads/                  # Uploaded files
-│   │   ├── events/
-│   │   ├── gallery/
-│   │   ├── teachers/
-│   │   └── library/
-│   │
-│   └── vendor/                   # Composer dependencies
+│   └── uploads/                   # Uploaded Files
+│       ├── events/
+│       ├── gallery/
+│       ├── teachers/
+│       └── library/
 │
-├── css/                          # Stylesheets
-│   ├── redesign-style.css       # Main website styles
-│   ├── chatbot.css              # Chatbot styles
-│   ├── fees-styles.css          # Fee page styles
-│   └── bootstrap.min.css        # Bootstrap framework
+├── 🎨 css/                        # Stylesheets
+│   ├── redesign-style.css        # Main website styles
+│   ├── chatbot.css               # Chatbot styles
+│   ├── fees-styles.css           # Fee page styles
+│   ├── page-loader.css           # 10 unique loader animations
+│   └── bootstrap.min.css         # Bootstrap framework
 │
-├── js/                           # JavaScript files
-│   ├── chatbot.js               # Chatbot functionality
-│   └── main.js                  # General scripts
+├── ⚡ js/                         # JavaScript Files
+│   ├── chatbot.js                # Chatbot functionality
+│   ├── page-loader.js            # Loader (3-4.5s random duration)
+│   ├── api-*.js                  # API integration scripts
+│   └── main.js                   # General scripts
 │
-├── img/                          # Images and media
-│   ├── 5.jpg                    # School logo
-│   └── ...                      # Other images
+├── 🖼️ img/                        # Images & Media
+│   ├── 5.jpg                     # School logo
+│   ├── *.mp4                     # Background videos
+│   └── ...                       # Other images
 │
-├── library_pdfs/                 # PDF resources
+├── 📚 library_pdfs/               # PDF Resources
 │
-├── database_schema.sql           # Database structure
+├── 🗄️ database_schema.sql        # Database Structure
 │
-└── README.md                     # This file
+├── 📄 .env.example                # Environment template
+├── 🔒 .gitignore                  # Git ignore rules
+├── 📖 README.md                   # This file
+├── 📋 GOOGLE_LOGIN_SETUP.md       # OAuth setup guide
+└── 🚀 GITHUB_PAGES_SETUP.md       # Deployment guide
 ```
 
 ---
 
-## 🗄 Database Schema
+## 🚀 Quick Start Guide
 
-### Tables Overview
+### Prerequisites
 
-#### 1. `users` - Admin Users
+```bash
+✅ XAMPP (Apache + MySQL + PHP 7.4+)
+✅ Web Browser (Chrome, Firefox, Edge)
+✅ Text Editor (VS Code recommended)
+```
+
+### Installation Steps
+
+<details>
+<summary><b>Step 1: Download & Setup</b></summary>
+
+```bash
+# Clone or download the project
+git clone https://github.com/cultoonmovic4-stack/st-lawrence-school.git
+
+# Move to XAMPP htdocs folder
+C:\xampp\htdocs\st-lawrence-school\
+```
+
+</details>
+
+<details>
+<summary><b>Step 2: Database Configuration</b></summary>
+
+1. Start XAMPP (Apache + MySQL)
+2. Open phpMyAdmin: `http://localhost/phpmyadmin`
+3. Create database: `st_lawrence_school`
+4. Import: `database_schema.sql`
+5. Update credentials in `backend/api/config/database.php`
+
+</details>
+
+<details>
+<summary><b>Step 3: Environment Setup</b></summary>
+
+```bash
+# Copy environment template
+copy .env.example .env
+
+# Edit .env file with your credentials
+DB_HOST=localhost
+DB_NAME=st_lawrence_school
+DB_USER=root
+DB_PASS=your_password
+```
+
+</details>
+
+<details>
+<summary><b>Step 4: Create Admin User</b></summary>
+
 ```sql
-- id (INT, PRIMARY KEY, AUTO_INCREMENT)
+INSERT INTO users (username, email, password, full_name, role) 
+VALUES ('admin', 'admin@stlawrence.com', 
+'$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 
+'Administrator', 'admin');
+
+-- Default password: password
+```
+
+</details>
+
+<details>
+<summary><b>Step 5: Access The System</b></summary>
+
+- **Website:** `http://localhost/st-lawrence-school/frontend/index-redesign.html`
+- **Admin Panel:** `http://localhost/st-lawrence-school/backend/admin/login.html`
+- **Username:** `admin`
+- **Password:** `password`
+
+</details>
+
+---
+
+## 🗄️ Database Schema
+
+<details>
+<summary><b>📊 View Database Tables</b></summary>
+
+### 1. `users` - Admin Users
+```sql
+- id (INT, PRIMARY KEY)
 - username (VARCHAR 50, UNIQUE)
 - email (VARCHAR 100, UNIQUE)
-- password (VARCHAR 255) - Hashed with password_hash()
+- password (VARCHAR 255) - Bcrypt hashed
 - full_name (VARCHAR 100)
 - role (ENUM: 'admin', 'editor', 'viewer')
+- google_id (VARCHAR 255) - For OAuth
+- profile_picture (VARCHAR 255)
 - created_at (TIMESTAMP)
 - last_login (TIMESTAMP)
 ```
 
-#### 2. `events` - School Events
+### 2. `events` - School Events
 ```sql
-- id (INT, PRIMARY KEY, AUTO_INCREMENT)
+- id (INT, PRIMARY KEY)
 - title (VARCHAR 200)
 - description (TEXT)
 - event_date (DATE)
 - image_url (VARCHAR 255)
-- created_by (INT, FOREIGN KEY -> users.id)
+- created_by (INT, FOREIGN KEY)
 - created_at (TIMESTAMP)
-- updated_at (TIMESTAMP)
 ```
 
-#### 3. `gallery` - Photo Gallery
+### 3. `gallery` - Photo Gallery
 ```sql
-- id (INT, PRIMARY KEY, AUTO_INCREMENT)
+- id (INT, PRIMARY KEY)
 - title (VARCHAR 200)
 - description (TEXT)
 - image_url (VARCHAR 255)
 - category (VARCHAR 50)
-- uploaded_by (INT, FOREIGN KEY -> users.id)
+- uploaded_by (INT, FOREIGN KEY)
 - created_at (TIMESTAMP)
 ```
 
-#### 4. `teachers` - Teacher Profiles
+### 4. `teachers` - Teacher Profiles
 ```sql
-- id (INT, PRIMARY KEY, AUTO_INCREMENT)
+- id (INT, PRIMARY KEY)
 - name (VARCHAR 100)
 - position (VARCHAR 100)
 - subject (VARCHAR 100)
@@ -233,22 +432,22 @@ st-lawrence-school/
 - created_at (TIMESTAMP)
 ```
 
-#### 5. `library` - Library Resources
+### 5. `library` - Library Resources
 ```sql
-- id (INT, PRIMARY KEY, AUTO_INCREMENT)
+- id (INT, PRIMARY KEY)
 - title (VARCHAR 200)
 - author (VARCHAR 100)
 - category (VARCHAR 50)
 - description (TEXT)
 - file_url (VARCHAR 255)
 - file_type (VARCHAR 10)
-- uploaded_by (INT, FOREIGN KEY -> users.id)
+- uploaded_by (INT, FOREIGN KEY)
 - created_at (TIMESTAMP)
 ```
 
-#### 6. `admissions` - Admission Applications
+### 6. `admissions` - Admission Applications
 ```sql
-- id (INT, PRIMARY KEY, AUTO_INCREMENT)
+- id (INT, PRIMARY KEY)
 - student_name (VARCHAR 100)
 - date_of_birth (DATE)
 - gender (ENUM: 'Male', 'Female')
@@ -262,268 +461,49 @@ st-lawrence-school/
 - submitted_at (TIMESTAMP)
 ```
 
----
-
-## 🚀 Installation Guide
-
-### Prerequisites
-- XAMPP (Apache + MySQL + PHP 7.4+)
-- Web browser (Chrome, Firefox, Edge)
-- Text editor (VS Code recommended)
-
-### Step 1: Clone/Download Project
-```bash
-# Place project in XAMPP htdocs folder
-C:\xampp\htdocs\st-lawrence-school\
-```
-
-### Step 2: Environment Configuration
-1. Copy `.env.example` to `.env`:
-```bash
-copy .env.example .env
-```
-
-2. Edit `.env` file and add your credentials:
-```env
-# Database Configuration
-DB_HOST=localhost
-DB_NAME=st_lawrence_school
-DB_USER=root
-DB_PASS=your_database_password
-
-# SMTP Email Configuration
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USERNAME=your_email@gmail.com
-SMTP_PASSWORD=your_gmail_app_password
-SMTP_FROM_EMAIL=your_email@gmail.com
-SMTP_FROM_NAME=St. Lawrence Junior School
-```
-
-**Important:** Never commit the `.env` file to Git! It's already in `.gitignore`.
-
-### Step 3: Database Setup
-1. Start XAMPP (Apache + MySQL)
-2. Open phpMyAdmin: `http://localhost/phpmyadmin`
-3. Create database: `st_lawrence_school`
-4. Import schema: `database_schema.sql`
-5. Update database credentials in `backend/api/config/database.php`:
-```php
-$host = 'localhost';
-$dbname = 'st_lawrence_school';
-$username = 'root';
-$password = '';
-```
-
-### Step 3: Create Default Admin User
-```sql
-INSERT INTO users (username, email, password, full_name, role) 
-VALUES ('admin', 'admin@stlawrence.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Administrator', 'admin');
--- Default password: password
-```
-
-### Step 4: Configure File Permissions
-Ensure these folders are writable:
-- `backend/uploads/`
-- `library_pdfs/`
-
-### Step 5: Access the System
-- **Website:** `http://localhost/st-lawrence-school/frontend/index-redesign.html`
-- **Admin Panel:** `http://localhost/st-lawrence-school/backend/admin/login.html`
-- **Default Login:** 
-  - Username: `admin`
-  - Password: `password`
+</details>
 
 ---
 
-## 🔧 Backend Architecture
+## 🔐 Security Features
 
-### Authentication System
-- **Session-based authentication**
-- Password hashing with `password_hash()` (bcrypt)
-- Session timeout after 30 minutes of inactivity
-- CSRF protection on forms
-- Role-based access control (Admin, Editor, Viewer)
+<table>
+<tr>
+<td width="50%">
 
-### API Structure
-All API endpoints follow REST principles:
-- **GET** - Retrieve data
-- **POST** - Create/Update data
-- **DELETE** - Remove data
+### 🛡️ Authentication Security
+- ✅ Bcrypt password hashing (cost: 10)
+- ✅ Session-based authentication
+- ✅ Google OAuth 2.0 integration
+- ✅ JWT token verification
+- ✅ Session timeout (30 minutes)
+- ✅ CSRF protection
+- ✅ Role-based access control
 
-### Response Format
-```json
-{
-  "success": true/false,
-  "message": "Success/Error message",
-  "data": {} // Optional data payload
-}
-```
+</td>
+<td width="50%">
 
-### File Upload System
-- Validates file types (images: jpg, png, gif; PDFs)
-- Limits file size (5MB for images, 10MB for PDFs)
-- Generates unique filenames to prevent conflicts
-- Stores files in organized folders
+### 🔒 Data Security
+- ✅ SQL injection prevention (PDO)
+- ✅ XSS protection (htmlspecialchars)
+- ✅ File upload validation
+- ✅ Secure file storage
+- ✅ Input sanitization
+- ✅ Output escaping
+- ✅ HTTPS enforcement
 
----
-
-## 🎨 Frontend Architecture
-
-### Design Principles
-- **Mobile-first responsive design**
-- **Progressive enhancement**
-- **Accessibility compliant** (WCAG 2.1)
-- **Performance optimized** (lazy loading, minified assets)
-
-### CSS Architecture
-- **BEM methodology** for class naming
-- **CSS Grid & Flexbox** for layouts
-- **CSS Variables** for theming
-- **Media queries** for responsiveness
-
-### JavaScript Patterns
-- **ES6+ modules**
-- **Event delegation**
-- **Async/await** for API calls
-- **Error handling** with try-catch
-
----
-
-## 🤖 AI Chatbot System
-
-### Architecture
-The chatbot uses a keyword-matching algorithm with a comprehensive knowledge base.
-
-### Knowledge Base Structure
-```php
-$knowledge = [
-    'category_name' => [
-        'keywords' => ['keyword1', 'keyword2', ...],
-        'response' => 'Formatted response text'
-    ]
-];
-```
-
-### Matching Algorithm
-1. User input is tokenized and cleaned
-2. Keywords are matched against knowledge base
-3. Scores are calculated based on keyword frequency
-4. Best matching category is selected
-5. Response is formatted and returned
-
-### Voice Chat Implementation
-- **Speech Recognition:** Web Speech API (SpeechRecognition)
-- **Text-to-Speech:** Speech Synthesis API (SpeechSynthesisUtterance)
-- **Features:**
-  - Continuous listening with silence detection
-  - Chunked speech output to prevent timeout
-  - Mute/unmute functionality
-  - Call timer (up to 3 hours)
-  - Real-time transcript display
-  - Audio wave visualization
-
-### Voice Chat Flow
-```
-1. User clicks Voice tab
-2. System requests microphone permission
-3. Speech recognition starts listening
-4. User speaks → transcript captured
-5. Transcript sent to API
-6. API returns response
-7. Response converted to speech
-8. AI speaks response
-9. System resumes listening
-10. Repeat steps 4-9
-```
-
----
-
-## 👨‍💼 Admin Panel
-
-### Dashboard
-- Total events count
-- Total gallery images
-- Total teachers
-- Total library resources
-- Recent admissions
-- Quick actions
-
-### Events Management
-- Create/Edit/Delete events
-- Upload event images
-- Set event dates
-- View all events in table
-
-### Gallery Management
-- Upload images with categories
-- Edit image details
-- Delete images
-- Filter by category
-
-### Teachers Management
-- Add teacher profiles
-- Upload teacher photos
-- Edit teacher information
-- Delete teacher profiles
-
-### Library Management
-- Upload PDF resources
-- Categorize resources
-- Edit resource details
-- Delete resources
-
-### Admissions Management
-- View all applications
-- Filter by status (pending/approved/rejected)
-- Approve/reject applications
-- View application details
-
----
-
-## 🔐 Authentication & Security
-
-### Security Measures
-1. **Password Security**
-   - Bcrypt hashing (cost factor: 10)
-   - Minimum 8 characters required
-   - No plain text storage
-
-2. **Session Security**
-   - Secure session cookies
-   - Session regeneration on login
-   - Automatic timeout (30 minutes)
-   - Session hijacking prevention
-
-3. **SQL Injection Prevention**
-   - Prepared statements with PDO
-   - Parameter binding
-   - Input validation
-
-4. **XSS Prevention**
-   - Output escaping with `htmlspecialchars()`
-   - Content Security Policy headers
-   - Input sanitization
-
-5. **CSRF Protection**
-   - Token-based validation
-   - Token regeneration per request
-
-6. **File Upload Security**
-   - File type validation
-   - File size limits
-   - Unique filename generation
-   - Restricted upload directories
+</td>
+</tr>
+</table>
 
 ---
 
 ## 📡 API Documentation
 
-### Chatbot API
+<details>
+<summary><b>🤖 Chatbot API</b></summary>
 
-#### Endpoint: `/backend/api/chatbot/chat.php`
-
-**Initialize Chat**
+### Initialize Chat
 ```http
 POST /backend/api/chatbot/chat.php
 Content-Type: application/json
@@ -535,12 +515,12 @@ Content-Type: application/json
 Response:
 {
   "success": true,
-  "message": "Welcome message",
-  "quickActions": ["Question 1", "Question 2", ...]
+  "message": "Welcome to St. Lawrence Junior School...",
+  "quickActions": ["What are your fees?", "How do I apply?", ...]
 }
 ```
 
-**Send Message**
+### Send Message
 ```http
 POST /backend/api/chatbot/chat.php
 Content-Type: application/json
@@ -553,13 +533,16 @@ Content-Type: application/json
 Response:
 {
   "success": true,
-  "response": "Formatted response text"
+  "response": "Our school fees are as follows..."
 }
 ```
 
-### Authentication API
+</details>
 
-#### Login
+<details>
+<summary><b>🔐 Authentication API</b></summary>
+
+### Traditional Login
 ```http
 POST /backend/api/auth/login.php
 Content-Type: application/json
@@ -581,31 +564,52 @@ Response:
 }
 ```
 
-#### Logout
+### Google OAuth Login
 ```http
-POST /backend/api/auth/logout.php
+POST /backend/api/auth/google-login.php
+Content-Type: application/json
+
+{
+  "credential": "google_jwt_token"
+}
 
 Response:
 {
   "success": true,
-  "message": "Logged out successfully"
+  "message": "Login successful",
+  "user": {
+    "id": 2,
+    "email": "user@gmail.com",
+    "role": "viewer"
+  }
 }
 ```
 
-### Events API
+</details>
 
-#### Get All Events
+<details>
+<summary><b>📅 Events API</b></summary>
+
+### Get All Events
 ```http
 GET /backend/api/events/get_events.php
 
 Response:
 {
   "success": true,
-  "events": [...]
+  "events": [
+    {
+      "id": 1,
+      "title": "Sports Day",
+      "description": "Annual sports competition",
+      "event_date": "2026-02-15",
+      "image_url": "uploads/events/sports.jpg"
+    }
+  ]
 }
 ```
 
-#### Create Event
+### Create Event
 ```http
 POST /backend/api/events/create_event.php
 Content-Type: multipart/form-data
@@ -613,7 +617,7 @@ Content-Type: multipart/form-data
 {
   "title": "Event Title",
   "description": "Event Description",
-  "event_date": "2024-12-25",
+  "event_date": "2026-12-25",
   "image": <file>
 }
 
@@ -624,128 +628,191 @@ Response:
 }
 ```
 
+</details>
+
 ---
 
-## 🌐 Deployment
+## 🆕 Recent Updates
 
-### Production Checklist
-- [ ] Change database credentials
-- [ ] Update default admin password
-- [ ] Enable HTTPS
-- [ ] Set secure session cookies
-- [ ] Configure error logging
-- [ ] Disable error display
-- [ ] Set file permissions (755 for folders, 644 for files)
-- [ ] Configure backup system
-- [ ] Set up monitoring
-- [ ] Test all functionality
+<div align="center">
 
-### Server Requirements
-- PHP 7.4 or higher
-- MySQL 5.7 or higher
-- Apache with mod_rewrite enabled
-- SSL certificate (for HTTPS)
-- Minimum 512MB RAM
-- 1GB disk space
+### 📅 January 23, 2026 - Version 1.1.0
 
-### .htaccess Configuration
-```apache
-# Enable rewrite engine
-RewriteEngine On
+</div>
 
-# Force HTTPS
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+<table>
+<tr>
+<td width="50%">
 
-# Prevent directory listing
-Options -Indexes
+#### 🎨 UI/UX Improvements
+- ✅ Fixed mobile hamburger menu (right-aligned)
+- ✅ Separated chatbot & back-to-top buttons
+- ✅ Fixed Contact page mobile responsiveness
+- ✅ Optimized Location and FAQ sections
+- ✅ Improved touch targets for mobile
 
-# Protect sensitive files
-<FilesMatch "\.(sql|log|md)$">
-    Order allow,deny
-    Deny from all
-</FilesMatch>
-```
+</td>
+<td width="50%">
+
+#### 🔐 Admin Panel Enhancements
+- ✅ Redesigned login with glassmorphism
+- ✅ Added video background with overlay
+- ✅ Integrated Google OAuth 2.0
+- ✅ Fixed Content menu default state
+- ✅ Improved dashboard layout
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+#### ⚡ Page Loaders
+- ✅ Added 10 unique animated loaders
+- ✅ 3-4.5 seconds random duration
+- ✅ School branding on each loader
+- ✅ Blue gradient backgrounds
+- ✅ Smooth fade-out transitions
+
+</td>
+<td width="50%">
+
+#### 🧹 Code Cleanup
+- ✅ Removed unused `index.html`
+- ✅ Removed reference files
+- ✅ Optimized CSS and JS
+- ✅ Improved code organization
+- ✅ Updated documentation
+
+</td>
+</tr>
+</table>
 
 ---
 
 ## 🐛 Troubleshooting
 
-### Common Issues
+<details>
+<summary><b>❌ Chatbot Not Responding</b></summary>
 
-**1. Chatbot not responding**
-- Check browser console for errors
-- Verify API endpoint URL is correct
-- Ensure database connection is working
-- Check knowledge_base.php for syntax errors
+**Solutions:**
+1. Check browser console for errors
+2. Verify API endpoint URL is correct
+3. Ensure database connection is working
+4. Check `knowledge_base.php` for syntax errors
+5. Clear browser cache and reload
 
-**2. Voice chat not working**
-- Ensure HTTPS is enabled (required for microphone access)
-- Check browser compatibility (Chrome, Edge recommended)
-- Grant microphone permissions
-- Check browser console for errors
+</details>
 
-**3. File upload failing**
-- Check folder permissions (uploads folder must be writable)
-- Verify file size limits in php.ini
-- Check file type validation
-- Ensure disk space is available
+<details>
+<summary><b>🎤 Voice Chat Not Working</b></summary>
 
-**4. Admin login not working**
-- Verify database credentials
-- Check if users table exists
-- Ensure password is hashed correctly
-- Clear browser cookies/cache
+**Solutions:**
+1. Ensure HTTPS is enabled (required for microphone)
+2. Check browser compatibility (Chrome/Edge recommended)
+3. Grant microphone permissions
+4. Check browser console for errors
+5. Test with different browser
 
-**5. Images not displaying**
-- Check file paths are correct
-- Verify images exist in uploads folder
-- Check file permissions
-- Clear browser cache
+</details>
 
-### Debug Mode
-Enable debug mode in `backend/api/config/database.php`:
-```php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-```
+<details>
+<summary><b>📤 File Upload Failing</b></summary>
+
+**Solutions:**
+1. Check folder permissions (uploads must be writable)
+2. Verify file size limits in `php.ini`
+3. Check file type validation
+4. Ensure disk space is available
+5. Check Apache error logs
+
+</details>
+
+<details>
+<summary><b>🔐 Admin Login Issues</b></summary>
+
+**Solutions:**
+1. Verify database credentials
+2. Check if `users` table exists
+3. Ensure password is hashed correctly
+4. Clear browser cookies/cache
+5. Check session configuration
+
+</details>
+
+<details>
+<summary><b>🖼️ Images Not Displaying</b></summary>
+
+**Solutions:**
+1. Check file paths are correct
+2. Verify images exist in uploads folder
+3. Check file permissions (644 for files)
+4. Clear browser cache
+5. Check Apache configuration
+
+</details>
 
 ---
 
-## 📞 Support & Contact
+## 📞 Contact & Support
 
-**School Contact:**
-- **Phone:** +256 701 420 506 / +256 772 420 506
-- **Email:** stlawrencejuniorschoolkabowa@gmail.com
-- **Location:** Kabowa, Church Zone, Rubaga Division - Kampala District, Uganda
+<div align="center">
 
-**Technical Support:**
-For technical issues or questions about the system, contact the development team.
+### 🏫 School Information
+
+**St. Lawrence Junior School - Kabowa**
+
+📍 **Location:** Kabowa, Church Zone, Rubaga Division  
+Kampala District, Uganda
+
+📞 **Phone:** +256 701 420 506 / +256 772 420 506
+
+📧 **Email:** stlawrencejuniorschoolkabowa@gmail.com
+
+🌐 **Website:** [Visit Our Website](https://cultoonmovic4-stack.github.io/st-lawrence-school/frontend/index-redesign.html)
+
+---
+
+### 💻 Technical Support
+
+For technical issues or questions about the system:
+
+📧 **Developer Email:** cultoonmovic4@gmail.com
+
+🐛 **Report Issues:** [GitHub Issues](https://github.com/cultoonmovic4-stack/st-lawrence-school/issues)
+
+📚 **Documentation:** See setup guides in project root
+
+</div>
 
 ---
 
 ## 📄 License
 
-This project is proprietary software developed for St. Lawrence Junior School - Kabowa. All rights reserved.
+This project is **proprietary software** developed for St. Lawrence Junior School - Kabowa.  
+**All rights reserved.** Unauthorized copying, distribution, or modification is prohibited.
 
 ---
 
 ## 🙏 Acknowledgments
 
-- St. Lawrence Junior School administration and staff
-- Parents and students for feedback
-- Development team for implementation
+- 👨‍🏫 **St. Lawrence Junior School** - Administration and staff
+- 👨‍👩‍👧‍👦 **Parents and Students** - Valuable feedback
+- 💻 **Development Team** - Implementation and support
+- 🎨 **Design Contributors** - UI/UX improvements
 
 ---
 
-**Last Updated:** January 2025
-**Version:** 1.0.0
-**Status:** Production Ready
-#   t e s t 
- 
- #   s t - l a w r e n c e - s c h o o l  
- #   s t - l a w r e n c e - s c h o o l  
- #   s t - l a w r e n c e - s c h o o l  
- #   s t - l a w r e n c e - s c h o o l  
- #   s t - l a w r e n c e - s c h o o l  
- 
+<div align="center">
+
+### 🌟 Made with ❤️ for St. Lawrence Junior School - Kabowa
+
+**Last Updated:** January 23, 2026 | **Version:** 1.1.0 | **Status:** ✅ Production Ready
+
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/cultoonmovic4-stack/st-lawrence-school)
+[![Website](https://img.shields.io/badge/Website-Live-success?style=for-the-badge&logo=google-chrome)](https://cultoonmovic4-stack.github.io/st-lawrence-school/frontend/index-redesign.html)
+
+---
+
+**© 2026 St. Lawrence Junior School - Kabowa. All Rights Reserved.**
+
+</div>

@@ -1,0 +1,1013 @@
+/* ========================================
+   MOBILE RESPONSIVENESS IMPROVEMENTS
+   St. Lawrence Junior School - Kabowa
+   ======================================== */
+
+/* ========== ENHANCED MOBILE BREAKPOINTS ========== */
+
+/* Extra Small Devices (320px - 480px) */
+@media (max-width: 480px) {
+    /* Global Improvements */
+    body {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* Header & Navigation */
+    .header {
+        padding: 12px 0;
+    }
+    
+    .logo-text {
+        font-size: 16px;
+    }
+    
+    .logo-subtitle {
+        font-size: 10px;
+    }
+    
+    .logo-badge {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .btn-admin {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+    
+    /* Hero Section */
+    .hero {
+        padding: 40px 0;
+        min-height: 500px;
+    }
+    
+    .hero-title {
+        font-size: 24px;
+        line-height: 1.3;
+        margin-bottom: 15px;
+    }
+    
+    .hero-description {
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 25px;
+    }
+    
+    .hero-buttons {
+        gap: 12px;
+    }
+    
+    .hero-cta-btn {
+        padding: 14px 25px;
+        font-size: 14px;
+    }
+    
+    .hero-cta-btn i {
+        font-size: 14px;
+    }
+    
+    /* Why Choose Stats */
+    .why-choose-box {
+        padding: 20px 15px;
+    }
+    
+    .why-choose-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    .why-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .why-stat-card {
+        padding: 12px;
+    }
+    
+    .why-stat-icon {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .why-stat-icon i {
+        font-size: 16px;
+    }
+    
+    .why-stat-number {
+        font-size: 20px;
+    }
+    
+    .why-stat-label {
+        font-size: 10px;
+    }
+    
+    /* Events Bar */
+    .events-bar {
+        padding: 15px 0;
+    }
+    
+    .events-grid {
+        gap: 15px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .event-item {
+        min-width: 280px;
+        scroll-snap-align: start;
+    }
+    
+    /* About Section */
+    .about-section {
+        padding: 50px 0;
+    }
+    
+    .about-title {
+        font-size: 26px;
+        margin-bottom: 15px;
+    }
+    
+    .about-paragraph {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+    
+    .about-cta-btn {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+    
+    .floating-card {
+        padding: 15px 18px;
+        bottom: 15px;
+        left: 15px;
+    }
+    
+    .floating-card-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .floating-card-icon i {
+        font-size: 18px;
+    }
+    
+    .floating-card-content h4 {
+        font-size: 16px;
+    }
+    
+    .floating-card-content p {
+        font-size: 11px;
+    }
+    
+    /* Programs Section */
+    .programs-section {
+        padding: 50px 0;
+    }
+    
+    .section-tag {
+        font-size: 11px;
+        padding: 6px 14px;
+    }
+    
+    .section-title {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+    
+    .section-description {
+        font-size: 14px;
+    }
+    
+    .programs-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .program-card {
+        padding: 25px 20px;
+    }
+    
+    .program-icon {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .program-icon i {
+        font-size: 24px;
+    }
+    
+    .program-card h3 {
+        font-size: 20px;
+    }
+    
+    .program-card p {
+        font-size: 13px;
+    }
+    
+    .program-features li {
+        font-size: 13px;
+    }
+    
+    .program-btn {
+        padding: 12px 24px;
+        font-size: 13px;
+    }
+    
+    /* Subjects Section */
+    .subjects-section {
+        padding: 50px 0;
+    }
+    
+    .subjects-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .subjects-left,
+    .subjects-right {
+        width: 100%;
+    }
+    
+    .subject-card {
+        border-radius: 12px;
+    }
+    
+    .subject-card h3 {
+        font-size: 16px;
+    }
+    
+    .subject-count {
+        font-size: 12px;
+    }
+    
+    /* Why Choose Us Section */
+    .why-choose-us-section {
+        padding: 50px 0;
+    }
+    
+    .why-choose-header {
+        margin-bottom: 30px;
+    }
+    
+    .why-choose-title {
+        font-size: 24px;
+    }
+    
+    .why-choose-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .why-card {
+        padding: 25px 20px;
+    }
+    
+    .why-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .why-icon i {
+        font-size: 22px;
+    }
+    
+    .why-card h3 {
+        font-size: 18px;
+    }
+    
+    .why-card p {
+        font-size: 13px;
+    }
+    
+    .cta-button {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+    
+    /* Director's Message */
+    .director-message-section {
+        padding: 50px 0;
+    }
+    
+    .director-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .photo-container {
+        width: 100%;
+        max-width: 300px;
+        height: 350px;
+        margin: 0 auto;
+    }
+    
+    /* FIX: Show faces properly on mobile */
+    .director-image {
+        object-fit: cover;
+        object-position: center 20% !important; /* Show face, not top of head */
+    }
+    
+    /* FIX: Teacher images - show faces properly */
+    .teacher-image img {
+        object-fit: cover;
+        object-position: center 20% !important; /* Show face, not top of head */
+    }
+    
+    /* FIX: Teacher preview images on homepage - show faces properly */
+    .teacher-preview-image img {
+        object-fit: cover;
+        object-position: center 20% !important; /* Show face, not top of head */
+    }
+    
+    /* FIX: Testimonial avatars - show faces properly */
+    .testimonial-avatar img {
+        object-fit: cover;
+        object-position: center center !important;
+    }
+    
+    /* FIX: Any portrait images - general fix */
+    .photo-container img,
+    .teacher-card img,
+    .team-member img {
+        object-fit: cover;
+        object-position: center 20% !important;
+    }
+    
+    .message-title {
+        font-size: 24px;
+    }
+    
+    .message-quote {
+        font-size: 15px;
+        padding: 20px;
+    }
+    
+    .message-text {
+        font-size: 13px;
+    }
+    
+    .message-btn {
+        padding: 12px 24px;
+        font-size: 13px;
+    }
+    
+    /* Gallery Section */
+    .gallery-preview-section {
+        padding: 50px 0;
+    }
+    
+    .gallery-filters {
+        gap: 8px;
+        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns side by side */
+        max-width: 400px;
+        margin: 0 auto 30px;
+    }
+    
+    .filter-btn {
+        padding: 12px 16px;
+        font-size: 13px;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .filter-btn i {
+        font-size: 18px;
+        margin-bottom: 4px;
+    }
+    
+    /* Make filter buttons show icon on top, text below */
+    .filter-btn {
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    .gallery-masonry-grid {
+        columns: 1;
+        gap: 15px;
+    }
+    
+    .gallery-card {
+        margin-bottom: 15px;
+    }
+    
+    .zoom-btn {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .zoom-btn i {
+        font-size: 14px;
+    }
+    
+    .view-gallery-btn {
+        padding: 14px 30px;
+        font-size: 14px;
+    }
+    
+    /* Testimonials Section */
+    .testimonials-section {
+        padding: 50px 0;
+    }
+    
+    .testimonials-carousel-wrapper {
+        padding: 0 20px;
+    }
+    
+    .testimonial-card {
+        padding: 25px 20px;
+    }
+    
+    .testimonial-avatar {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .testimonial-name {
+        font-size: 16px;
+    }
+    
+    .testimonial-role {
+        font-size: 12px;
+    }
+    
+    .testimonial-text {
+        font-size: 13px;
+    }
+    
+    .carousel-nav-btn {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .carousel-nav-btn i {
+        font-size: 14px;
+    }
+    
+    /* Calendar Section */
+    .academic-calendar-section {
+        padding: 50px 0;
+    }
+    
+    .calendar-container {
+        padding: 20px 15px;
+    }
+    
+    .calendar-month {
+        font-size: 16px;
+    }
+    
+    .calendar-nav-btn {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .calendar-dates {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5px;
+    }
+    
+    .calendar-date {
+        width: 35px;
+        height: 35px;
+        font-size: 13px;
+    }
+    
+    .event-list {
+        max-height: 200px;
+    }
+    
+    .mini-event {
+        padding: 10px;
+    }
+    
+    .mini-date {
+        font-size: 11px;
+    }
+    
+    .mini-details span {
+        font-size: 12px;
+    }
+    
+    /* CTA Section */
+    .cta-section {
+        padding: 50px 0;
+    }
+    
+    .cta-title {
+        font-size: 26px;
+    }
+    
+    .cta-subtitle {
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+    
+    .cta-button {
+        padding: 16px 35px;
+        font-size: 15px;
+    }
+    
+    .btn-icon-circle {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .btn-icon-circle i {
+        font-size: 12px;
+    }
+    
+    .cta-trust-line {
+        font-size: 11px;
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    /* Footer */
+    .footer {
+        padding: 40px 0 0;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-logo span {
+        font-size: 18px;
+    }
+    
+    .footer-description {
+        font-size: 13px;
+    }
+    
+    .footer-col h3 {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    .footer-col ul li {
+        margin-bottom: 10px;
+    }
+    
+    .footer-col ul li a {
+        font-size: 13px;
+    }
+    
+    .contact-info li {
+        font-size: 13px;
+        gap: 10px;
+    }
+    
+    .social-links a {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+    
+    .footer-copyright {
+        padding: 20px 0;
+    }
+    
+    .copyright-content p {
+        font-size: 12px;
+    }
+    
+    .developer-name {
+        font-size: 14px;
+    }
+    
+    .developer-link {
+        font-size: 11px;
+    }
+    
+    /* Back to Top Button - Enhanced Visibility */
+    .back-to-top {
+        width: 50px;
+        height: 50px;
+        bottom: 100px; /* More space above chatbot */
+        right: 20px;
+        z-index: 9998; /* Below chatbot but above everything else */
+        box-shadow: 0 4px 20px rgba(0, 102, 204, 0.4);
+    }
+    
+    .back-to-top i {
+        font-size: 20px;
+    }
+    
+    .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    /* Chatbot Button - Enhanced Visibility */
+    .chat-button {
+        width: 60px;
+        height: 60px;
+        bottom: 25px; /* More space from bottom */
+        right: 20px;
+        z-index: 9999; /* Highest z-index */
+        box-shadow: 0 4px 20px rgba(0, 102, 204, 0.5);
+    }
+    
+    .chat-button img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    /* Ensure buttons are always visible and clickable */
+    .back-to-top,
+    .chat-button {
+        pointer-events: auto !important;
+        display: flex !important;
+    }
+    
+    /* Chat Widget - Better Mobile Positioning */
+    .chat-widget {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        bottom: 0;
+        right: 0;
+        border-radius: 0;
+    }
+    
+    .chat-widget.active {
+        display: flex;
+    }
+    
+    /* Touch-Friendly Improvements */
+    button,
+    a.btn,
+    .btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Prevent Text Selection on Buttons */
+    button,
+    .btn,
+    .nav-link {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+    
+    /* Smooth Scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Improve Touch Scrolling */
+    .events-grid,
+    .gallery-masonry-grid,
+    .testimonials-carousel {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* ========== MEDIUM MOBILE (481px - 768px) ========== */
+@media (min-width: 481px) and (max-width: 768px) {
+    .hero-title {
+        font-size: 32px;
+    }
+    
+    .section-title {
+        font-size: 30px;
+    }
+    
+    .programs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .why-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-masonry-grid {
+        columns: 2;
+    }
+}
+
+/* ========== LANDSCAPE ORIENTATION ========== */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        min-height: 400px;
+        padding: 30px 0;
+    }
+    
+    .hero-title {
+        font-size: 28px;
+    }
+    
+    .why-choose-box {
+        padding: 20px;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+}
+
+/* ========== GALAXY TAB OPTIMIZATIONS (800px - 1024px) ========== */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Container */
+    .container {
+        max-width: 90%;
+        padding: 0 30px;
+    }
+    
+    /* Hero Section */
+    .hero {
+        min-height: 600px;
+        padding: 80px 0;
+    }
+    
+    .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+    }
+    
+    .hero-title {
+        font-size: 38px;
+    }
+    
+    .hero-description {
+        font-size: 17px;
+    }
+    
+    .why-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Programs Section */
+    .programs-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    
+    /* Gallery Section */
+    .gallery-masonry-grid {
+        columns: 3;
+        gap: 20px;
+    }
+    
+    .gallery-filters {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        max-width: 100%;
+    }
+    
+    .filter-btn {
+        flex-direction: row;
+        gap: 10px;
+        padding: 12px 24px;
+    }
+    
+    /* Why Choose Us */
+    .why-choose-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    
+    /* Testimonials */
+    .testimonials-carousel-wrapper {
+        padding: 0 60px;
+    }
+    
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+    
+    /* Buttons Positioning for Tablets - INCREASED SPACING */
+    .back-to-top {
+        width: 55px;
+        height: 55px;
+        bottom: 140px; /* Much more space above chatbot */
+        right: 30px;
+    }
+    
+    .chat-button {
+        width: 65px;
+        height: 65px;
+        bottom: 30px;
+        right: 30px;
+    }
+}
+
+/* ========== GALAXY TAB PORTRAIT MODE (Specific Fix) ========== */
+@media (min-width: 700px) and (max-width: 800px) and (orientation: portrait) {
+    /* Galaxy Tab S4, S5e, S6 Lite in portrait */
+    
+    .back-to-top {
+        width: 58px;
+        height: 58px;
+        bottom: 150px !important; /* Extra space for portrait tablets */
+        right: 25px;
+    }
+    
+    .chat-button {
+        width: 68px;
+        height: 68px;
+        bottom: 25px;
+        right: 25px;
+    }
+}
+
+/* ========== TECNO PHONES OPTIMIZATIONS ========== */
+/* Tecno Spark series (720x1600, 720x1640) */
+/* Tecno Camon series (1080x2400) */
+/* Tecno Phantom series (1080x2340) */
+@media (min-width: 360px) and (max-width: 450px) and (min-height: 700px) {
+    /* Optimized for tall Tecno screens */
+    
+    /* Hero Section */
+    .hero {
+        min-height: 550px;
+        padding: 50px 0;
+    }
+    
+    .hero-title {
+        font-size: 26px;
+        line-height: 1.3;
+    }
+    
+    .hero-description {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+    
+    /* Better use of vertical space */
+    .section-title {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+    
+    .section-description {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    
+    /* Programs Cards */
+    .program-card {
+        padding: 30px 25px;
+    }
+    
+    .program-card h3 {
+        font-size: 22px;
+    }
+    
+    .program-card p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+    
+    /* Gallery Filters - Better for Tecno screens */
+    .gallery-filters {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        max-width: 100%;
+        padding: 0 10px;
+    }
+    
+    .filter-btn {
+        padding: 14px 18px;
+        font-size: 14px;
+    }
+    
+    /* Testimonials */
+    .testimonial-card {
+        padding: 30px 25px;
+    }
+    
+    .testimonial-text {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+    
+    /* Footer */
+    .footer-col h3 {
+        font-size: 17px;
+    }
+    
+    .footer-col ul li a {
+        font-size: 14px;
+    }
+    
+    /* Buttons - Better positioning for Tecno */
+    .back-to-top {
+        width: 52px;
+        height: 52px;
+        bottom: 105px;
+        right: 22px;
+    }
+    
+    .chat-button {
+        width: 62px;
+        height: 62px;
+        bottom: 28px;
+        right: 22px;
+    }
+    
+    /* Improve touch targets */
+    button,
+    a.btn,
+    .btn {
+        min-height: 48px;
+        min-width: 48px;
+    }
+}
+
+/* ========== TECNO LARGE SCREENS (1080p displays) ========== */
+@media (min-width: 400px) and (max-width: 450px) and (min-height: 800px) {
+    /* Tecno Phantom, Camon 19 Pro, etc. */
+    
+    .hero {
+        min-height: 600px;
+    }
+    
+    .hero-title {
+        font-size: 28px;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+    
+    /* Use more vertical space */
+    .programs-section,
+    .why-choose-us-section,
+    .testimonials-section {
+        padding: 60px 0;
+    }
+    
+    /* Larger cards for better readability */
+    .program-card,
+    .why-card,
+    .testimonial-card {
+        padding: 35px 30px;
+    }
+}
+
+/* ========== SMALL TECNO PHONES (Tecno Pop, Spark Go) ========== */
+@media (max-width: 360px) {
+    /* Extra compact for budget Tecno phones */
+    
+    body {
+        font-size: 13px;
+    }
+    
+    .container {
+        padding: 0 12px;
+    }
+    
+    .hero-title {
+        font-size: 22px;
+    }
+    
+    .section-title {
+        font-size: 22px;
+    }
+    
+    .btn {
+        padding: 12px 20px;
+        font-size: 13px;
+    }
+    
+    /* Compact buttons */
+    .back-to-top {
+        width: 48px;
+        height: 48px;
+        bottom: 95px;
+        right: 18px;
+    }
+    
+    .chat-button {
+        width: 58px;
+        height: 58px;
+        bottom: 22px;
+        right: 18px;
+    }
+    
+    /* Gallery filters - single column for very small screens */
+    .gallery-filters {
+        grid-template-columns: 1fr;
+        max-width: 280px;
+    }
+}

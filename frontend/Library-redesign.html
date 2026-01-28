@@ -22,8 +22,21 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/redesign-style.css?v=3.5">
+    
+    <!-- Page Loader CSS -->
+    <link rel="stylesheet" href="../css/page-loader.css">
 </head>
 <body>
+    
+    <!-- Page Loader - Flip -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-logo">
+            <img src="../img/5.jpg" alt="St. Lawrence Logo">
+        </div>
+        <div class="loader-text">ST. LAWRENCE</div>
+        <div class="loader-subtitle">Junior School - Kabowa</div>
+        <div class="loader-flip"></div>
+    </div>
     
     <!-- Header / Navigation -->
     <header class="header" id="header">
@@ -560,5 +573,8 @@
         // Load PDFs from API on page load
         // The api-library.js file will handle this automatically
     </script>
+    
+    <!-- Page Loader Script -->
+    <script src="../js/page-loader.js"></script>
 </body>
 </html>

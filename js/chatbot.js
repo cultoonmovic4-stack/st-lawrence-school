@@ -60,11 +60,11 @@ class StLawrenceChatbot {
                 
                 <!-- Tabs -->
                 <div class="chat-tabs">
-                    <button class="chat-tab active" data-tab="chat" id="chatTab" onclick="if(window.chatbot) window.chatbot.switchTab('chat')">
+                    <button class="chat-tab active" data-tab="chat" id="chatTab">
                         <i class="fas fa-comments"></i>
                         <span>Chat</span>
                     </button>
-                    <button class="chat-tab" data-tab="voice" id="voiceTab" onclick="if(window.chatbot) window.chatbot.switchTab('voice')">
+                    <button class="chat-tab" data-tab="voice" id="voiceTab">
                         <i class="fas fa-microphone"></i>
                         <span>Voice</span>
                     </button>
@@ -218,6 +218,12 @@ class StLawrenceChatbot {
         this.isOpen = false;
         chatWidget.classList.remove('active');
         chatButton.classList.remove('active');
+        
+        // IMPORTANT: Stop voice call if it's running when closing chatbot
+        if (this.currentTab === 'voice') {
+            console.log('Closing chatbot - stopping voice call');
+            this.stopVoiceCall();
+        }
     }
     
     async initializeChat() {
@@ -459,6 +465,12 @@ class StLawrenceChatbot {
     
     switchTab(tab) {
         console.log('Switching to tab:', tab); // Debug log
+        
+        // If switching away from voice tab, stop the call
+        if (this.currentTab === 'voice' && tab !== 'voice') {
+            this.stopVoiceCall();
+        }
+        
         this.currentTab = tab;
         
         // Update tab buttons
@@ -478,10 +490,10 @@ class StLawrenceChatbot {
         if (tab === 'chat') {
             const chatContent = document.getElementById('chatContent');
             if (chatContent) chatContent.classList.add('active');
-            this.stopVoiceCall();
         } else if (tab === 'voice') {
             const voiceContent = document.getElementById('voiceContent');
             if (voiceContent) voiceContent.classList.add('active');
+            // Auto-start call when switching to voice tab
             this.startVoiceCall();
         }
     }
@@ -629,9 +641,14 @@ class StLawrenceChatbot {
     }
     
     startVoiceCall() {
+        console.log('=== START VOICE CALL ===');
+        console.log('Recognition available:', !!this.recognition);
+        console.log('Current tab:', this.currentTab);
+        
         if (!this.recognition) {
+            console.error('Voice recognition not available');
             alert('Voice recognition is not supported in your browser. Please use Chrome, Edge, or Safari.');
-            this.switchTab('chat');
+            // Don't force switch - let user stay and try again
             return;
         }
         
@@ -653,7 +670,7 @@ class StLawrenceChatbot {
                 this.speak("Your call has reached the 3-hour limit. Thank you for using St. Lawrence Assistant. Goodbye!");
                 setTimeout(() => {
                     this.stopVoiceCall();
-                    this.switchTab('chat');
+                    // Don't force switch after 3 hours - let user restart
                 }, 3000);
             }
         }, 1000);
@@ -666,13 +683,16 @@ class StLawrenceChatbot {
             this.recognition.start();
             this.updateVoiceStatus('Listening...', 'listening');
             this.updateTranscript('I\'m ready to help! Ask me anything about St. Lawrence Junior School. For example: "What are your school fees?" or "Tell me about admission"');
+            console.log('Voice call started successfully');
         } catch (e) {
             console.error('Failed to start recognition:', e);
+            this.updateVoiceStatus('Error starting call', 'error');
+            this.updateTranscript('Error: Could not start voice recognition. Please try again.');
         }
         
         // Welcome message - REMOVED automatic speaking
         // User can start speaking immediately without waiting
-        console.log('Voice call started - ready for user input');
+        console.log('=== START VOICE CALL COMPLETE ===');
     }
     
     stopVoiceCall() {
@@ -742,12 +762,12 @@ class StLawrenceChatbot {
         this.isSpeaking = false;
         this.lastTranscript = '';
         this.lastProcessedTime = 0;
-        this.updateVoiceStatus('Ready', 'ready');
+        this.updateVoiceStatus('Call Ended', 'ready');
         this.updateTimer(true);
     }
     
     endVoiceCall() {
-        console.log('END CALL CLICKED - STOPPING EVERYTHING');
+        console.log('END CALL CLICKED - RESTARTING CALL');
         
         // CRITICAL: Set flag to stop all chunk processing
         this.shouldStopSpeaking = true;
@@ -790,12 +810,16 @@ class StLawrenceChatbot {
             }, 50);
         }
         
-        // End call immediately without speaking
+        // Stop the current call
         this.stopVoiceCall();
         
-        // Force switch to chat tab
-        this.currentTab = 'chat';
-        this.switchTab('chat');
+        // Wait a moment then restart the call automatically
+        setTimeout(() => {
+            if (this.currentTab === 'voice') {
+                console.log('Restarting voice call...');
+                this.startVoiceCall();
+            }
+        }, 500);
     }
     
     toggleMute() {
