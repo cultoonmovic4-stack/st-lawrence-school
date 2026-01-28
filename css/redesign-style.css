@@ -2147,6 +2147,19 @@ img {
     visibility: hidden;
     transition: var(--transition);
     z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.back-to-top i {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .back-to-top.show {

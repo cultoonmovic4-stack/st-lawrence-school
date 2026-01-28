@@ -598,10 +598,20 @@
         right: 20px;
         z-index: 9998; /* Below chatbot but above everything else */
         box-shadow: 0 4px 20px rgba(0, 102, 204, 0.4);
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0 !important;
     }
     
     .back-to-top i {
         font-size: 20px;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
     
     .back-to-top.show {
@@ -801,6 +811,16 @@
         height: 55px;
         bottom: 140px; /* Much more space above chatbot */
         right: 30px;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0 !important;
+    }
+    
+    .back-to-top i {
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1 !important;
     }
     
     .chat-button {
@@ -820,6 +840,16 @@
         height: 58px;
         bottom: 150px !important; /* Extra space for portrait tablets */
         right: 25px;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0 !important;
+    }
+    
+    .back-to-top i {
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1 !important;
     }
     
     .chat-button {
@@ -916,6 +946,16 @@
         height: 52px;
         bottom: 105px;
         right: 22px;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0 !important;
+    }
+    
+    .back-to-top i {
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1 !important;
     }
     
     .chat-button {
@@ -996,6 +1036,16 @@
         height: 48px;
         bottom: 95px;
         right: 18px;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0 !important;
+    }
+    
+    .back-to-top i {
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1 !important;
     }
     
     .chat-button {
